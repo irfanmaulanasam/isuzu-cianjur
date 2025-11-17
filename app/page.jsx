@@ -1,59 +1,55 @@
 // src/app/page.jsx
-import Image from "next/image";
+import Image from 'next/image';
+import Hero from './components/sections/Hero';
+import ValueProps from './components/sections/ValueProps';
+import PromoGrid from './components/sections/PromoGrid';
+import QuickTools from './components/sections/QuickTools';
+import Testimonials from './components/sections/Testimonial';
+import StoryBrand from './components/sections/StoryBrand';
+import CTASection from './components/sections/CTASection';
+
+export const metadata = {
+  title: 'Bahana Isuzu — Solusi Kendaraan Komersial Euro 4',
+  description:
+    'Bahana Isuzu: kendaraan komersial Euro 4 dengan TCO rendah, layanan aftersales, dan solusi bisnis untuk UMKM hingga perusahaan besar.',
+};
+
 export default function Home() {
-return (
-<main className="max-w-6xl mx-auto px-4 md:px-8 bg-gray-100 text-gray-900">
-  <section className="max-w-6xl mx-auto p-6 mt-8">
-    <div className="grid md:grid-cols-2 gap-6 items-center">
-      <div>
-        <h2 className="text-4xl font-extrabold mb-4">Solusi yang Tepat, Data yang Jelas</h2>
-        <p className="text-lg mb-6">Bangun keputusan bisnis yang lebih kuat dengan informasi yang akurat dan sistem yang terstruktur.</p>
-        <button className="bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700">Get Started</button>
-      </div>
-      <Image
-      src="https://via.placeholder.com/500x300"
-      alt="Hero Image"
-      width={500}
-      height={300}
-      className="rounded-2xl shadow"
-    />
-    </div>
-  </section>
+  return (
+    <main className="bg-white text-slate-900">
+      <Hero />
 
-  <section id="about" className="bg-white py-12 mt-12">
-    <div className="max-w-6xl mx-auto p-6">
-      <h3 className="text-3xl font-bold mb-4">Tentang Kami</h3>
-      <p className="text-gray-700 leading-relaxed">Kami membantu usaha memahami data, membuat flow kerja, dan menata sistem agar lebih efisien. Cocok untuk UKM yang ingin naik level.</p>
-    </div>
-  </section>
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <ValueProps />
+        </div>
+      </section>
 
-  <section id="services" className="py-12">
-    <div className="max-w-6xl mx-auto p-6">
-      <h3 className="text-3xl font-bold mb-6">Layanan</h3>
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-2xl shadow">
-          <h4 className="text-xl font-semibold mb-2">Flow Diagram</h4>
-          <p className="text-gray-700 text-sm">Membantu menggambar alur kerja bisnis secara detail dan terstruktur.</p>
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <PromoGrid />
         </div>
-        <div className="bg-white p-6 rounded-2xl shadow">
-          <h4 className="text-xl font-semibold mb-2">Validasi Data</h4>
-          <p className="text-gray-700 text-sm">Periksa fakta penting sebelum mengambil keputusan besar usaha.</p>
-        </div>
-        <div className="bg-white p-6 rounded-2xl shadow">
-          <h4 className="text-xl font-semibold mb-2">Eksekusi Sistem</h4>
-          <p className="text-gray-700 text-sm">Implementasi sistem praktis dari rencana yang sudah dibuat.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section id="contact" className="bg-white py-12 mt-12">
-    <div className="max-w-6xl mx-auto p-6">
-      <h3 className="text-3xl font-bold mb-4">Kontak</h3>
-      <p className="text-gray-700 mb-4">Ingin konsultasi atau tanya-tanya? Hubungi kami.</p>
-      <button className="bg-green-600 text-white px-6 py-3 rounded-xl shadow hover:bg-green-700">WhatsApp</button>
-    </div>
-  </section>
-</main>
-);
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <QuickTools />
+        </div>
+      </section>
+
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <Testimonials />
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <StoryBrand />
+        </div>
+      </section>
+
+      <CTASection />
+    </main>
+  );
 }

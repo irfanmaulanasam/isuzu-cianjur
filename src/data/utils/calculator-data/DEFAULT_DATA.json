@@ -1,0 +1,16 @@
+{
+    "hargaTruk": 300000000,
+    "umurPakai": 5,
+    "nilaiSisa": 100000000,
+    "bungaKredit": 8,
+    "tenor": 4, 
+    "uangMuka": 50000000, 
+    "kirPajak": 10000000,
+    "asuransi": 8000000,
+    "gajiSupir": 3000000,
+    "hargaSolar": 5500,
+    "rasioBBM": 5,
+    "jarakTahunan": 50000,
+    "perawatan": 20000000,
+    "ban": 10000000
+}
