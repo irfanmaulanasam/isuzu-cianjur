@@ -2,18 +2,7 @@
 import Image from "next/image";
 export default function Home() {
 return (
-<div className="bg-gray-100 text-gray-900">
-  <header className="bg-white shadow p-4 sticky top-0 z-50">
-    <div className="max-w-6xl mx-auto flex justify-between items-center">
-      <h1 className="text-2xl font-bold">Brand</h1>
-      <nav className="space-x-4">
-        <a href="#about" className="hover:text-blue-600">About</a>
-        <a href="#services" className="hover:text-blue-600">Services</a>
-        <a href="#contact" className="hover:text-blue-600">Contact</a>
-      </nav>
-    </div>
-  </header>
-
+<main className="max-w-6xl mx-auto px-4 md:px-8 bg-gray-100 text-gray-900">
   <section className="max-w-6xl mx-auto p-6 mt-8">
     <div className="grid md:grid-cols-2 gap-6 items-center">
       <div>
@@ -65,10 +54,6 @@ return (
       <button className="bg-green-600 text-white px-6 py-3 rounded-xl shadow hover:bg-green-700">WhatsApp</button>
     </div>
   </section>
-
-  <footer className="text-center text-sm text-gray-600 py-6 mt-12">
-    © 2025 Brand. Semua hak dilindungi.
-  </footer>
-</div>
+</main>
 );
 }

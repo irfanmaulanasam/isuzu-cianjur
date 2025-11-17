@@ -1,0 +1,41 @@
+{
+  "footer": {
+    "company": {
+      "name": "Bahana Isuzu",
+      "description": "Dealer resmi Isuzu Commercial Vehicle — menyediakan unit, layanan aftersales, dan sparepart.",
+      "address": "Jl. Contoh No. 123, Bandung, Jawa Barat",
+      "phone": "+62 812-3456-7890",
+      "whatsapp": "+6281234567890",
+      "email": "cs@bahanaisuzu.co.id"
+    },
+    "navigation": {
+      "company": [
+        { "title": "About Us", "path": "/about" },
+        { "title": "Outlet", "path": "/outlet" }
+      ],
+      "news": [
+        { "title": "Promo", "path": "/news/promo" },
+        { "title": "Berita", "path": "/news" },
+        { "title": "Event", "path": "/news/event" }
+      ],
+      "product": [
+        { "title": "Lihat Unit", "path": "/products" },
+        { "title": "Pemesanan Unit", "path": "/products/unit-order" }
+      ],
+      "services": [
+        { "title": "BIB Services", "path": "/services/bib-services" },
+        { "title": "Services Unit", "path": "/services/dealer-services" },
+        { "title": "Sparepart", "path": "/services/sparepart-order" }
+      ],
+      "tools": [
+        { "title": "Vehicle Cost", "path": "/vehicle-cost" },
+        { "title": "Credit Simulator", "path": "/credit-simulator" }
+      ]
+    },
+    "legal": {
+      "copyright": "© 2025 Bahana Isuzu. All Rights Reserved.",
+      "privacy": "/privacy-policy",
+      "terms": "/terms-condition"
+    }
+  }
+}
