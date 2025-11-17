@@ -2,6 +2,9 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  images: {
+    domains: ['via.placeholder.com'], // Ini yang harus ditambahkan
+  },
 };
 
 export default nextConfig;
