@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from "react";
+'use client'
+import { useState, useMemo } from "react";
 
 // Data Dummy untuk Dependent Dropdown
 const locationData = {
