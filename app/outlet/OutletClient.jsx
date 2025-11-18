@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import IndexButton from "../components/ui/IndexButton";
 
 export default function OutletClient({ outlets }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -31,17 +32,13 @@ export default function OutletClient({ outlets }) {
         {/* Tombol outlet - TANPA MOTION */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {outlets.map((outlet, index) => (
-            <button
-              key={outlet.id}
-              onClick={() => setActiveIndex(index)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all shadow-sm ${
-                index === activeIndex
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-slate-700 hover:bg-slate-100"
-              }`}
+            <IndexButton 
+            key={outlet.id}
+            isActive={index === activeIndex}
+            onClick={()=> setActiveIndex(index)}
             >
               {outlet.name}
-            </button>
+            </IndexButton>
           ))}
         </div>
 

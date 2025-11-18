@@ -6,6 +6,14 @@ import Footer from "./components/layout/Footer";
 export const metadata = {
 title: "Isuzu Commercial Vehicle",
 description: "Solusi Euro 4, TCO rendah, dan reliable untuk usaha logistik.",
+icons: {
+    icon: [
+      {
+        url: '/icon.webp', // Mengacu ke file di public/
+        type: 'image/webp',
+      },
+    ],
+  },
 };
 
 
