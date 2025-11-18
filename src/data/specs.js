@@ -1,9 +1,9 @@
-export const specs ={
+export const specs = {
   "traga-pick-up-fd": {
     slug: "traga-pick-up-fd",
     title: "Traga Pick Up (FD)",
     subtitle: "Spesifikasi Teknis",
-    price:"Rp. 289.000.000",
+    price: "Rp. 289.000.000",
     sections: [
       {
         label: "DIMENSI",
@@ -102,7 +102,7 @@ export const specs ={
     slug: "traga-box",
     title: "Traga box",
     subtitle: "Spesifikasi Teknis",
-    price:"Rp. 336.000.000",
+    price: "Rp. 336.000.000",
     sections: [
       {
         label: "DIMENSI",
@@ -201,7 +201,7 @@ export const specs ={
     slug: "traga-pick-up-fd",
     title: "Traga Pick Up (FD)",
     subtitle: "Spesifikasi Teknis",
-    price:"Rp. 410.000.000",
+    price: "Rp. 410.000.000",
     sections: [
       {
         label: "DIMENSI",
@@ -300,98 +300,123 @@ export const specs ={
     slug: "traga-blind-van",
     title: "TRAGA BLIND VAN",
     subtitle: "Spesifikasi Teknis",
-    price:"-",
-    sections:[
-        {
-            label: 'Dimensi',
-            items:[
-                { name: 'Panjang / Overall Length (OAL)', value:'4.655 mm'
-                },{ name: 'Lebar / Overall Width (OW)' ,value:'1.695 mm'
-                },{ name: 'Tinggi / Overall Height Front (OH)', value:'2.050 mm'
-                },{ name: 'Jarak Sumbu / Wheelbase (WB)',value: '2.250 mm'
-                },{ name: 'Jejak Depan / Front Tread (AW)',value:'1.460 mm' 
-                },{ name: 'Jejak Belakang / Rear Tread (CW)',value: '1.460 mm'
-                },{ name: 'Julur Depan / Front Overhang (FOH)',value: '1.005 mm'
-                },{ name: 'Julur Belakang / Rear Overhang (ROH)',value: '1.400 mm'
-                },{ name: 'Lebar Cargo / Cargo Width (CW)',value: '1.520 mm'
-                },{ name: 'Panjang Cargo / Cargo Length (CL) Top',value:'2.900 mm'
-                },{ name: 'Tinggi Cargo / Cargo Height Inner (CL)',value: '1.200 mm'
-                },{ name: 'Jarak Terendah ke Tanah / Ground Clearance (HH) Lebar Pintu / Door Width (DW)',value: 180
-                },{name:'Lebar Pintu / Door Width (DW)',value: '1.000 mm'
-                }
-            ]
-        },{
-            label:'Mesin',
-            items:[
-                {name:'Model',value:'4JA1L'
-                },{name:'Tipe / Type',value:'4 Cylinder, Direct Injection with Turbocharger' 
-                },{name:'Diameter x Langkah / Bore x Stroke',value:'93 x 92 mm'
-                },{name:'Isi Silinder / Piston Displacement',value:'2,499 cc'
-                },{name:'Tenaga Maksimum / Maximum Power',value:'80 / 3,500 PS / rpm'
-                },{name:'Torsi Maksimum / Maximum Torque',value:'19.5 / 1,800 Kgm / rpm'
-                }
-            ]
-        },{
-            label: 'Berat',
-            items:[
-                {name:'Berat Brutto / Gross Vehicle Weight (GVW)',value: '2.950 kg'}
-            ]
-        },{
-            label:'Rem',
-            items:[
-                {name:'Kontrol Rem / Brake Control',value:'Hydraulic Dual Circuit'
-                },{name:'Depan / Front',value:'Ventilated Disc'
-                },{name:'Belakang / Rear',value:' Drum leading & trailing'
-                }
-            ]
-        },{
-            label: 'Sistem Kemudi',
-            items:[
-                {name:'Tipe / Type',value:'Rack and pinion'
-                },{name:'Power Steering',value:'Yes'
-                },{name: 'Radius Putar / Turning Radius',value:4.5
-                }
-            ]
-        },{
-            label:'Transmisi',
-            items:[
-                {name:'Model', value:'MUA5S'},
-                {name:'Sistem / System',value:'Manual (M/T) - 5 Speed'},
-                {name:'Perbandingan Gigi / Gear Ratio',value:''},
-                {name:'1st' ,value:'4.357'},
-                {name:'2nd' ,value:'2.502'},
-                {name:'3rd' ,value:'1.501'},
-                {name:'4th' ,value:'1.000'},
-                {name:'5th' ,value:'0.809'},
-                {name:'Reverse' ,value:'3.970'},
-                {name:'Perbandingan Gigi Akhir / Final Gear Ratio',value:'4.777'}
-            ]
-        },{
-            label:'Ban',
-            items:[  
-                {name:'Velg / Wheel', value:'6 Stud 14 x 5.5'},
-                {name:'Ban Depan / Front Tyre (Type)',value:'195R14-8PR'},
-                {name:'Ban Belakang / Rear Tire (Type)',value:'195R14-8PR'}
-            ]
-        },{
-            label:'Suspensi', 
+    price: "-",
+    sections: [
+      {
+        label: 'Dimensi',
+        items: [
+          {
+            name: 'Panjang / Overall Length (OAL)', value: '4.655 mm'
+          }, {
+            name: 'Lebar / Overall Width (OW)', value: '1.695 mm'
+          }, {
+            name: 'Tinggi / Overall Height Front (OH)', value: '2.050 mm'
+          }, {
+            name: 'Jarak Sumbu / Wheelbase (WB)', value: '2.250 mm'
+          }, {
+            name: 'Jejak Depan / Front Tread (AW)', value: '1.460 mm'
+          }, {
+            name: 'Jejak Belakang / Rear Tread (CW)', value: '1.460 mm'
+          }, {
+            name: 'Julur Depan / Front Overhang (FOH)', value: '1.005 mm'
+          }, {
+            name: 'Julur Belakang / Rear Overhang (ROH)', value: '1.400 mm'
+          }, {
+            name: 'Lebar Cargo / Cargo Width (CW)', value: '1.520 mm'
+          }, {
+            name: 'Panjang Cargo / Cargo Length (CL) Top', value: '2.900 mm'
+          }, {
+            name: 'Tinggi Cargo / Cargo Height Inner (CL)', value: '1.200 mm'
+          }, {
+            name: 'Jarak Terendah ke Tanah / Ground Clearance (HH) Lebar Pintu / Door Width (DW)', value: 180
+          }, {
+            name: 'Lebar Pintu / Door Width (DW)', value: '1.000 mm'
+          }
+        ]
+      }, {
+        label: 'Mesin',
+        items: [
+          {
+            name: 'Model', value: '4JA1L'
+          }, {
+            name: 'Tipe / Type', value: '4 Cylinder, Direct Injection with Turbocharger'
+          }, {
+            name: 'Diameter x Langkah / Bore x Stroke', value: '93 x 92 mm'
+          }, {
+            name: 'Isi Silinder / Piston Displacement', value: '2,499 cc'
+          }, {
+            name: 'Tenaga Maksimum / Maximum Power', value: '80 / 3,500 PS / rpm'
+          }, {
+            name: 'Torsi Maksimum / Maximum Torque', value: '19.5 / 1,800 Kgm / rpm'
+          }
+        ]
+      }, {
+        label: 'Berat',
+        items: [
+          { name: 'Berat Brutto / Gross Vehicle Weight (GVW)', value: '2.950 kg' }
+        ]
+      }, {
+        label: 'Rem',
+        items: [
+          {
+            name: 'Kontrol Rem / Brake Control', value: 'Hydraulic Dual Circuit'
+          }, {
+            name: 'Depan / Front', value: 'Ventilated Disc'
+          }, {
+            name: 'Belakang / Rear', value: ' Drum leading & trailing'
+          }
+        ]
+      }, {
+        label: 'Sistem Kemudi',
+        items: [
+          {
+            name: 'Tipe / Type', value: 'Rack and pinion'
+          }, {
+            name: 'Power Steering', value: 'Yes'
+          }, {
+            name: 'Radius Putar / Turning Radius', value: 4.5
+          }
+        ]
+      }, {
+        label: 'Transmisi',
+        items: [
+          { name: 'Model', value: 'MUA5S' },
+          { name: 'Sistem / System', value: 'Manual (M/T) - 5 Speed' },
+          { name: 'Perbandingan Gigi / Gear Ratio', value: '' },
+          { name: '1st', value: '4.357' },
+          { name: '2nd', value: '2.502' },
+          { name: '3rd', value: '1.501' },
+          { name: '4th', value: '1.000' },
+          { name: '5th', value: '0.809' },
+          { name: 'Reverse', value: '3.970' },
+          { name: 'Perbandingan Gigi Akhir / Final Gear Ratio', value: '4.777' }
+        ]
+      }, {
+        label: 'Ban',
+        items: [
+          { name: 'Velg / Wheel', value: '6 Stud 14 x 5.5' },
+          { name: 'Ban Depan / Front Tyre (Type)', value: '195R14-8PR' },
+          { name: 'Ban Belakang / Rear Tire (Type)', value: '195R14-8PR' }
+        ]
+      }, {
+        label: 'Suspensi',
 
-            items:[
-                {name:'Depan / Front', value:'Double wishbone with coil spring'},
-                {name:'Belakang / Rear',value:'Leaf spring type'}
-            ]
-        },{
-            label:'Lain-lain',
-            items:[
-                {name:'Pintu Belakang / Hatchback',value:1},
-                {name:'Pintu Samping / Swing Door',value:1},
-                {name:'Kapasitas Tangki / Fuel Tank Capacity',value:'50 liter'},
-                {name:'Alternator', value:'12 - 60 V/A'},
-                {name:'Aki / Accu', value:'12 - 65 V/AH'},
-                {name:'Fan Blower', value:'yes'}
-                ,{name:'Head Unit', value:'yes'}
-            ]
-        }
+        items: [
+          { name: 'Depan / Front', value: 'Double wishbone with coil spring' },
+          { name: 'Belakang / Rear', value: 'Leaf spring type' }
+        ]
+      }, {
+        label: 'Lain-lain',
+        items: [
+          { name: 'Pintu Belakang / Hatchback', value: 1 },
+          { name: 'Pintu Samping / Swing Door', value: 1 },
+          { name: 'Kapasitas Tangki / Fuel Tank Capacity', value: '50 liter' },
+          { name: 'Alternator', value: '12 - 60 V/A' },
+          { name: 'Aki / Accu', value: '12 - 65 V/AH' },
+          { name: 'Fan Blower', value: 'yes' }
+          , { name: 'Head Unit', value: 'yes' }
+        ]
+      }
     ]
   },
   "dmax-sc": {
@@ -1623,9 +1648,9 @@ export const specs ={
     slug: "giga-frr-q",
     title: "GIGA FRR Q",
     price: [
-          { "name": "Harga Off The Road", "value": "Rp629.000.000" },
-          { "name": "Harga OTR Jawa Barat", "value": "Rp742.220.000" }
-        ],
+      { "name": "Harga Off The Road", "value": "Rp629.000.000" },
+      { "name": "Harga OTR Jawa Barat", "value": "Rp742.220.000" }
+    ],
     subtitle: "Spesifikasi Teknis",
     sections: [
       {
@@ -1719,13 +1744,13 @@ export const specs ={
       }
     ]
   },
-   "giga-ftr-p": {
+  "giga-ftr-p": {
     slug: "giga-ftr-p",
     title: "Isuzu GIGA-FTR P",
     subtitle: "Spesifikasi Teknis",
     price: {
-        "off the road":"Rp. 701.000.000",
-        "OTR Jawa Barat":"Rp. 827.180.000"
+      "off the road": "Rp. 701.000.000",
+      "OTR Jawa Barat": "Rp. 827.180.000"
     },
     sections: [
       {
@@ -1814,9 +1839,9 @@ export const specs ={
     slug: "giga-ftr-s",
     title: "GIGA-FTR S",
     price: [
-        { "name": "Harga Off The Road", "value": "Rp701.000.000" },
-        { "name": "Harga OTR Jawa Barat", "value": "Rp831.900.000" }
-      ],
+      { "name": "Harga Off The Road", "value": "Rp701.000.000" },
+      { "name": "Harga OTR Jawa Barat", "value": "Rp831.900.000" }
+    ],
     subtitle: "Spesifikasi Teknis",
     sections: [
       {
@@ -1914,10 +1939,10 @@ export const specs ={
   "giga-ftr-t": {
     slug: "giga-ftr-t",
     title: "GIGA-FTR T",
-      price: [
-        { "name": "Harga Off The Road", "value": "Rp713.000.000" },
-        { "name": "Harga OTR Jawa Barat", "value": "Rp841.340.000" }
-      ],
+    price: [
+      { "name": "Harga Off The Road", "value": "Rp713.000.000" },
+      { "name": "Harga OTR Jawa Barat", "value": "Rp841.340.000" }
+    ],
     subtitle: "Spesifikasi Teknis",
     sections: [
       {
@@ -2016,9 +2041,9 @@ export const specs ={
     slug: "giga-fvr-l-d",
     title: "GIGA-FVR L D",
     price: [
-        { "name": "Harga Off The Road", "value": "Rp782.000.000" },
-        { "name": "Harga OTR Jawa Barat", "value": "Rp922.760.000" }
-      ],
+      { "name": "Harga Off The Road", "value": "Rp782.000.000" },
+      { "name": "Harga OTR Jawa Barat", "value": "Rp922.760.000" }
+    ],
     subtitle: "Spesifikasi Teknis",
     sections: [
       {
@@ -2116,10 +2141,10 @@ export const specs ={
   "giga-fvr-p": {
     slug: "giga-fvr-p",
     title: "GIGA-FVR P",
-      price: [
-        { "name": "Harga Off The Road", "value": "Rp788.000.000" },
-        { "name": "Harga OTR Jawa Barat", "value": "Rp929.840.000" }
-      ],
+    price: [
+      { "name": "Harga Off The Road", "value": "Rp788.000.000" },
+      { "name": "Harga OTR Jawa Barat", "value": "Rp929.840.000" }
+    ],
     subtitle: "Spesifikasi Teknis",
     sections: [
       {
@@ -2217,10 +2242,10 @@ export const specs ={
   "giga-fvr-s": {
     slug: "giga-fvr-s",
     title: "GIGA-FVR S",
-      price: [
-        { "name": "Harga Off The Road", "value": "Rp798.000.000" },
-        { "name": "Harga OTR Jawa Barat", "value": "Rp941.640.000" }
-      ],
+    price: [
+      { "name": "Harga Off The Road", "value": "Rp798.000.000" },
+      { "name": "Harga OTR Jawa Barat", "value": "Rp941.640.000" }
+    ],
     subtitle: "Spesifikasi Teknis",
     sections: [
       {
@@ -2318,10 +2343,10 @@ export const specs ={
   "giga-fvr-q": {
     slug: "giga-fvr-q",
     title: "GIGA-FVR Q",
-      price: [
-        { "name": "Harga Off The Road", "value": "Rp793.000.000" },
-        { "name": "Harga OTR Jawa Barat", "value": "Rp935.740.000" }
-      ],
+    price: [
+      { "name": "Harga Off The Road", "value": "Rp793.000.000" },
+      { "name": "Harga OTR Jawa Barat", "value": "Rp935.740.000" }
+    ],
     subtitle: "Spesifikasi Teknis",
     sections: [
       {
@@ -2419,10 +2444,10 @@ export const specs ={
   "giga-fvr-u": {
     slug: "giga-fvr-u",
     title: "GIGA-FVR U",
-      price: [
-        { "name": "Harga Off The Road", "value": "Rp807.000.000" },
-        { "name": "Harga OTR Jawa Barat", "value": "Rp952.260.000" }
-      ],
+    price: [
+      { "name": "Harga Off The Road", "value": "Rp807.000.000" },
+      { "name": "Harga OTR Jawa Barat", "value": "Rp952.260.000" }
+    ],
     subtitle: "Spesifikasi Teknis",
     sections: [
       {
@@ -2521,7 +2546,7 @@ export const specs ={
     slug: "giga-fvz-l-hp-mx",
     title: "Isuzu GIGA-FVZ L HP MX",
     subtitle: "Spesifikasi Teknis",
-    price: {"off the road":"Rp. 1.152.000.000","OTR Jawa Barat":"Rp. 1.359.360.000"},
+    price: { "off the road": "Rp. 1.152.000.000", "OTR Jawa Barat": "Rp. 1.359.360.000" },
     sections: [
       {
         label: "DIMENSI",
@@ -2604,9 +2629,9 @@ export const specs ={
     slug: "giga-fvz-n-hp",
     title: "Isuzu GIGA-FVZ N HP",
     subtitle: "Spesifikasi Teknis",
-    price:{
-        "off the road":"Rp. 1.157.000.000",
-        "OTR Jawa Barat":"Rp. 1.365.260.000"
+    price: {
+      "off the road": "Rp. 1.157.000.000",
+      "OTR Jawa Barat": "Rp. 1.365.260.000"
     },
     sections: [
       {
@@ -2690,8 +2715,8 @@ export const specs ={
     title: "Isuzu GIGA-FVZ U HP",
     subtitle: "Spesifikasi Teknis",
     price: [
-     {"name":"off the road","value":"Rp. 1.178.000.000"},
-     {"name":"OTR Jawa Barat","value":"Rp. 1.390.040.000"}  
+      { "name": "off the road", "value": "Rp. 1.178.000.000" },
+      { "name": "OTR Jawa Barat", "value": "Rp. 1.390.040.000" }
     ],
     sections: [
       {
@@ -2874,7 +2899,7 @@ export const specs ={
       }
     ]
   },
-  "giga-fvm u hp": {
+  "giga fvm u hp": {
     slug: "giga-fvm-u-hp",
     title: "isuzu giga-fvm U HP",
     subtitle: "Spesifikasi Teknis",
@@ -2980,7 +3005,7 @@ export const specs ={
       }
     ]
   },
-  "giga-fvm n": {
+  "giga fvm n": {
     slug: "giga-fvm-n",
     title: "giga-fvm N",
     subtitle: "Spesifikasi Teknis",
@@ -3194,8 +3219,8 @@ export const specs ={
     title: "Isuzu GIGA-GVR J HP ABS",
     subtitle: "Spesifikasi Teknis",
     price: [
-     {"name":"off the road","value":"Rp895.000.000"},
-     {"name":"OTR Jawa Barat","value":"Rp1.056.100.000"}  
+      { "name": "off the road", "value": "Rp895.000.000" },
+      { "name": "OTR Jawa Barat", "value": "Rp1.056.100.000" }
     ],
     sections: [
       {
@@ -3279,9 +3304,9 @@ export const specs ={
     slug: "giga-gvz-k-hp-abs",
     title: "Isuzu GIGA-GVZ K HP ABS",
     subtitle: "Spesifikasi Teknis",
-    price:{
-        "off the road":"Rp. 1.181.000.000",
-        "OTR Jawa Barat":"Rp. 1.393.580.000"
+    price: {
+      "off the road": "Rp. 1.181.000.000",
+      "OTR Jawa Barat": "Rp. 1.393.580.000"
     },
     sections: [
       {
@@ -3371,8 +3396,8 @@ export const specs ={
     title: "Isuzu GIGA-GXZ K ABS",
     subtitle: "Spesifikasi Teknis",
     price: [
-        {"off the road":"Rp. 1.338.000.000"},
-        {"OTR Jawa Barat":"Rp. 1.578.840.000"}
+      { "off the road": "Rp. 1.338.000.000" },
+      { "OTR Jawa Barat": "Rp. 1.578.840.000" }
     ],
     sections: [
       {
@@ -3458,4 +3483,4 @@ export const specs ={
     ]
   }
 }
-export const allSpecSlugs= Object.keys(specs)
+export const allSpecSlugs = Object.keys(specs)

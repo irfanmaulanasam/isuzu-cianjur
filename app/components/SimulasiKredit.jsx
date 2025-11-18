@@ -1,59 +1,13 @@
 'use client';
-
 import { useState, useMemo, useEffect, useCallback } from "react";
-
 // --- Data & Utils ---
-
-/**
- * Data harga OTR (On The Road) model-model kendaraan Isuzu.
- * Data ini digunakan sebagai sumber harga dasar untuk simulasi kredit.
- */
-const IsuzuPrices = {
-  elf: [
-    { model: "ELF NMR HD 5.8", price: 340000000 },
-    { model: "ELF NMR HD 6.5", price: 365000000 },
-    { model: "ELF NLR 55 B", price: 300000000 },
-    { model: "ELF NLR 71 TL", price: 380000000 },
-  ],
-  traga: [
-    { model: "TRAGA Pickup", price: 285000000 },
-    { model: "TRAGA Box", price: 305000000 },
-    { model: "TRAGA Blind Van", price: 310000000 },
-  ],
-  giga: [
-    { model: "GIGA FVR", price: 850000000 },
-    { model: "GIGA FVZ", price: 1100000000 },
-  ],
-  mux: [
-    { model: "MU-X 4x4 MT", price: 599000000 },
-  ]
-};
-
+import { IsuzuPrices } from "@/src/data/isuzuPrices";
 /**
  * Data simulasi leasing/pembiayaan.
  * rate: Suku Bunga Flat Tahunan (dalam bentuk desimal, misal 0.05 = 5%)
  * tenor: Pilihan tenor dalam bulan
  */
-const LeasingData = [
-    {
-      name: "PT. Bank Mega Finance",
-      surname: "Mega Finance",
-      rate: 0.045, // 4.5% Flat Rate / Tahun
-      tenor: [12, 24, 36, 48],
-    },
-    {
-      name: "PT. Mandiri Tunas Finance",
-      surname: "MTF",
-      rate: 0.052, // 5.2% Flat Rate / Tahun
-      tenor: [12, 36, 60],
-    },
-    {
-      name: "PT. Adira Dinamika Multi Finance",
-      surname: "Adira Finance",
-      rate: 0.058, // 5.8% Flat Rate / Tahun
-      tenor: [24, 48, 72],
-    },
-];
+import { LeasingData } from "@/src/data/LeasingData";
 
 const allIsuzuModels = Object.values(IsuzuPrices).flat();
 // Pilihan Tenor yang umum
@@ -77,7 +31,6 @@ const formatInputDisplay = (number) => {
     }).format(number);
     return `Rp ${formatted}`;
 };
-
 // Fungsi utilitas untuk membersihkan string input menjadi angka mentah
 const cleanInputToNumber = (value) => {
     if (!value) return 0;
@@ -85,7 +38,6 @@ const cleanInputToNumber = (value) => {
     const cleanValue = value.replace(/[^0-9]/g, '');
     return Number(cleanValue) || 0;
 };
-
 // Fungsi perhitungan (Flat Rate)
 const hitungAngsuran = (otrNumber, dp, tenor, bunga) => {
   if (otrNumber <= 0 || tenor <= 0) return 0;
@@ -95,20 +47,15 @@ const hitungAngsuran = (otrNumber, dp, tenor, bunga) => {
   const totalBunga = loanAmount * bunga * (tenor / 12); 
   return (loanAmount + totalBunga) / tenor; // Angsuran Bulanan
 };
-
 const toSlug = (text) => {
     if (!text) return '';
     return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 };
-
 const slugToModelName = (targetSlug, models) => {
     return models.find(item => toSlug(item.model) === targetSlug)?.model;
 };
-
-
 export default function SimulasiKredit() {
   const [slug, setSlug] = useState('');
-  
   // selectedModel adalah nilai yang ditampilkan di input, yang juga merupakan nama model resmi jika valid.
   const [selectedModel, setSelectedModel] = useState("");
   const [otrPrice, setOtrPrice] = useState(0);
@@ -130,7 +77,6 @@ export default function SimulasiKredit() {
       const lowerName = modelName.toLowerCase().trim();
       return allIsuzuModels.find((item) => item.model.toLowerCase() === lowerName);
   }, []);
-
   // System auto-complete untuk slug pendek
   const autoCompleteSlug = useCallback((shortSlug) => {
     if (shortSlug === "blindvan") { shortSlug = "traga-blind-van"; } 
@@ -142,21 +88,17 @@ export default function SimulasiKredit() {
       "dmax": "", "traga": "", "blind-van": "traga-", "box": "traga-",
       "mu-x": "", "giga": "", "elf": "" 
     };
-    
     for (const [key, prefix] of Object.entries(prefixMap)) {
       if (shortSlug.startsWith(key) || shortSlug === key.replace('-', '')) {
         return prefix + shortSlug;
       }
     }
-
     const foundModel = allIsuzuModels.find(item => {
       const itemSlug = toSlug(item.model);
       return itemSlug.includes(shortSlug);
     });
-
     return foundModel ? toSlug(foundModel.model) : shortSlug;
   }, []);
-
 
   // EFFECT 0: Setup listener untuk URL Hash
   useEffect(() => {
