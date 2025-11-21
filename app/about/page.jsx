@@ -1,5 +1,5 @@
 // src/app/about/page.jsx
-import {about} from '@/src/data/about'
+import {about} from '@/data/about'
 import { Truck, Target, Lightbulb, CheckCircle } from 'lucide-react';
 export const metadata = {
 title: about.title,

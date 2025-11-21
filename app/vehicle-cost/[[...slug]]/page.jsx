@@ -3,9 +3,9 @@
 import { useState, useMemo, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation"; // 👈 Next.js Navigation
 import DEFAULT_DATA from "@/src/data/utils/calculator-data/DEFAULT_DATA"
-import { autoCompleteSlug } from "@/src/data/utils/autoCompleteSlug";
-import { cleanPrice } from "@/src/data/utils/calculator-data/cleanPrice";
-import { specs, allSpecSlugs } from "@/src/data/specs";
+import { autoCompleteSlug } from "@/data/utils/autoCompleteSlug";
+import { cleanPrice } from "@/data/calculator-data/cleanPrice";
+import { specs, allSpecSlugs } from "@/data/specs";
 import { Section } from "@/app/components/CalculatorUI/Section";
 import {Input} from "@/app/components/CalculatorUI/Input"
 import {Result} from "@/app/components/CalculatorUI/Result"

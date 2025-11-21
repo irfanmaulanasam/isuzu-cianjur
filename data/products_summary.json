@@ -1,0 +1,557 @@
+[
+  {
+    "id": "traga-pick-up-fd",
+    "slug": "traga-pick-up-fd",
+    "name": "TRAGA PICK UP",
+    "category": "PICKUP-LCV",
+    "image": "/products/2022_TRAGA_EURO4_Pick-Up-Sisi-Sopir-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "2,499 cc",
+      "power": "80 / 3,800 PS/rpm",
+      "tonnage": "2,950 Kg",
+      "cabinEnd": "2,810 mm",
+      "price": "Rp. 289.000.000"
+    }
+  },
+  {
+    "id": "traga-box",
+    "slug": "traga-box",
+    "name": "ISUZU TRAGA BOX",
+    "category": "PICKUP-LCV",
+    "image": "/products/2022_TRAGA-_EURO4_Box-Aluminium-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "2,499 cc",
+      "power": "80 / 3,800 PS/rpm",
+      "tonnage": "2,950 Kg",
+      "cabinEnd": "2,810 mm",
+      "price": "Rp. 336.000.000"
+    }
+  },
+  {
+    "id": "traga-freezer-box",
+    "slug": "traga-freezer-box",
+    "name": "ISUZU TRAGA FREEZER BOX",
+    "category": "PICKUP-LCV",
+    "image": "/products/2022_traga_freezer_box.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "2,499 cc",
+      "power": "80 / 3,800 PS/rpm",
+      "tonnage": "2,950 Kg",
+      "cabinEnd": "2,810 mm",
+      "price": "Rp. 410.000.000"
+    }
+  },
+  {
+    "id": "traga-blind-van",
+    "slug": "traga-blind-van",
+    "name": "ISUZU TRAGA BLIND VAN",
+    "category": "PICKUP-LCV",
+    "image": "/products/2022_TRAGA-BLIND-VAN-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "2,499 cc",
+      "power": "80 / 3,500 PS/rpm",
+      "tonnage": "2,950 Kg",
+      "cabinEnd": "-",
+      "price": "-"
+    }
+  },
+  {
+    "id": "dmax-sc",
+    "slug": "dmax-sc",
+    "name": "Isuzu D-MAX SC",
+    "category": "HIGH-PICKUP",
+    "image": "/products/All-New-Isuzu-D-Max-SC-MT-Spash-White-300x300.png",
+    "details": {
+      "seats": "2 orang",
+      "engine": "1,898 cc",
+      "power": "150 / 3,600 PS/rpm",
+      "tonnage": "2,800 kg",
+      "cabinEnd": "2,330 mm",
+      "price": " Rp. 423.000.000"
+    }
+  },
+  {
+    "id": "dmax-rodeo-m/t",
+    "slug": "dmax-rodeo-m/t",
+    "name": "ISUZU D-MAX RODEO M/T",
+    "category": "HIGH-PICKUP",
+    "image": "/products/2025-D-MAX-copy-300x197.png",
+    "details": {
+      "seats": "5 orang",
+      "engine": "1,898 cc",
+      "power": "150 / 3,600 PS/rpm",
+      "tonnage": "2,800 kg",
+      "cabinEnd": "1,571 mm",
+      "price": "Rp. 537.800.000"
+    }
+  },
+  {
+    "id": "dmax-dc",
+    "slug": "dmax-dc",
+    "name": "Isuzu D-MAX DC",
+    "category": "HIGH-PICKUP",
+    "image": "/products/All-New-Isuzu-D-Max-DC-MT-300x300.png",
+    "details": {
+      "seats": "5 orang",
+      "engine": "1,898 cc",
+      "power": "150 / 3,600 PS/rpm",
+      "tonnage": "2,800 kg",
+      "cabinEnd": "1,571 mm",
+      "price": "Rp. 473.100.000"
+    }
+  },
+  {
+    "id": "mu-x-4x4",
+    "slug": "mu-x-4x4",
+    "name": "Isuzu MU-X 4X4",
+    "category": "SUV",
+    "image": "/products/All-New-Isuzu-Mux-4x4-Splash-White-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "1,898 cc",
+      "power": "150 / 3,600 PS/rpm",
+      "tonnage": "2,800 kg",
+      "cabinEnd": "-",
+      "price": "Rp. 651.600.000"
+    }
+  },
+  {
+    "id": "elf-nlr",
+    "slug": "elf-nlr",
+    "name": "Isuzu ELF NLR",
+    "category": "TRUCK-MEDIUM",
+    "image": "/products/2022_NLR-_EURO4_Bak-Besi-low-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "2,999 cc",
+      "power": "120 / 2,600 PS/rpm",
+      "tonnage": "5,100 kg",
+      "cabinEnd": "3,127 mm",
+      "price": "Rp 419.000.000"
+    }
+  },
+  {
+    "id": "elf-nlr-l",
+    "slug": "elf-nlr-l",
+    "name": "Isuzu ELF NLR L",
+    "category": "TRUCK-MEDIUM",
+    "image": "/products/2022_NLR-_EURO4_Box-Aluminium-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "2,999 cc",
+      "power": "120 / 2,600 PS/rpm",
+      "tonnage": "5,100 kg",
+      "cabinEnd": "4,897 mm",
+      "price": "Rp. 436.000.000"
+    }
+  },
+  {
+    "id": "elf-nmr",
+    "slug": "elf-nmr",
+    "name": "Isuzu ELF NMR",
+    "category": "TRUCK-MEDIUM",
+    "image": "/products/2022_NMR-_EURO4_Box-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "4,778 cc",
+      "power": "150 / 2,600 PS/rpm",
+      "tonnage": "8,250 kg",
+      "cabinEnd": "4,830 mm",
+      "price": "Rp. 496.000.000"
+    }
+  },
+  {
+    "id": "elf-nmr-l",
+    "slug": "elf-nmr-l",
+    "name": "Isuzu ELF NMR L",
+    "category": "TRUCK-MEDIUM",
+    "image": "/products/2022_NMR-_EURO4_Box-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "4,778 cc",
+      "power": "150 / 2,600 PS/rpm",
+      "tonnage": "8,250 kg",
+      "cabinEnd": "5,930 mm",
+      "price": "Rp. 507.000.000"
+    }
+  },
+  {
+    "id": "elf-nmr-hd-58",
+    "slug": "elf-nmr-hd-58",
+    "name": "Isuzu ELF NMR HD 5.8",
+    "category": "TRUCK-MEDIUM",
+    "image": "/products/2022_NMR-_EURO4_Box-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "4,778 cc",
+      "power": "150 / 2,600 PS/rpm",
+      "tonnage": "8,250 kg",
+      "cabinEnd": "4,530 mm",
+      "price": "Rp. 507.000.000"
+    }
+  },
+  {
+    "id": "elf-nmr-hd-65",
+    "slug": "elf-nmr-hd-65",
+    "name": "Isuzu ELF NMR HD 6.5",
+    "category": "TRUCK-MEDIUM",
+    "image": "/products/2022_NMR-_EURO4_Box-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "4,778 cc",
+      "power": "150 / 2,600 PS/rpm",
+      "tonnage": "8,250 kg",
+      "cabinEnd": "4,530 mm",
+      "price": "Rp. 518.000.000"
+    }
+  },
+  {
+    "id": "elf-nqr-b",
+    "slug": "elf-nqr-b",
+    "name": "Isuzu ELF NQR B",
+    "category": "MICRO-BUS",
+    "image": "/products/2022_NLR-RTU_EURO4-low-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "4,570 cc",
+      "power": "125 / 2,900 PS/rpm",
+      "tonnage": "-",
+      "cabinEnd": "-",
+      "price": "Rp. 512.000.000"
+    }
+  },
+  {
+    "id": "elf-nlr-b-l-cabinchassis",
+    "slug": "elf-nlr-b-l-cabinchassis",
+    "name": "Isuzu ELF NLR B L Cabin Chassis",
+    "category": "MICRO-BUS",
+    "image": "/products/2022_NLR-RTU_EURO4-low-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "2,999 cc",
+      "power": "120 / 2,600 PS/rpm",
+      "tonnage": "5,100 kg",
+      "cabinEnd": "-",
+      "price": "439.000.000"
+    }
+  },
+  {
+    "id": "elf-nlr-b-l-microbus-rtu",
+    "slug": "elf-nlr-b-l-microbus-rtu",
+    "name": "Isuzu ELF NLR B L Microbus (RTU)",
+    "category": "MICRO-BUS",
+    "image": "/products/2022_NLR-RTU_EURO4-low-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "2,999 cc",
+      "power": "120 / 2,600 PS/rpm",
+      "tonnage": "5,100 kg",
+      "cabinEnd": "-",
+      "price": "-"
+    }
+  },
+  {
+    "id": "elf-nps",
+    "slug": "elf-nps",
+    "name": "Isuzu ELF NPS",
+    "category": "TRUCK-MEDIUM",
+    "image": "/products/2022_NPS-4x4_EURO4-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "4,778 cc",
+      "power": "150 / 2,600 PS/rpm",
+      "tonnage": "6,000 kg",
+      "cabinEnd": "4.192 mm",
+      "price": "Rp. 896.000.000"
+    }
+  },
+  {
+    "id": "giga-frr-q",
+    "slug": "giga-frr-q",
+    "name": "ISUZU GIGA FRR Q",
+    "category": "TRUCK",
+    "image": "/products/2022_FRR_EURO4_Wingbox-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "5,193 cc",
+      "power": "190 / 2,600 PS/rpm",
+      "tonnage": "10,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp742.220.000"
+    }
+  },
+  {
+    "id": "giga-ftr-p",
+    "slug": "giga-ftr-p",
+    "name": "Isuzu GIGA FTR P",
+    "category": "TRUCK",
+    "image": "/products/2022_FTR_EURO4_Wingbox-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "5,193 cc",
+      "power": "210 / 2,600 PS/rpm",
+      "tonnage": "14,000 kg",
+      "cabinEnd": "-",
+      "price":"Rp. 827.180.000"
+    }
+  },
+  {
+    "id": "giga-ftr-s",
+    "slug": "giga-ftr-s",
+    "name": "ISUZU GIGA FTR S",
+    "category": "TRUCK",
+    "image": "/products/2022_FTR_EURO4_Wingbox-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "5,193 cc",
+      "power": "210 / 2,600 PS/rpm",
+      "tonnage": "14,000 kg",
+      "cabinEnd": "-",
+      "price":"Rp831.900.000"
+    }
+  },
+  {
+    "id": "giga-ftr-t",
+    "slug": "giga-ftr-t",
+    "name": "ISUZU GIGA FTR T",
+    "category": "TRUCK",
+    "image": "/products/2022_FTR_EURO4_Wingbox-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "5,193 cc",
+      "power": "210 / 2,600 PS/rpm",
+      "tonnage": "14,000 kg",
+      "cabinEnd": "-",
+      "price":"Rp841.340.000"
+    }
+  },
+  {
+    "id": "giga-fvr-l-d",
+    "slug": "giga-fvr-l-d",
+    "name": "GIGA FVR L D",
+    "category": "TRUCK",
+    "image": "/products/2022_FVR_EURO4_Bak-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "245 / 2,400 PS/rpm",
+      "tonnage": "16,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp922.760.000"
+    }
+  },
+  {
+    "id": "giga-fvr-p",
+    "slug": "giga-fvr-p",
+    "name": "ISUZU GIGA FVR P",
+    "category": "TRUCK",
+    "image": "/products/2022_FVR_EURO4_Bak-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "245 / 2,400 PS/rpm",
+      "tonnage": "16,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp929.840.000"
+    }
+  },
+  {
+    "id": "giga-fvr-s",
+    "slug": "giga-fvr-s",
+    "name": "ISUZU GIGA FVR S",
+    "category": "TRUCK",
+    "image": "/products/2022_FVR_EURO4_Bak-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "245 / 2,400 PS/rpm",
+      "tonnage": "16,000 kg",
+      "cabinEnd": "-",
+      "price":  "Rp941.640.000"
+    }
+  },
+  {
+    "id": "giga-fvr-q",
+    "slug": "giga-fvr-q",
+    "name": "ISUZU GIGA FVR Q",
+    "category": "TRUCK",
+    "image": "/products/2022_FVR_EURO4_Bak-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "245 / 2,400 PS/rpm",
+      "tonnage": "16,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp935.740.000"
+    }
+  },
+  {
+    "id": "giga-fvr-u",
+    "slug": "giga-fvr-u",
+    "name": "ISUZU GIGA FVR U",
+    "category": "TRUCK",
+    "image": "/products/2022_FVR_EURO4_Bak-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "245 / 2,400 PS/rpm",
+      "tonnage": "16,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp952.260.000"
+    }
+  },
+  {
+    "id": "giga-fvz-l-hp-mx",
+    "slug": "giga-fvz-l-hp-mx",
+    "name": "ISUZU GIGA FVZ L HP MX",
+    "category": "TRUCK",
+    "image": "/products/2022_FVZ_EURO4_Dump-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "285 / 2,400 PS/rpm",
+      "tonnage": "26,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp. 1.359.360.000"
+    }
+  },
+  {
+    "id": "giga-fvz-n-hp",
+    "slug": "giga-fvz-n-hp",
+    "name": "ISUZU GIGA FVZ N HP",
+    "category": "TRUCK",
+    "image": "/products/2022_FVZ_EURO4_Dump-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "285 / 2,400 PS/rpm",
+      "tonnage": "26,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp. 1.365.260.000"
+    }
+  },
+  {
+    "id": "giga-fvz-u-hp",
+    "slug": "giga-fvz-u-hp",
+    "name": "ISUZU GIGA FVZ U HP",
+    "category": "TRUCK",
+    "image": "/products/2022_FVZ_EURO4_Dump-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "285 / 2,400 PS/rpm",
+      "tonnage": "26,000 kg",
+      "cabinEnd": "-",
+      "price":"Rp. 1.390.040.000"
+    }
+  },
+  {
+    "id": "giga-fvm-u",
+    "slug": "giga-fvm-u",
+    "name": "ISUZU GIGA FVM U",
+    "category": "TRUCK",
+    "image": "/products/2022_FVM_EURO4_Bak-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "245 / 2,400 PS/rpm",
+      "tonnage": "26,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp. 1.102.120.000"
+    }
+  },
+  {
+    "id": "giga-fvm-u-hp",
+    "slug": "giga-fvm-u-hp",
+    "name": "ISUZU FVM U HP",
+    "category": "TRUCK",
+    "image": "/products/2022_FVM_EURO4_Box-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "285 / 2,400 PS/rpm",
+      "tonnage": "26,000 kg",
+      "cabinEnd": "-",
+      "price": " Rp. 1.164.660.000"
+    }
+  },
+  {
+    "id": "giga-fvm-n",
+    "slug": "giga-fvm-n",
+    "name": "ISUZU GIGA FVM N",
+    "category": "TRUCK",
+    "image": "/products/2022_FVM_EURO4_Box-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "245 / 2,400 PS/rpm",
+      "tonnage": "26,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp1.087.960.000"
+    }
+  },
+  {
+    "id": "giga-fvm-n-hp-abs",
+    "slug": "giga-fvm-n-hp-abs",
+    "name": "ISUZU GIGA FVM N HP ABS",
+    "category": "TRUCK",
+    "image": "/products/2022_FVM_EURO4_Box-Besi-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "285 / 2,400 PS/rpm",
+      "tonnage": "26,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp1.183.540.000"
+    }
+  },
+  {
+    "id": "giga-gvr-j-hp-abs",
+    "slug": "giga-gvr-j-hp-abs",
+    "name": "Isuzu GIGA GVR J HP ABS",
+    "category": "TRUCK",
+    "image": "/products/Isuzu-Giga-GVR-low-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "285 / 2,400 PS/rpm",
+      "tonnage": "35,000 kg",
+      "cabinEnd": "-",
+      "price": "Rp1.056.100.000"
+    }
+  },
+  {
+    "id": "giga-gvz-k-hp-abs",
+    "slug": "giga-gvz-k-hp-abs",
+    "name": "Isuzu GIGA GVZ K HP ABS",
+    "category": "TRUCK",
+    "image": "/products/Isuzu-Giga-GVZ-400-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "350 / 2,000 PS/rpm",
+      "tonnage": "46,100 kg",
+      "cabinEnd": "-",
+      "price":  "Rp. 1.393.580.000"
+    }
+  },
+  {
+    "id": "giga-gxz-k-abs",
+    "slug": "giga-gxz-k-abs",
+    "name": "Isuzu GIGA GXZ K ABS",
+    "category": "TRUCK",
+    "image": "/products/2022_GXZ_EURO4_Container-300x300.png",
+    "details": {
+      "seats": "3 orang",
+      "engine": "7,790 cc",
+      "power": "350 / 2,000 PS/rpm",
+      "tonnage": "46,100 kg",
+      "cabinEnd": "-",
+      "price":  "Rp. 1.578.840.000"
+    }
+  }
+]
