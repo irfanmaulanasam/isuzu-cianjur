@@ -5,7 +5,12 @@ import Footer from "./components/layout/Footer";
 
 export const metadata = {
 title: "Isuzu Commercial Vehicle",
-description: "Solusi Euro 4, TCO rendah, dan reliable untuk usaha logistik.",
+description: 'Dapatkan harga termurah Isuzu Traga, Elf, dan Giga di Cianjur. Hitung simulasi kredit dan download brosur resmi disini Solusi Euro 4, TCO rendah, dan reliable untuk usaha logistik.'
+,keywords: ['Isuzu Cianjur', 'Harga Isuzu Elf', 'Harga NLR', 'Harga NMR', 'Kredit Isuzu Traga', 'Dealer Isuzu Cianjur', 'euro4'],
+  openGraph: {
+    title: 'Promo Isuzu Cianjur - DP Ringan',
+    description: 'Hitung cicilan Isuzu idamanmu sekarang. Resmi dan Terpercaya.',
+  },
 icons: {
     icon: [
       {
@@ -15,7 +20,6 @@ icons: {
     ],
   },
 };
-
 
 export default function RootLayout({ children }) {
 return (
