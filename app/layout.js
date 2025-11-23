@@ -1,7 +1,7 @@
 import "@/app/globals.css"
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
 title: "Isuzu Commercial Vehicle",
@@ -27,6 +27,7 @@ return (
     <body className="bg-white text-gray-900">
         <Navbar />
             {children}
+            <SpeedInsights/>
         <Footer />
     </body>
 </html>

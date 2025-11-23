@@ -1,14 +1,12 @@
 'use client'
 import { useState, useMemo } from "react";
+import { useSmartOTP } from '../hooks/useSmartOTP';
 
 // Data Dummy untuk Dependent Dropdown (Area Outlet -> Outlet)
-const outletData = {
-  "Jakarta": ["Outlet Pusat Jakarta", "Outlet Jakarta Barat", "Outlet Jakarta Selatan"],
-  "Bandung": ["Outlet Dago", "Outlet Pasteur"],
-  "Surabaya": ["Outlet Surabaya Timur", "Outlet Surabaya Pusat"],
-};
+import outletData from '@/data/outlet'
 
 export default function UnitOrderForm() {
+  const { isVerified, showOtpModal, setShowOtpModal, markAsVerified } = useSmartOTP();
   const [formData, setFormData] = useState({
     nama: "",
     namaPerusahaan: "",
@@ -62,9 +60,9 @@ export default function UnitOrderForm() {
   const aplikasiOptions = ["Website", "Iklan Media Sosial", "Rekomendasi Teman", "Aplikasi Mobile"];
 
   // Tailwind classes dasar
-  const inputClass = "mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-red-600 focus:border-red-600 sm:text-sm";
+  const inputClass = "bg-bahana mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-red-600 focus:border-red-600 sm:text-sm";
   const labelClass = "block text-base font-semibold text-slate-800 mb-1";
-  const sectionTitleClass = "text-xl font-bold text-red-600 mb-4";
+  const sectionTitleClass = "text-xl font-bold text-blue-600 mb-4";
 
   return (
     <section className="py-12 bg-gray-50">
