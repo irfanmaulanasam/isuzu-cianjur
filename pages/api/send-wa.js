@@ -1,9 +1,11 @@
 // pages/api/send-wa.js
+const token_fonnte = process.env.FONNTE_TOKEN
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const { target, message, file, filename } = req.body;
-  const token = 'MASUKKAN_TOKEN_FONNTE_DISINI'; // Ganti dengan Token Fonnte kamu
+  const token = token_fonnte
 
   const formData = new FormData();
   formData.append('target', target);
@@ -25,6 +27,7 @@ export default async function handler(req, res) {
     const result = await response.json();
     res.status(200).json(result);
   } catch (error) {
+    console.log(error,'error send wa');
     res.status(500).json({ error: 'Gagal kirim WA' });
   }
 }
