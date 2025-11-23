@@ -1,4 +1,4 @@
-{
+export const DEFAULT_DATA = {
     "hargaTruk": 289000000,
     "umurPakai": 5,
     "nilaiSisa": 100000000,

@@ -93,9 +93,9 @@ export default function Header() {
               key={m.title}
               className="relative"
               onMouseEnter={() => setActiveDropdown(index)}
-              onMouseLeave={
-                () => setActiveDropdown(null)
-              }
+              // onMouseLeave={
+              //   () => setActiveDropdown(null)
+              // }
             >
               <button
                 className={`flex items-center gap-1 p-2 rounded-md ${
