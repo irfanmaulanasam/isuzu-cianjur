@@ -2,16 +2,16 @@ import "@/app/globals.css"
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next"
-
+import { Analytics } from "@vercel/analytics/next"
 export const metadata = {
-title: "Isuzu Commercial Vehicle",
-description: 'Dapatkan harga termurah Isuzu Traga, Elf, dan Giga di Cianjur. Hitung simulasi kredit dan download brosur resmi disini Solusi Euro 4, TCO rendah, dan reliable untuk usaha logistik.'
-,keywords: ['Isuzu Cianjur', 'Harga Isuzu Elf', 'Harga NLR', 'Harga NMR', 'Kredit Isuzu Traga', 'Dealer Isuzu Cianjur', 'euro4'],
+  title: "Isuzu Commercial Vehicle",
+  description: 'Dapatkan harga termurah Isuzu Traga, Elf, dan Giga di Cianjur. Hitung simulasi kredit dan download brosur resmi disini Solusi Euro 4, TCO rendah, dan reliable untuk usaha logistik.'
+  , keywords: ['Isuzu Cianjur', 'Harga Isuzu Elf', 'Harga NLR', 'Harga NMR', 'Kredit Isuzu Traga', 'Dealer Isuzu Cianjur', 'euro4'],
   openGraph: {
     title: 'Promo Isuzu Cianjur - DP Ringan',
     description: 'Hitung cicilan Isuzu idamanmu sekarang. Resmi dan Terpercaya.',
   },
-icons: {
+  icons: {
     icon: [
       {
         url: '/icon.webp', // Mengacu ke file di public/
@@ -22,14 +22,15 @@ icons: {
 };
 
 export default function RootLayout({ children }) {
-return (
-<html lang="en">
-    <body className="bg-white text-gray-900">
+  return (
+    <html lang="en">
+      <body className="bg-white text-gray-900">
         <Navbar />
-            {children}
-            <SpeedInsights/>
+        {children}
+        <SpeedInsights />
+        <Analytics />
         <Footer />
-    </body>
-</html>
-);
+      </body>
+    </html>
+  );
 }
