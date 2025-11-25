@@ -26,9 +26,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-white text-gray-900">
         <Navbar />
+        <div className="max-w-container mx-auto px-4">
         {children}
         <SpeedInsights />
         <Analytics />
+        </div>
         <Footer />
       </body>
     </html>

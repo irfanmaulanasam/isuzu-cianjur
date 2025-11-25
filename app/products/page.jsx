@@ -42,7 +42,7 @@ export default function ProductsGrid() {
             </header>
 
             <main className="max-w-6xl mx-auto">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex flex-wrap gap-4 justify-start">
                     {filtered.map((p) => (
                         <Link 
                             key={p.id} 
