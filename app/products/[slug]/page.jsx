@@ -8,8 +8,6 @@ import { autoCompleteSlug } from "@/src/data/calculator-data/utils/autoCompleteS
 
 export default function ProductDetailPage({ params }) {
     const router = useRouter();
-    
-    // ✅ PERBAIKAN: Unwrap params dengan React.use()
     const unwrappedParams = use(params);
     const slug = unwrappedParams.slug;
 

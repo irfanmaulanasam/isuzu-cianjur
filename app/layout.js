@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import Breadcrumbs from "./components/ui/Breadcrumbs";
 export const metadata = {
   title: "Isuzu Commercial Vehicle",
   description: 'Dapatkan harga termurah Isuzu Traga, Elf, dan Giga di Cianjur. Hitung simulasi kredit dan download brosur resmi disini Solusi Euro 4, TCO rendah, dan reliable untuk usaha logistik.'
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       <body className="bg-white text-gray-900">
         <Navbar />
         <div className="max-w-container mx-auto px-4">
+          <Breadcrumbs/>
         {children}
         <SpeedInsights />
         <Analytics />

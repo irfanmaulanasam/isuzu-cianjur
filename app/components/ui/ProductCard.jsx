@@ -27,6 +27,7 @@ export default function ProductCard({ product, onClick }) {
             alt={name}
             width={300}
             height={200}
+            loading="eager"
             className="w-full h-full object-cover"
             onError={handleImageError}
           />
