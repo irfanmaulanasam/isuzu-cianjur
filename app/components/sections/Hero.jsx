@@ -40,11 +40,14 @@ export default function Hero() {
             <h3 className="text-xl font-semibold mb-3">Simulasi Cepat TCO</h3>
             <form action="/vehicle-cost" method="get" className="space-y-3">
               <div>
-                <label className="text-sm text-slate-600">Model</label>
+                <label className="text-sm text-slate-600">Model Kendaraan</label>
                 <select name="model" className="w-full border rounded-md px-3 py-2 mt-1">
-                  <option value="elf">Isuzu ELF</option>
-                  <option value="giga">Isuzu GIGA</option>
+                  <option value="elf">Isuzu ELF NMR</option>
                   <option value="traga">Isuzu Traga</option>
+                  <option value="d-max">Isuzu D-MAX</option>
+                  <option value="mu-x">Isuzu MU-X</option>
+                  <option value="fvr">Isuzu FVR</option>
+                  <option value="giga">Isuzu GIGA</option>
                 </select>
               </div>
               <div>

@@ -58,7 +58,6 @@ export const getUniqueTypes = () => {
       types.add(group.type);
     }
   });
-  console.log(IsuzuPrices);
 
   return Array.from(types);
 };
