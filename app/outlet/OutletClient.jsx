@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import IndexButton from "../components/ui/IndexButton";
+import CTACard from '@/app/components/CTACard'
 
 export default function OutletClient({ outlets }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -31,10 +32,10 @@ export default function OutletClient({ outlets }) {
         {/* Tombol outlet - TANPA MOTION */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {outlets.map((outlet, index) => (
-            <IndexButton 
-            key={`${outlet.id}-${index}`}
-            isActive={index === activeIndex}
-            onClick={()=> setActiveIndex(index)}
+            <IndexButton
+              key={`${outlet.id}-${index}`}
+              isActive={index === activeIndex}
+              onClick={() => setActiveIndex(index)}
             >
               {outlet.name}
             </IndexButton>
@@ -44,7 +45,7 @@ export default function OutletClient({ outlets }) {
         {/* Info dan Map */}
         <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
           {/* Info */}
-          <motion.div 
+          <motion.div
             key={`info-${activeOutlet.id}`}
             className="flex-1 flex items-start space-x-3"
             initial={{ opacity: 0, x: -20 }}

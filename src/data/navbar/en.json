@@ -28,8 +28,21 @@
         ]
       },
       { "title": "Outlet", "path": "/outlet" },
-      {"title": "Vehicle Cost", "path":"/tco-calculator"},
-      {"title": "Credit Simulator", "path":"/credit-simulator"}
+      {
+        "title": "Simulation",
+        "path": "/simulation",
+        "submenu": [
+          {
+            "title": "Vehicle Cost Ownership",
+            "path": "/simulation/tco-calculator"
+          },
+          {
+            "title": "Credit Simulator",
+            "path": "/simulation/credit-simulator"
+          }
+        ]
+      },
+      {"title": "Contact", "path":"/contact"}
     ]
   }
 }

@@ -1,35 +1,86 @@
 {
   "navbar": {
     "menu": [
-      { "title": "Beranda", "path": "/" },
-      { "title": "Tentang Kami", "path": "/about" },
-      { "title": "Berita", "path": "/news",
+      {
+        "title": "Beranda",
+        "path": "/"
+      },
+      {
+        "title": "Tentang Kami",
+        "path": "/about"
+      },
+      {
+        "title": "Berita",
+        "path": "/news",
         "submenu": [
-          { "title": "Promo", "path": "/news/promo" },
-          { "title": "Artikel", "path": "/news" },
-          { "title": "Acara", "path": "/news/event" }
+          {
+            "title": "Promo",
+            "path": "/news/promo"
+          },
+          {
+            "title": "Artikel",
+            "path": "/news"
+          },
+          {
+            "title": "Acara",
+            "path": "/news/event"
+          }
         ]
       },
-      { 
-        "title": "Produk", 
+      {
+        "title": "Produk",
         "path": "/products",
         "submenu": [
-          {"title": "Lihat Unit", "path": "/products"},
-          {"title": "Pemesanan Unit", "path": "/products/unit-order"} 
+          {
+            "title": "Lihat Unit",
+            "path": "/products"
+          },
+          {
+            "title": "Pemesanan Unit",
+            "path": "/products/unit-order"
+          }
         ]
       },
-      { 
-        "title": "Layanan", 
+      {
+        "title": "Layanan",
         "path": "/services",
         "submenu": [
-          {"title": "Layanan BIB", "path": "/services/bib-services"},
-          {"title": "Layanan Dealer", "path": "/services/dealer-services"},
-          {"title": "Suku Cadang", "path": "/services/sparepart-order"}
+          {
+            "title": "Layanan BIB",
+            "path": "/services/bib-services"
+          },
+          {
+            "title": "Layanan Dealer",
+            "path": "/services/dealer-services"
+          },
+          {
+            "title": "Suku Cadang",
+            "path": "/services/sparepart-order"
+          }
         ]
       },
-      { "title": "Outlet", "path": "/outlet" },
-      {"title": "Kalkulator Biaya", "path":"/tco-calculator"},
-      {"title": "Simulator Kredit", "path":"/credit-simulator"}
+      {
+        "title": "Outlet",
+        "path": "/outlet"
+      },
+      {
+        "title": "simulasi",
+        "path": "/simulation",
+        "submenu": [
+          {
+            "title": "Biaya Kepemilikan",
+            "path": "/simulation/tco-calculator"
+          },
+          {
+            "title": "Simulasi Kredit",
+            "path": "/simulation/credit-simulator"
+          }
+        ]
+      },
+      {
+        "title": "Kontak",
+        "path": "/contact"
+      }
     ]
   }
 }

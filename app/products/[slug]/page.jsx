@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, use } from "react";
+import { useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { specs, allSpecSlugs } from "@/src/data/products/specs";
 import SpecPage from "@/app/products/components/SpecPage";
@@ -28,9 +28,9 @@ export default function ProductDetailPage({ params }) {
             }
         }
 
-        return { 
-            shouldRedirect: null, 
-            data: foundData || specs[allSpecSlugs[0]] 
+        return {
+            shouldRedirect: null,
+            data: foundData || specs[allSpecSlugs[0]]
         };
     }, [slug]);
 
@@ -46,5 +46,9 @@ export default function ProductDetailPage({ params }) {
         return <div>Redirecting...</div>;
     }
 
-    return <SpecPage data={data} />;
+    return (
+        <div>
+            <SpecPage data={data} />
+        </div>
+    )
 }

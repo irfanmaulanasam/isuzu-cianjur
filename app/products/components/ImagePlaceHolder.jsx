@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const ImageOrPlaceholder = (image) => {
+const ImageOrPlaceholder = (image,name) => {
     const [imageError, setImageError] = useState(false);
     const handleImageError = (e) => {
         // Mencegah looping error jika gambar fallback juga gagal

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import Loading from "../components/Loading";
+import Loading from "@/app/components/Loading";
 import TCOContent from './TCOContent'
 
 export default function TCOCPage() {

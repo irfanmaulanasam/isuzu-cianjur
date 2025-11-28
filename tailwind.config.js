@@ -7,7 +7,7 @@ theme: {
         bahana: {
           primary: "#1A4CA3",
           dark: "#163F8A",
-          light: "#E6F0FF",
+          light: "#798699ff",
         },
         isuzu: {
           red: "#E60012",
