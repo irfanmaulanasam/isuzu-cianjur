@@ -25,13 +25,9 @@ export default function RootLayout({ children }) {
     <html lang="id">
       <body className="bg-white text-gray-900">
         <Navbar />
-
-        {/* Konten halaman */}
         <main>{children}</main>
 
         <Footer />
-
-        {/* Semua floating UI */}
         <GlobalLayer />
       </body>
     </html>

@@ -1,5 +1,5 @@
 import { getSortedArticlesData } from '@/src/lib/getallnews'
-import NewsCard from '@/app/components/layout/NewsCard'
+import NewsCard from '@/app/news/components/NewsCard'
 import Link from 'next/link'
 
 export default function ArticleList() {

@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, use } from "react";
 import { useRouter } from "next/navigation";
 import { specs, allSpecSlugs } from "@/src/data/products/specs";
-import SpecPage from "@/app/components/layout/SpecPage";
+import SpecPage from "@/app/products/components/SpecPage";
 import { autoCompleteSlug } from "@/src/data/config/autoCompleteTCOSlug";
 
 export default function ProductDetailPage({ params }) {

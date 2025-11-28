@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "menu": [
+      { "title": "Beranda", "path": "/" },
+      { "title": "Tentang Kami", "path": "/about" },
+      { "title": "Berita", "path": "/news",
+        "submenu": [
+          { "title": "Promo", "path": "/news/promo" },
+          { "title": "Artikel", "path": "/news" },
+          { "title": "Acara", "path": "/news/event" }
+        ]
+      },
+      { 
+        "title": "Produk", 
+        "path": "/products",
+        "submenu": [
+          {"title": "Lihat Unit", "path": "/products"},
+          {"title": "Pemesanan Unit", "path": "/products/unit-order"} 
+        ]
+      },
+      { 
+        "title": "Layanan", 
+        "path": "/services",
+        "submenu": [
+          {"title": "Layanan BIB", "path": "/services/bib-services"},
+          {"title": "Layanan Dealer", "path": "/services/dealer-services"},
+          {"title": "Suku Cadang", "path": "/services/sparepart-order"}
+        ]
+      },
+      { "title": "Outlet", "path": "/outlet" },
+      {"title": "Kalkulator Biaya", "path":"/tco-calculator"},
+      {"title": "Simulator Kredit", "path":"/credit-simulator"}
+    ]
+  }
+}

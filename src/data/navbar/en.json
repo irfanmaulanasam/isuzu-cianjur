@@ -14,8 +14,8 @@
         "title": "Product", 
         "path": "/products",
         "submenu": [
-          {"title": "Lihat Unit", "path": "/products"},
-          {"title": "Pemesanan Unit", "path": "/products/unit-order"} 
+          {"title": "View Units", "path": "/products"},
+          {"title": "Unit Order", "path": "/products/unit-order"} 
         ]
       },
       { 
@@ -23,7 +23,7 @@
         "path": "/services",
         "submenu": [
           {"title": "Bib Services", "path": "/services/bib-services"},
-          {"title": "Services Unit", "path": "/services/dealer-services"},
+          {"title": "Dealer Services", "path": "/services/dealer-services"},
           {"title": "Sparepart", "path": "/services/sparepart-order"}
         ]
       },
