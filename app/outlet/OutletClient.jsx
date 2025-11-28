@@ -1,4 +1,3 @@
-// app/outlet/OutletClient.jsx (VERSI SIMPLE)
 'use client';
 
 import { useState } from "react";
@@ -33,7 +32,7 @@ export default function OutletClient({ outlets }) {
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {outlets.map((outlet, index) => (
             <IndexButton 
-            key={outlet.id}
+            key={`${outlet.id}-${index}`}
             isActive={index === activeIndex}
             onClick={()=> setActiveIndex(index)}
             >

@@ -1,8 +1,8 @@
 'use client';
 import { useState, useMemo, useEffect, useCallback } from "react";
 // --- Data & Utils ---
-import { IsuzuPrices } from "@/src/data/isuzuPrices"; // Ganti path sesuai kebutuhan Anda
-import { LeasingData } from "@/data/LeasingData"; // Ganti path sesuai kebutuhan Anda
+import { IsuzuPrices } from "@/src/data/products/isuzuPrices"; // Ganti path sesuai kebutuhan Anda
+import { LeasingData } from "@/src/data/leasing/Leasing_data"; // Ganti path sesuai kebutuhan Anda
 import { ChevronDown, ChevronUp } from 'lucide-react'; 
 
 // --- UTILITIES (Penting, JANGAN DIHAPUS) ---

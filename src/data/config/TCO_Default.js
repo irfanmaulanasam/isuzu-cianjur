@@ -1,5 +1,5 @@
 // src/data/calculator-data/DEFAULT_DATA.js
-import { VEHICLE_COST_CONFIG } from '../vehicle-cost-config';
+import { VEHICLE_COST_CONFIG } from './vehicle-cost-config';
 
 export const DEFAULT_DATA = {
   // Harga & Finansial

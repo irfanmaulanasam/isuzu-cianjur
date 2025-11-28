@@ -3,7 +3,7 @@ export default function Loading() {
   return (
     <section className="bg-gradient-to-b from-white to-slate-50 py-12 min-h-screen">
       <div className="container mx-auto max-w-5xl">
-        {/* Skeleton Judul */}
+        Konten sedang dimuat
         <div className="text-center mb-8">
           <div className="h-8 bg-gray-300 rounded w-64 mx-auto mb-4 animate-pulse"></div>
         </div>

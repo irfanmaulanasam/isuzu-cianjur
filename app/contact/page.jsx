@@ -3,11 +3,8 @@ export const metadata = {
 title: "Kontak",
 };
 
+import ContactPage from "@/app/components/contact/ContactPage";
 
-export default function Contact() {
-return (
-<section className="p-6">
-<h1 className="text-2xl font-bold mb-4">Hubungi Kami</h1>
-</section>
-);
+export default function Page() {
+  return <ContactPage />;
 }

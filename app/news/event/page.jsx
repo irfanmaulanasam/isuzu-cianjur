@@ -1,4 +1,4 @@
-import { getSortedArticlesData } from '@/lib/getallnews'
+import { getSortedArticlesData } from '@/src/lib/getallnews'
 import NewsCard from '@/app/components/layout/NewsCard'
 import Link from 'next/link'
 

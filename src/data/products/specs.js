@@ -98,327 +98,327 @@ export const specs = {
       }
     ]
   },
-  "traga-box": {
-    slug: "traga-box",
-    title: "Traga box",
-    subtitle: "Spesifikasi Teknis",
-    price: "Rp. 336.000.000",
-    sections: [
-      {
-        label: "DIMENSI",
-        items: [
-          { "name": "Panjang", "value": "4,520 mm" },
-          { "name": "Lebar", "value": "1,705 mm" },
-          { "name": "Tinggi", "value": "1,985 mm" },
-          { "name": "Jarak Sumbu", "value": "2,250 mm" },
-          { "name": "Julur Depan", "value": "1,005 mm" },
-          { "name": "Julur Belakang", "value": "1,265 mm" },
-          { "name": "Jarak Terendah ke Tanah", "value": "200 mm" },
-          { "name": "Jarak Depan", "value": "1,460 mm" },
-          { "name": "Jarak Belakang", "value": "1,460 mm" },
-          { "name": "Panjang Aplikasi Bagian Dalam", "value": "2,810 mm" },
-          { "name": "Lebar Aplikasi Bagian Dalam", "value": "1,620 mm" },
-          { "name": "Tinggi Aplikasi Bagian Dalam", "value": "1,400 mm" }
-        ]
-      },
-      {
-        label: "RODA",
-        items: [
-          { "name": "Ban Depan", "value": "195R14-8PR" },
-          { "name": "Ban Belakang", "value": "195R14-8PR" },
-          { "name": "Velg", "value": "6 Stud 14 x 5.5" }
-        ]
-      },
-      {
-        label: "SUSPENSI",
-        items: [
-          { "name": "Depan", "value": "Double wishbone with coil spring" },
-          { "name": "Belakang", "value": "Multi Leaf spring" }
-        ]
-      },
-      {
-        label: "LAIN-LAIN",
-        items: [
-          { "name": "Kapasitas Tangki", "value": "50 Ltr" },
-          { "name": "Aki", "value": "12 V - 65 Ah" },
-          { "name": "Alternator V-A", "value": "12 - 70 V-A" },
-          { "name": "Blower", "value": "Ada" },
-          { "name": "Radio / Bluetooth / USB / AUX", "value": "Ada" },
-          { "name": "APAR (Alat Pemadam Ringan)", "value": "Ada" }
-        ]
-      },
-      {
-        label: "MESIN",
-        items: [
-          { "name": "Model", "value": "4JA1-CR-Tipe" },
-          { "name": "Tipe", "value": "4 Cylinders-Direct Injection with Turbocharger" },
-          { "name": "Sistem Kontrol Emisi", "value": "EURO4 with EGR & DOC" },
-          { "name": "Diameter x Langkah", "value": "93 x 92 mm" },
-          { "name": "Isi Silinder", "value": "2,499 cc" },
-          { "name": "Tenaga Maksimum", "value": "80 / 3,800 PS/rpm" },
-          { "name": "Torsi Maksimum", "value": "19.5 / 1,800 - 2,400 Kgm/rpm" }
-        ]
-      },
-      {
-        label: "BERAT",
-        items: [
-          { "name": "Berat Total Kendaraan", "value": "2,950 Kg" }
-        ]
-      },
-      {
-        label: "TRANSMISI",
-        items: [
-          { "name": "Model", "value": "MUA5S" },
-          { "name": "Sistem", "value": "Manual (M/T) - 5 Speed" },
-          { "name": "Gigi 1", "value": "4.357" },
-          { "name": "Gigi 2", "value": "2.502" },
-          { "name": "Gigi 3", "value": "1.501" },
-          { "name": "Gigi 4", "value": "1.000" },
-          { "name": "Gigi 5", "value": "0.809" },
-          { "name": "Rev", "value": "3.970" },
-          { "name": "Perbandingan Gigi Terakhir", "value": "4.777" }
-        ]
-      },
-      {
-        label: "REM",
-        items: [
-          { "name": "Kontrol Rem", "value": "Hydraulic" },
-          { "name": "Rem Kaki", "value": "Hydraulic with Ventilated Disc" },
-          { "name": "Rem Tangan", "value": "Expanding pada transmisi belakang" }
-        ]
-      },
-      {
-        label: "SISTEM KEMUDI",
-        items: [
-          { "name": "Tipe", "value": "Rack and pinion-Power Steering" },
-          { "name": "Power Steering", "value": "Ada" },
-          { "name": "Radius Putar", "value": "4,5 m" }
-        ]
-      }
-    ]
-  },
-  "traga-freezer-box": {
-    slug: "traga-pick-up-fd",
-    title: "Traga Pick Up (FD)",
-    subtitle: "Spesifikasi Teknis",
-    price: "Rp. 410.000.000",
-    sections: [
-      {
-        label: "DIMENSI",
-        items: [
-          { "name": "Panjang", "value": "4,520 mm" },
-          { "name": "Lebar", "value": "1,705 mm" },
-          { "name": "Tinggi", "value": "1,985 mm" },
-          { "name": "Jarak Sumbu", "value": "2,250 mm" },
-          { "name": "Julur Depan", "value": "1,005 mm" },
-          { "name": "Julur Belakang", "value": "1,265 mm" },
-          { "name": "Jarak Terendah ke Tanah", "value": "200 mm" },
-          { "name": "Jarak Depan", "value": "1,460 mm" },
-          { "name": "Jarak Belakang", "value": "1,460 mm" },
-          { "name": "Panjang Aplikasi Bagian Dalam", "value": "2,810 mm" },
-          { "name": "Lebar Aplikasi Bagian Dalam", "value": "1,620 mm" },
-          { "name": "Tinggi Aplikasi Bagian Dalam", "value": "1,400 mm" }
-        ]
-      },
-      {
-        label: "RODA",
-        items: [
-          { "name": "Ban Depan", "value": "195R14-8PR" },
-          { "name": "Ban Belakang", "value": "195R14-8PR" },
-          { "name": "Velg", "value": "6 Stud 14 x 5.5" }
-        ]
-      },
-      {
-        label: "SUSPENSI",
-        items: [
-          { "name": "Depan", "value": "Double wishbone with coil spring" },
-          { "name": "Belakang", "value": "Multi Leaf spring" }
-        ]
-      },
-      {
-        label: "LAIN-LAIN",
-        items: [
-          { "name": "Kapasitas Tangki", "value": "50 Ltr" },
-          { "name": "Aki", "value": "12 V - 65 Ah" },
-          { "name": "Alternator V-A", "value": "12 - 70 V-A" },
-          { "name": "Blower", "value": "Ada" },
-          { "name": "Radio / Bluetooth / USB / AUX", "value": "Ada" },
-          { "name": "APAR (Alat Pemadam Ringan)", "value": "Ada" }
-        ]
-      },
-      {
-        label: "MESIN",
-        items: [
-          { "name": "Model", "value": "4JA1-CR-Tipe" },
-          { "name": "Tipe", "value": "4 Cylinders-Direct Injection with Turbocharger" },
-          { "name": "Sistem Kontrol Emisi", "value": "EURO4 with EGR & DOC" },
-          { "name": "Diameter x Langkah", "value": "93 x 92 mm" },
-          { "name": "Isi Silinder", "value": "2,499 cc" },
-          { "name": "Tenaga Maksimum", "value": "80 / 3,800 PS/rpm" },
-          { "name": "Torsi Maksimum", "value": "19.5 / 1,800 - 2,400 Kgm/rpm" }
-        ]
-      },
-      {
-        label: "BERAT",
-        items: [
-          { "name": "Berat Total Kendaraan", "value": "2,950 Kg" }
-        ]
-      },
-      {
-        label: "TRANSMISI",
-        items: [
-          { "name": "Model", "value": "MUA5S" },
-          { "name": "Sistem", "value": "Manual (M/T) - 5 Speed" },
-          { "name": "Gigi 1", "value": "4.357" },
-          { "name": "Gigi 2", "value": "2.502" },
-          { "name": "Gigi 3", "value": "1.501" },
-          { "name": "Gigi 4", "value": "1.000" },
-          { "name": "Gigi 5", "value": "0.809" },
-          { "name": "Rev", "value": "3.970" },
-          { "name": "Perbandingan Gigi Terakhir", "value": "4.777" }
-        ]
-      },
-      {
-        label: "REM",
-        items: [
-          { "name": "Kontrol Rem", "value": "Hydraulic" },
-          { "name": "Rem Kaki", "value": "Hydraulic with Ventilated Disc" },
-          { "name": "Rem Tangan", "value": "Expanding pada transmisi belakang" }
-        ]
-      },
-      {
-        label: "SISTEM KEMUDI",
-        items: [
-          { "name": "Tipe", "value": "Rack and pinion-Power Steering" },
-          { "name": "Power Steering", "value": "Ada" },
-          { "name": "Radius Putar", "value": "4,5 m" }
-        ]
-      }
-    ]
-  },
-  "traga-blind-van": {
-    slug: "traga-blind-van",
-    title: "TRAGA BLIND VAN",
-    subtitle: "Spesifikasi Teknis",
-    price: "-",
-    sections: [
-      {
-        label: 'Dimensi',
-        items: [
-          {
-            name: 'Panjang / Overall Length (OAL)', value: '4.655 mm'
-          }, {
-            name: 'Lebar / Overall Width (OW)', value: '1.695 mm'
-          }, {
-            name: 'Tinggi / Overall Height Front (OH)', value: '2.050 mm'
-          }, {
-            name: 'Jarak Sumbu / Wheelbase (WB)', value: '2.250 mm'
-          }, {
-            name: 'Jejak Depan / Front Tread (AW)', value: '1.460 mm'
-          }, {
-            name: 'Jejak Belakang / Rear Tread (CW)', value: '1.460 mm'
-          }, {
-            name: 'Julur Depan / Front Overhang (FOH)', value: '1.005 mm'
-          }, {
-            name: 'Julur Belakang / Rear Overhang (ROH)', value: '1.400 mm'
-          }, {
-            name: 'Lebar Cargo / Cargo Width (CW)', value: '1.520 mm'
-          }, {
-            name: 'Panjang Cargo / Cargo Length (CL) Top', value: '2.900 mm'
-          }, {
-            name: 'Tinggi Cargo / Cargo Height Inner (CL)', value: '1.200 mm'
-          }, {
-            name: 'Jarak Terendah ke Tanah / Ground Clearance (HH) Lebar Pintu / Door Width (DW)', value: 180
-          }, {
-            name: 'Lebar Pintu / Door Width (DW)', value: '1.000 mm'
-          }
-        ]
-      }, {
-        label: 'Mesin',
-        items: [
-          {
-            name: 'Model', value: '4JA1L'
-          }, {
-            name: 'Tipe / Type', value: '4 Cylinder, Direct Injection with Turbocharger'
-          }, {
-            name: 'Diameter x Langkah / Bore x Stroke', value: '93 x 92 mm'
-          }, {
-            name: 'Isi Silinder / Piston Displacement', value: '2,499 cc'
-          }, {
-            name: 'Tenaga Maksimum / Maximum Power', value: '80 / 3,500 PS / rpm'
-          }, {
-            name: 'Torsi Maksimum / Maximum Torque', value: '19.5 / 1,800 Kgm / rpm'
-          }
-        ]
-      }, {
-        label: 'Berat',
-        items: [
-          { name: 'Berat Brutto / Gross Vehicle Weight (GVW)', value: '2.950 kg' }
-        ]
-      }, {
-        label: 'Rem',
-        items: [
-          {
-            name: 'Kontrol Rem / Brake Control', value: 'Hydraulic Dual Circuit'
-          }, {
-            name: 'Depan / Front', value: 'Ventilated Disc'
-          }, {
-            name: 'Belakang / Rear', value: ' Drum leading & trailing'
-          }
-        ]
-      }, {
-        label: 'Sistem Kemudi',
-        items: [
-          {
-            name: 'Tipe / Type', value: 'Rack and pinion'
-          }, {
-            name: 'Power Steering', value: 'Yes'
-          }, {
-            name: 'Radius Putar / Turning Radius', value: 4.5
-          }
-        ]
-      }, {
-        label: 'Transmisi',
-        items: [
-          { name: 'Model', value: 'MUA5S' },
-          { name: 'Sistem / System', value: 'Manual (M/T) - 5 Speed' },
-          { name: 'Perbandingan Gigi / Gear Ratio', value: '' },
-          { name: '1st', value: '4.357' },
-          { name: '2nd', value: '2.502' },
-          { name: '3rd', value: '1.501' },
-          { name: '4th', value: '1.000' },
-          { name: '5th', value: '0.809' },
-          { name: 'Reverse', value: '3.970' },
-          { name: 'Perbandingan Gigi Akhir / Final Gear Ratio', value: '4.777' }
-        ]
-      }, {
-        label: 'Ban',
-        items: [
-          { name: 'Velg / Wheel', value: '6 Stud 14 x 5.5' },
-          { name: 'Ban Depan / Front Tyre (Type)', value: '195R14-8PR' },
-          { name: 'Ban Belakang / Rear Tire (Type)', value: '195R14-8PR' }
-        ]
-      }, {
-        label: 'Suspensi',
+    "traga-box": {
+      slug: "traga-box",
+      title: "Traga box",
+      subtitle: "Spesifikasi Teknis",
+      price: "Rp. 336.000.000",
+      sections: [
+        {
+          label: "DIMENSI",
+          items: [
+            { "name": "Panjang", "value": "4,520 mm" },
+            { "name": "Lebar", "value": "1,705 mm" },
+            { "name": "Tinggi", "value": "1,985 mm" },
+            { "name": "Jarak Sumbu", "value": "2,250 mm" },
+            { "name": "Julur Depan", "value": "1,005 mm" },
+            { "name": "Julur Belakang", "value": "1,265 mm" },
+            { "name": "Jarak Terendah ke Tanah", "value": "200 mm" },
+            { "name": "Jarak Depan", "value": "1,460 mm" },
+            { "name": "Jarak Belakang", "value": "1,460 mm" },
+            { "name": "Panjang Aplikasi Bagian Dalam", "value": "2,810 mm" },
+            { "name": "Lebar Aplikasi Bagian Dalam", "value": "1,620 mm" },
+            { "name": "Tinggi Aplikasi Bagian Dalam", "value": "1,400 mm" }
+          ]
+        },
+        {
+          label: "RODA",
+          items: [
+            { "name": "Ban Depan", "value": "195R14-8PR" },
+            { "name": "Ban Belakang", "value": "195R14-8PR" },
+            { "name": "Velg", "value": "6 Stud 14 x 5.5" }
+          ]
+        },
+        {
+          label: "SUSPENSI",
+          items: [
+            { "name": "Depan", "value": "Double wishbone with coil spring" },
+            { "name": "Belakang", "value": "Multi Leaf spring" }
+          ]
+        },
+        {
+          label: "LAIN-LAIN",
+          items: [
+            { "name": "Kapasitas Tangki", "value": "50 Ltr" },
+            { "name": "Aki", "value": "12 V - 65 Ah" },
+            { "name": "Alternator V-A", "value": "12 - 70 V-A" },
+            { "name": "Blower", "value": "Ada" },
+            { "name": "Radio / Bluetooth / USB / AUX", "value": "Ada" },
+            { "name": "APAR (Alat Pemadam Ringan)", "value": "Ada" }
+          ]
+        },
+        {
+          label: "MESIN",
+          items: [
+            { "name": "Model", "value": "4JA1-CR-Tipe" },
+            { "name": "Tipe", "value": "4 Cylinders-Direct Injection with Turbocharger" },
+            { "name": "Sistem Kontrol Emisi", "value": "EURO4 with EGR & DOC" },
+            { "name": "Diameter x Langkah", "value": "93 x 92 mm" },
+            { "name": "Isi Silinder", "value": "2,499 cc" },
+            { "name": "Tenaga Maksimum", "value": "80 / 3,800 PS/rpm" },
+            { "name": "Torsi Maksimum", "value": "19.5 / 1,800 - 2,400 Kgm/rpm" }
+          ]
+        },
+        {
+          label: "BERAT",
+          items: [
+            { "name": "Berat Total Kendaraan", "value": "2,950 Kg" }
+          ]
+        },
+        {
+          label: "TRANSMISI",
+          items: [
+            { "name": "Model", "value": "MUA5S" },
+            { "name": "Sistem", "value": "Manual (M/T) - 5 Speed" },
+            { "name": "Gigi 1", "value": "4.357" },
+            { "name": "Gigi 2", "value": "2.502" },
+            { "name": "Gigi 3", "value": "1.501" },
+            { "name": "Gigi 4", "value": "1.000" },
+            { "name": "Gigi 5", "value": "0.809" },
+            { "name": "Rev", "value": "3.970" },
+            { "name": "Perbandingan Gigi Terakhir", "value": "4.777" }
+          ]
+        },
+        {
+          label: "REM",
+          items: [
+            { "name": "Kontrol Rem", "value": "Hydraulic" },
+            { "name": "Rem Kaki", "value": "Hydraulic with Ventilated Disc" },
+            { "name": "Rem Tangan", "value": "Expanding pada transmisi belakang" }
+          ]
+        },
+        {
+          label: "SISTEM KEMUDI",
+          items: [
+            { "name": "Tipe", "value": "Rack and pinion-Power Steering" },
+            { "name": "Power Steering", "value": "Ada" },
+            { "name": "Radius Putar", "value": "4,5 m" }
+          ]
+        }
+      ]
+    },
+    "traga-freezer-box": {
+      slug: "traga-freezer-box",
+      title: "Traga Freezer Box",
+      subtitle: "Spesifikasi Teknis",
+      price: "Rp. 410.000.000",
+      sections: [
+        {
+          label: "DIMENSI",
+          items: [
+            { "name": "Panjang", "value": "4,520 mm" },
+            { "name": "Lebar", "value": "1,705 mm" },
+            { "name": "Tinggi", "value": "1,985 mm" },
+            { "name": "Jarak Sumbu", "value": "2,250 mm" },
+            { "name": "Julur Depan", "value": "1,005 mm" },
+            { "name": "Julur Belakang", "value": "1,265 mm" },
+            { "name": "Jarak Terendah ke Tanah", "value": "200 mm" },
+            { "name": "Jarak Depan", "value": "1,460 mm" },
+            { "name": "Jarak Belakang", "value": "1,460 mm" },
+            { "name": "Panjang Aplikasi Bagian Dalam", "value": "2,810 mm" },
+            { "name": "Lebar Aplikasi Bagian Dalam", "value": "1,620 mm" },
+            { "name": "Tinggi Aplikasi Bagian Dalam", "value": "1,400 mm" }
+          ]
+        },
+        {
+          label: "RODA",
+          items: [
+            { "name": "Ban Depan", "value": "195R14-8PR" },
+            { "name": "Ban Belakang", "value": "195R14-8PR" },
+            { "name": "Velg", "value": "6 Stud 14 x 5.5" }
+          ]
+        },
+        {
+          label: "SUSPENSI",
+          items: [
+            { "name": "Depan", "value": "Double wishbone with coil spring" },
+            { "name": "Belakang", "value": "Multi Leaf spring" }
+          ]
+        },
+        {
+          label: "LAIN-LAIN",
+          items: [
+            { "name": "Kapasitas Tangki", "value": "50 Ltr" },
+            { "name": "Aki", "value": "12 V - 65 Ah" },
+            { "name": "Alternator V-A", "value": "12 - 70 V-A" },
+            { "name": "Blower", "value": "Ada" },
+            { "name": "Radio / Bluetooth / USB / AUX", "value": "Ada" },
+            { "name": "APAR (Alat Pemadam Ringan)", "value": "Ada" }
+          ]
+        },
+        {
+          label: "MESIN",
+          items: [
+            { "name": "Model", "value": "4JA1-CR-Tipe" },
+            { "name": "Tipe", "value": "4 Cylinders-Direct Injection with Turbocharger" },
+            { "name": "Sistem Kontrol Emisi", "value": "EURO4 with EGR & DOC" },
+            { "name": "Diameter x Langkah", "value": "93 x 92 mm" },
+            { "name": "Isi Silinder", "value": "2,499 cc" },
+            { "name": "Tenaga Maksimum", "value": "80 / 3,800 PS/rpm" },
+            { "name": "Torsi Maksimum", "value": "19.5 / 1,800 - 2,400 Kgm/rpm" }
+          ]
+        },
+        {
+          label: "BERAT",
+          items: [
+            { "name": "Berat Total Kendaraan", "value": "2,950 Kg" }
+          ]
+        },
+        {
+          label: "TRANSMISI",
+          items: [
+            { "name": "Model", "value": "MUA5S" },
+            { "name": "Sistem", "value": "Manual (M/T) - 5 Speed" },
+            { "name": "Gigi 1", "value": "4.357" },
+            { "name": "Gigi 2", "value": "2.502" },
+            { "name": "Gigi 3", "value": "1.501" },
+            { "name": "Gigi 4", "value": "1.000" },
+            { "name": "Gigi 5", "value": "0.809" },
+            { "name": "Rev", "value": "3.970" },
+            { "name": "Perbandingan Gigi Terakhir", "value": "4.777" }
+          ]
+        },
+        {
+          label: "REM",
+          items: [
+            { "name": "Kontrol Rem", "value": "Hydraulic" },
+            { "name": "Rem Kaki", "value": "Hydraulic with Ventilated Disc" },
+            { "name": "Rem Tangan", "value": "Expanding pada transmisi belakang" }
+          ]
+        },
+        {
+          label: "SISTEM KEMUDI",
+          items: [
+            { "name": "Tipe", "value": "Rack and pinion-Power Steering" },
+            { "name": "Power Steering", "value": "Ada" },
+            { "name": "Radius Putar", "value": "4,5 m" }
+          ]
+        }
+      ]
+    },
+    "traga-blind-van": {
+      slug: "traga-blind-van",
+      title: "TRAGA BLIND VAN",
+      subtitle: "Spesifikasi Teknis",
+      price: "-",
+      sections: [
+        {
+          label: 'Dimensi',
+          items: [
+            {
+              name: 'Panjang / Overall Length (OAL)', value: '4.655 mm'
+            }, {
+              name: 'Lebar / Overall Width (OW)', value: '1.695 mm'
+            }, {
+              name: 'Tinggi / Overall Height Front (OH)', value: '2.050 mm'
+            }, {
+              name: 'Jarak Sumbu / Wheelbase (WB)', value: '2.250 mm'
+            }, {
+              name: 'Jejak Depan / Front Tread (AW)', value: '1.460 mm'
+            }, {
+              name: 'Jejak Belakang / Rear Tread (CW)', value: '1.460 mm'
+            }, {
+              name: 'Julur Depan / Front Overhang (FOH)', value: '1.005 mm'
+            }, {
+              name: 'Julur Belakang / Rear Overhang (ROH)', value: '1.400 mm'
+            }, {
+              name: 'Lebar Cargo / Cargo Width (CW)', value: '1.520 mm'
+            }, {
+              name: 'Panjang Cargo / Cargo Length (CL) Top', value: '2.900 mm'
+            }, {
+              name: 'Tinggi Cargo / Cargo Height Inner (CL)', value: '1.200 mm'
+            }, {
+              name: 'Jarak Terendah ke Tanah / Ground Clearance (HH) Lebar Pintu / Door Width (DW)', value: 180
+            }, {
+              name: 'Lebar Pintu / Door Width (DW)', value: '1.000 mm'
+            }
+          ]
+        }, {
+          label: 'Mesin',
+          items: [
+            {
+              name: 'Model', value: '4JA1L'
+            }, {
+              name: 'Tipe / Type', value: '4 Cylinder, Direct Injection with Turbocharger'
+            }, {
+              name: 'Diameter x Langkah / Bore x Stroke', value: '93 x 92 mm'
+            }, {
+              name: 'Isi Silinder / Piston Displacement', value: '2,499 cc'
+            }, {
+              name: 'Tenaga Maksimum / Maximum Power', value: '80 / 3,500 PS / rpm'
+            }, {
+              name: 'Torsi Maksimum / Maximum Torque', value: '19.5 / 1,800 Kgm / rpm'
+            }
+          ]
+        }, {
+          label: 'Berat',
+          items: [
+            { name: 'Berat Brutto / Gross Vehicle Weight (GVW)', value: '2.950 kg' }
+          ]
+        }, {
+          label: 'Rem',
+          items: [
+            {
+              name: 'Kontrol Rem / Brake Control', value: 'Hydraulic Dual Circuit'
+            }, {
+              name: 'Depan / Front', value: 'Ventilated Disc'
+            }, {
+              name: 'Belakang / Rear', value: ' Drum leading & trailing'
+            }
+          ]
+        }, {
+          label: 'Sistem Kemudi',
+          items: [
+            {
+              name: 'Tipe / Type', value: 'Rack and pinion'
+            }, {
+              name: 'Power Steering', value: 'Yes'
+            }, {
+              name: 'Radius Putar / Turning Radius', value: 4.5
+            }
+          ]
+        }, {
+          label: 'Transmisi',
+          items: [
+            { name: 'Model', value: 'MUA5S' },
+            { name: 'Sistem / System', value: 'Manual (M/T) - 5 Speed' },
+            { name: 'Perbandingan Gigi / Gear Ratio', value: '' },
+            { name: '1st', value: '4.357' },
+            { name: '2nd', value: '2.502' },
+            { name: '3rd', value: '1.501' },
+            { name: '4th', value: '1.000' },
+            { name: '5th', value: '0.809' },
+            { name: 'Reverse', value: '3.970' },
+            { name: 'Perbandingan Gigi Akhir / Final Gear Ratio', value: '4.777' }
+          ]
+        }, {
+          label: 'Ban',
+          items: [
+            { name: 'Velg / Wheel', value: '6 Stud 14 x 5.5' },
+            { name: 'Ban Depan / Front Tyre (Type)', value: '195R14-8PR' },
+            { name: 'Ban Belakang / Rear Tire (Type)', value: '195R14-8PR' }
+          ]
+        }, {
+          label: 'Suspensi',
 
-        items: [
-          { name: 'Depan / Front', value: 'Double wishbone with coil spring' },
-          { name: 'Belakang / Rear', value: 'Leaf spring type' }
-        ]
-      }, {
-        label: 'Lain-lain',
-        items: [
-          { name: 'Pintu Belakang / Hatchback', value: 1 },
-          { name: 'Pintu Samping / Swing Door', value: 1 },
-          { name: 'Kapasitas Tangki / Fuel Tank Capacity', value: '50 liter' },
-          { name: 'Alternator', value: '12 - 60 V/A' },
-          { name: 'Aki / Accu', value: '12 - 65 V/AH' },
-          { name: 'Fan Blower', value: 'yes' }
-          , { name: 'Head Unit', value: 'yes' }
-        ]
-      }
-    ]
-  },
+          items: [
+            { name: 'Depan / Front', value: 'Double wishbone with coil spring' },
+            { name: 'Belakang / Rear', value: 'Leaf spring type' }
+          ]
+        }, {
+          label: 'Lain-lain',
+          items: [
+            { name: 'Pintu Belakang / Hatchback', value: 1 },
+            { name: 'Pintu Samping / Swing Door', value: 1 },
+            { name: 'Kapasitas Tangki / Fuel Tank Capacity', value: '50 liter' },
+            { name: 'Alternator', value: '12 - 60 V/A' },
+            { name: 'Aki / Accu', value: '12 - 65 V/AH' },
+            { name: 'Fan Blower', value: 'yes' }
+            , { name: 'Head Unit', value: 'yes' }
+          ]
+        }
+      ]
+    },
   "dmax-sc": {
     slug: "dmax-sc",
     title: "Isuzu D-MAX SC",

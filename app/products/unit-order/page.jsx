@@ -1,7 +1,7 @@
 'use client'
 import { useState, useMemo } from "react";
 import { useSmartOTP } from "@/hooks/useSmartOtp";
-import { getProductTitle } from "@/data/getProductTitle";
+import { getProductTitle } from "@/src/lib/getProductTitle";
 
 // Perbaiki struktur outletData menjadi object
 const outletData = {

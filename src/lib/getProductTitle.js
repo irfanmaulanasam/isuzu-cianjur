@@ -1,4 +1,4 @@
-import { specs } from "./specs";
+import { specs } from "../data/products/specs";
 
 export function getProductTitle() {
   return Object.values(specs).map(p => p.title);

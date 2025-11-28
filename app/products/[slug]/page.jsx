@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useMemo, use } from "react";
 import { useRouter } from "next/navigation";
-import { specs, allSpecSlugs } from "@/data/specs";
+import { specs, allSpecSlugs } from "@/src/data/products/specs";
 import SpecPage from "@/app/components/layout/SpecPage";
-import { autoCompleteSlug } from "@/src/data/calculator-data/utils/autoCompleteSlug";
+import { autoCompleteSlug } from "@/src/data/config/autoCompleteTCOSlug";
 
 export default function ProductDetailPage({ params }) {
     const router = useRouter();

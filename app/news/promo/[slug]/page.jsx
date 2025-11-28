@@ -1,4 +1,4 @@
-import { getArticleData, getAllArticleSlugs } from '@/lib/getallnews'
+import { getArticleData, getAllArticleSlugs } from '@/src/lib/getallnews'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'

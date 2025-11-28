@@ -1,4 +1,4 @@
-import { getAllCategoriesData } from '@/lib/getallnews'
+import { getAllCategoriesData } from '@/src/lib/getallnews'
 import Link from 'next/link'
 import NewsCard from '../components/layout/NewsCard'
 

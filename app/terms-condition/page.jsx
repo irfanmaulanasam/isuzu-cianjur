@@ -1,4 +1,4 @@
-import  {loadMarkdown}  from "@/lib/loadmarkdown"
+import  {loadMarkdown}  from "@/src/lib/loadmarkdown"
 import MarkdownWrapper from "../components/MarkdownWrapper";
 
 export default async function PrivacyPolicy() {
