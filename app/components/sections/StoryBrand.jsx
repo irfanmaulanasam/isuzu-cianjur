@@ -8,7 +8,7 @@ export default function StoryBrand() {
 
         <ul className="mt-4 space-y-2 text-sm text-slate-600">
           <li>• Konsultasi kebutuhan armada</li>
-          <li>• Perhitungan TCO 5 tahun</li>
+          <li>• Perhitungan Biaya Kepemilikan 5 tahun</li>
           <li>• Paket servis & suku cadang terjangkau</li>
         </ul>
       </div>
@@ -18,7 +18,7 @@ export default function StoryBrand() {
         <ol className="mt-3 list-decimal list-inside text-sm text-slate-600 space-y-2">
           <li>Hubungi sales / konsultasi</li>
           <li>Riset kebutuhan rute & muatan</li>
-          <li>Simulasi TCO & opsi pembiayaan</li>
+          <li>Simulasi Biaya Kepemilikan & opsi pembiayaan</li>
           <li>SPK & pengiriman</li>
         </ol>
       </div>

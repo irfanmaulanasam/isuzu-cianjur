@@ -5,31 +5,31 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
 export async function generateStaticParams() {
-  const promos = getAllArticleSlugs('promo')
-  return promos
+  const article = getAllArticleSlugs('article')
+  return article
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params
-  const promo = getArticleData(slug, 'promo')
+  const article = getArticleData(slug, 'article')
   
-  if (!promo) {
+  if (!article) {
     return {
-      title: 'Promo Tidak Ditemukan',
+      title: 'Artikel Tidak Ditemukan',
     }
   }
   
   return {
-    title: `${promo.title} - Portal Berita`,
-    description: promo.excerpt,
+    title: `${article.title} - Portal Berita`,
+    description: article.excerpt,
   }
 }
 
-export default async function PromoDetail({ params }) {
+export default async function ArticleDetail({ params }) {
   const { slug } = await params
-  const promo = getArticleData(slug, 'promo')
+  const article = getArticleData(slug, 'article')
 
-  if (!promo) {
+  if (!article) {
     notFound()
   }
 
@@ -40,35 +40,35 @@ export default async function PromoDetail({ params }) {
           Beranda Berita
         </Link>
         <span>/</span>
-        <Link href="/news/promo" className="hover:text-blue-600">
-          Promo
+        <Link href="/news/article" className="hover:text-blue-600">
+          article
         </Link>
         <span>/</span>
-        <span className="text-gray-800 truncate">{promo.title}</span>
+        <span className="text-gray-800 truncate">{article.title}</span>
       </nav>
       
       <article className="bg-white rounded-lg shadow-lg p-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          {promo.title}
+          {article.title}
         </h1>
         
         <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-6 pb-6 border-b">
-          {promo.date && (
+          {article.date && (
             <span className="flex items-center">
-              📅 {new Date(promo.date).toLocaleDateString('id-ID')}
+              📅 {new Date(article.date).toLocaleDateString('id-ID')}
             </span>
           )}
-          {promo.author && (
+          {article.author && (
             <span className="flex items-center">
-              ✍️ Oleh: {promo.author}
+              ✍️ Oleh: {article.author}
             </span>
           )}
         </div>
         
-        {promo.thumbnail && (
+        {article.thumbnail && (
           <Image 
-            src={promo.thumbnail} 
-            alt={promo.title}
+            src={article.thumbnail} 
+            alt={article.title}
             height={100}
             width={60}
             className="w-full h-64 object-cover rounded-lg mb-8"
@@ -89,7 +89,7 @@ export default async function PromoDetail({ params }) {
               em: ({node, ...props}) => <em className="italic text-gray-700" {...props} />,
             }}
           >
-            {promo.content}
+            {article.content}
           </ReactMarkdown>
         </div>
       </article>

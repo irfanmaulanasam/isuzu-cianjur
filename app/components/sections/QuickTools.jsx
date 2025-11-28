@@ -9,15 +9,15 @@ export default function QuickTools() {
           <h4 className="font-semibold">Simulasi Kredit</h4>
           <p className="text-sm text-slate-600">Perkiraan angsuran berdasarkan tenor & DP.</p>
           <div className="mt-3">
-            <Link href="/credit-simulator" className="text-[#004AAD] hover:underline">Coba Sekarang</Link>
+            <Link href="/simulation/credit" className="text-[#004AAD] hover:underline">Coba Sekarang</Link>
           </div>
         </div>
 
         <div className="p-4 border rounded-lg bg-white">
-          <h4 className="font-semibold">Hitung TCO</h4>
+          <h4 className="font-semibold">Hitung Biaya Kepemilikan</h4>
           <p className="text-sm text-slate-600">Estimasi biaya operasional per tahun.</p>
           <div className="mt-3">
-            <Link href="/vehicle-cost" className="text-[#004AAD] hover:underline">Mulai Hitung</Link>
+            <Link href="/simulation/ownership-cost" className="text-[#004AAD] hover:underline">Mulai Hitung</Link>
           </div>
         </div>
 

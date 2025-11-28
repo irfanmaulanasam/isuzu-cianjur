@@ -1,0 +1,41 @@
+{
+  "footer": {
+    "company": {
+      "name": "Bahana Isuzu",
+      "description": "Official Isuzu Commercial Vehicle dealer — providing units, aftersales services, and spare parts.",
+      "address": "Jl. Raya Bandung km 3 No. 138, Sadewata Bojong Karangtengah Cianjur, West Java",
+      "phone": "+6281221548054",
+      "whatsapp": "+6287856277372",
+      "email": "cs@bahanaisuzu.co.id"
+    },
+    "navigation": {
+      "company": [
+        { "title": "About Us", "path": "/about" },
+        { "title": "Outlet", "path": "/outlet" }
+      ],
+      "news": [
+        { "title": "Promo", "path": "/news/promo" },
+        { "title": "News", "path": "/news" },
+        { "title": "Event", "path": "/news/event" }
+      ],
+      "product": [
+        { "title": "View Units", "path": "/products" },
+        { "title": "Unit Order", "path": "/products/unit-order" }
+      ],
+      "services": [
+        { "title": "BIB Services", "path": "/services/bib-services" },
+        { "title": "Dealer Services", "path": "/services/dealer-services" },
+        { "title": "Sparepart", "path": "/services/sparepart-order" }
+      ],
+      "tools": [
+        { "title": "Ownership Cost", "path": "/simulation/ownership-cost" },
+        { "title": "Credit Simulator", "path": "simulation/credit" }
+      ]
+    },
+    "legal": {
+      "copyright": "© 2025 Bahana Isuzu. All Rights Reserved.",
+      "privacy": "/privacy-policy",
+      "terms": "/terms-condition"
+    }
+  }
+}

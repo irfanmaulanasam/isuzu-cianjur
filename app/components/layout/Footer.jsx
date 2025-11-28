@@ -1,3 +1,5 @@
+'use client';
+import { useMemo } from 'react';
 import Link from "next/link";
 import {
   MapPin,
@@ -9,18 +11,28 @@ import {
   Youtube,
   MessageCircle
 } from "lucide-react";
-import {footer} from "@/src/data/siteFooter.json";
+import { useLanguage } from '@/src/context/languageContext';
+import en from '@/src/data/footer/en.json';
+import id from '@/src/data/footer/id.json';
 
 export default function SiteFooter() {
-    const {navigation} = footer
-    const {legal} = footer
+  const { language } = useLanguage();
+
+  // ✅ Gunakan useMemo untuk footer data berdasarkan language
+  const footerData = useMemo(() => {
+    return language === 'id' ? id : en;
+  }, [language]);
+
+  const { footer } = footerData;
+  const { navigation, legal } = footer;
+
   if (!footer) {
     return (
       <footer className="bg-[#004AAD] text-white p-8 text-center">
         <p>Footer config not found.</p>
       </footer>
     );
-  } 
+  }
 
   return (
     <footer className="bg-[#003680] text-gray-200 pt-14 mt-10 border-t-4 border-[#E31E26] shadow-inner">
@@ -37,27 +49,28 @@ export default function SiteFooter() {
 
           <div className="mt-5 space-y-3 text-sm">
             <p className="flex items-start gap-3">
-              <MapPin className="w-5 h-5 text-[#E31E26]" />
-              {footer.company.address}
+              <MapPin className="w-5 h-5 text-[#E31E26] flex-shrink-0 mt-0.5" />
+              <span>{footer.company.address}</span>
             </p>
             <p className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-[#E31E26]" />
+              <Phone className="w-5 h-5 text-[#E31E26] flex-shrink-0" />
               <a href={`tel:${footer.company.phone}`} className="hover:text-white">
                 {footer.company.phone}
               </a>
             </p>
             <p className="flex items-center gap-3">
-              <MessageCircle className="w-5 h-5 text-[#E31E26]" />
+              <MessageCircle className="w-5 h-5 text-[#E31E26] flex-shrink-0" />
               <a
                 href={`https://wa.me/${footer.company.whatsapp}`}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white"
               >
                 WhatsApp
               </a>
             </p>
             <p className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-[#E31E26]" />
+              <Mail className="w-5 h-5 text-[#E31E26] flex-shrink-0" />
               <a href={`mailto:${footer.company.email}`} className="hover:text-white">
                 {footer.company.email}
               </a>
@@ -66,9 +79,9 @@ export default function SiteFooter() {
 
           {/* Social Icons */}
           <div className="flex gap-5 mt-6">
-            <a href="#" className="hover:text-white transition"><Facebook /></a>
-            <a href="#" className="hover:text-white transition"><Instagram /></a>
-            <a href="#" className="hover:text-white transition"><Youtube /></a>
+            <a href="#" className="hover:text-white transition"><Facebook size={20} /></a>
+            <a href="#" className="hover:text-white transition"><Instagram size={20} /></a>
+            <a href="#" className="hover:text-white transition"><Youtube size={20} /></a>
           </div>
         </div>
 
@@ -76,7 +89,11 @@ export default function SiteFooter() {
         {Object.entries(navigation).map(([section, links]) => (
           <div key={section}>
             <h3 className="text-lg font-semibold text-white mb-4 tracking-wide capitalize">
-              {section}
+              {section === 'news' ? (language === 'id' ? 'Berita' : 'News') : 
+               section === 'company' ? (language === 'id' ? 'Perusahaan' : 'Company') :
+               section === 'product' ? (language === 'id' ? 'Produk' : 'Product') :
+               section === 'services' ? (language === 'id' ? 'Layanan' : 'Services') :
+               section === 'tools' ? (language === 'id' ? 'Alat' : 'Tools') : section}
             </h3>
 
             <ul className="space-y-3 text-sm">
@@ -84,9 +101,9 @@ export default function SiteFooter() {
                 <li key={link.path}>
                   <Link
                     href={link.path}
-                    className="flex items-center gap-2 hover:text-white transition"
+                    className="flex items-center gap-2 hover:text-white transition group"
                   >
-                    <ArrowRight className="w-3 h-3 text-[#E31E26]" />
+                    <ArrowRight className="w-3 h-3 text-[#E31E26] transition-transform group-hover:translate-x-1" />
                     {link.title}
                   </Link>
                 </li>
@@ -101,10 +118,10 @@ export default function SiteFooter() {
       <div className="border-t border-[#004AAD] mt-12 py-6 text-center text-sm text-gray-300 bg-[#00306a]">
         <div className="flex justify-center gap-8 mb-2">
           <Link href={legal.privacy} className="hover:text-white transition">
-            Privacy Policy
+            {language === 'id' ? 'Kebijakan Privasi' : 'Privacy Policy'}
           </Link>
           <Link href={legal.terms} className="hover:text-white transition">
-            Terms & Conditions
+            {language === 'id' ? 'Syarat & Ketentuan' : 'Terms & Conditions'}
           </Link>
         </div>
         <p className="tracking-wide">{legal.copyright}</p>

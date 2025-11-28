@@ -69,11 +69,11 @@
         "submenu": [
           {
             "title": "Biaya Kepemilikan",
-            "path": "/simulation/tco-calculator"
+            "path": "/simulation/ownership-cost"
           },
           {
             "title": "Simulasi Kredit",
-            "path": "/simulation/credit-simulator"
+            "path": "/simulation/credit"
           }
         ]
       },

@@ -1,4 +1,4 @@
-// src/components/sections/CTASection.jsx
+import Link from "next/link";
 export default function CTASection() {
   return (
     <section className="py-16 bg-[#004AAD] text-white">
@@ -6,8 +6,8 @@ export default function CTASection() {
         <h2 className="text-2xl font-bold">Siap Tingkatkan Efisiensi Armada Anda?</h2>
         <p className="mt-3 max-w-2xl mx-auto">Konsultasi gratis bersama tim kami. Dapatkan rekomendasi unit & simulasi biaya khusus untuk bisnis Anda.</p>
         <div className="mt-6 flex justify-center gap-3">
-          <a href="/contact" className="px-6 py-3 bg-white text-[#004AAD] rounded-md font-semibold">Konsultasi Gratis</a>
-          <a href="/vehicle-cost" className="px-6 py-3 border border-white rounded-md">Hitung TCO</a>
+          <Link href="/contact" className="px-6 py-3 bg-white text-[#004AAD] rounded-md font-semibold">Konsultasi Gratis</Link>
+          <Link href="/simulation/ownership-cost" className="px-6 py-3 border border-white rounded-md">Hitung Biaya Kepemilikan</Link>
         </div>
       </div>
     </section>

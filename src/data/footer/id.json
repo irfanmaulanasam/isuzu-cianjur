@@ -1,0 +1,41 @@
+{
+  "footer": {
+    "company": {
+      "name": "Bahana Isuzu",
+      "description": "Dealer resmi Isuzu Commercial Vehicle — menyediakan unit, layanan aftersales, dan sparepart.",
+      "address": "Jl. Raya Bandung km 3 No. 138, Sadewata Bojong Karangtengah Cianjur, Jawa Barat",
+      "phone": "+6281221548054",
+      "whatsapp": "+6287856277372",
+      "email": "cs@bahanaisuzu.co.id"
+    },
+    "navigation": {
+      "company": [
+        { "title": "Tentang Kami", "path": "/about" },
+        { "title": "Outlet", "path": "/outlet" }
+      ],
+      "news": [
+        { "title": "Promo", "path": "/news/promo" },
+        { "title": "Berita", "path": "/news" },
+        { "title": "Acara", "path": "/news/event" }
+      ],
+      "product": [
+        { "title": "Lihat Unit", "path": "/products" },
+        { "title": "Pemesanan Unit", "path": "/products/unit-order" }
+      ],
+      "services": [
+        { "title": "Layanan BIB", "path": "/services/bib-services" },
+        { "title": "Layanan Dealer", "path": "/services/dealer-services" },
+        { "title": "Suku Cadang", "path": "/services/sparepart-order" }
+      ],
+      "tools": [
+        { "title": "Perhitungan Biaya Kepemilikan", "path": "/simulation/ownership-cost" },
+        { "title": "Simulator Kredit", "path": "/simulation/credit" }
+      ]
+    },
+    "legal": {
+      "copyright": "© 2025 Bahana Isuzu. Hak Cipta Dilindungi.",
+      "privacy": "/privacy-policy",
+      "terms": "/terms-condition"
+    }
+  }
+}

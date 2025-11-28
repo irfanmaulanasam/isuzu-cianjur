@@ -10,7 +10,7 @@ export default function Hero() {
           <p className="mt-4 text-lg text-slate-700 max-w-2xl">Hitung TCO dalam 2 menit, dapatkan rekomendasi armada sesuai rute & budget bisnis Anda. Transparan, praktis, dan didukung layanan aftersales resmi.</p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/vehicle-cost" className="inline-flex items-center px-5 py-3 bg-[#004AAD] text-white rounded-md shadow hover:bg-[#003680]">Hitung TCO</Link>
+            <Link href="/simulation/ownership-cost" className="inline-flex items-center px-5 py-3 bg-[#004AAD] text-white rounded-md shadow hover:bg-[#003680]">Hitung TCO</Link>
             <Link href="/products" className="inline-flex items-center px-5 py-3 border border-slate-300 rounded-md hover:bg-slate-100">Lihat Unit</Link>
             <Link href="/contact" className="inline-flex items-center px-5 py-3 text-sm text-slate-700">Konsultasi Gratis</Link>
           </div>
@@ -38,7 +38,7 @@ export default function Hero() {
         <div className="order-first lg:order-last flex justify-center lg:justify-end">
           <div className="w-full max-w-md bg-white rounded-xl shadow p-6">
             <h3 className="text-xl font-semibold mb-3">Simulasi Cepat TCO</h3>
-            <form action="/vehicle-cost" method="get" className="space-y-3">
+            <form action="/simulation/ownership-cost" method="get" className="space-y-3">
               <div>
                 <label className="text-sm text-slate-600">Model Kendaraan</label>
                 <select name="model" className="w-full border rounded-md px-3 py-2 mt-1">

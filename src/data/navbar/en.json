@@ -34,11 +34,11 @@
         "submenu": [
           {
             "title": "Vehicle Cost Ownership",
-            "path": "/simulation/tco-calculator"
+            "path": "/simulation/ownership-cost"
           },
           {
             "title": "Credit Simulator",
-            "path": "/simulation/credit-simulator"
+            "path": "/simulation/credit"
           }
         ]
       },
