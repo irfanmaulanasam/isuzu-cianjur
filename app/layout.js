@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import GlobalLayer from "./components/global/GlobalLayer";
 import { LanguageProvider } from "@/src/context/languageContext";
+import ChatWidget from "./components/chatWidget";
 export const metadata = {
   title: "Isuzu Commercial Vehicle",
   description: 'Dapatkan harga termurah Isuzu Traga, Elf, dan Giga di Cianjur. Hitung simulasi kredit dan download brosur resmi disini Solusi Euro 4, TCO rendah, dan reliable untuk usaha logistik.'
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         <LanguageProvider>
         <Navbar />
           <main>{children}</main>
+          <ChatWidget/>
           <Footer />
         </LanguageProvider>
         <GlobalLayer />

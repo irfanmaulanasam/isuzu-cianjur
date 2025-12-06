@@ -3,7 +3,7 @@ title: "Isuzu Traga Euro 4: Pilihan Cerdas untuk Logistik Grosir & Toko Bangunan
 slug: "traga-euro4-untuk-logistik-grosir"
 category: "news" # opsi: news | event | promo
 date: "2025-11-26"
-thumbnail: "/images/news/traga-euro4.jpg"
+thumbnail: "/images/news/traga-euro4.png"
 excerpt: "Mengapa Isuzu Traga Euro 4 menjadi kendaraan paling rasional untuk usaha grosir, logistik, dan toko bangunan? Baca pembahasannya."
 tags:
   - traga
