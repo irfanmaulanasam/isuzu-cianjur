@@ -22,12 +22,15 @@ export default function SPKAdvanced() {
   // State Data SPK Lengkap
   const [formData, setFormData] = useState({
     // I. Data Pemesan
-    namaPemesan: '', alamatPemesan: '', telpPemesan: '', faxPemesan: '', ktpPemesan: '',
-    jabatanPemesan: '', npwpPemesan: '', hpPemesan: '', emailPemesan: '', kodePosPemesan: ['','','','',''], 
-
-    // II. Data STNK & BPKB
-    namaStnk: '', alamatStnk: '', ktpStnk: '', telpStnk: '', npwpStnk: '', hpStnk: '', emailStnk: '', kodePosStnk: ['','','','',''],
+    tipePemesan: 'Perseorangan', // Default: Perseorangan
+    namaPemesan: '', // Nama Orang ATAU Nama Instansi
+    namaPic: '', // Khusus Korporasi
+    jabatanPemesan: '', // Khusus Korporasi
     
+    alamatPemesan: '', telpPemesan: '', faxPemesan: '', ktpPemesan: '',
+    npwpPemesan: '', hpPemesan: '', emailPemesan: '', kodePosPemesan: ['','','','',''],
+    // II. Data STNK
+    namaStnk: '', alamatStnk: '', ktpStnk: '', telpStnk: '', npwpStnk: '', hpStnk: '', emailStnk: '', kodePosStnk: ['','','','',''],
     // III. Data Kendaraan
     jumlahKendaraan: 1, typeKendaraan: '', modelKendaraan: '', 
     tahunPerakitan: new Date().getFullYear().toString(), 
@@ -134,7 +137,7 @@ export default function SPKAdvanced() {
     doc.text("SURAT PESANAN KENDARAAN", pageWidth / 2, y, null, null, "center");
     y += 5;
 
-    doc.text("Nomer:", 170, y);
+    doc.text("Nomor:", 170, y);
     doc.rect(180, y - 3.5, 25, 4); 
     doc.setFontSize(10);
     doc.text("00025", 182, y); 
@@ -306,23 +309,70 @@ export default function SPKAdvanced() {
     doc.line(margin, y, pageWidth - margin, y); 
     y += 1;
 
-    const terms = [
-        "1. Surat pesanan ini TIDAK MENGIKAT terhadap HARGA JUAL (sewaktu-waktu dapat berubah) dan KETERSEDIAAN KENDARAAN oleh PENJUAL/DEALER.",
-        "2. BBN atas harga on the road TIDAK TERMASUK PAJAK PROGRESIF (bila ada).",
-        "3. Surat pesanan ini dianggap SAH apabila: a. Telah ditandatangani oleh PIMPINAN CABANG PENJUAL/DEALER. b. UANG MUKA/PELUNASAN/PENCAIRAN KREDIT telah diterima di REKENING PENJUAL/DEALER pada bank ??? No??? PT. BAHANA CAHAYA MOBILINDO selambat-lambatnya 14 hari sejak SPK ditandatangani.",
-        "4. DATA YANG TERTERA DI STNK/BPKB TIDAK DAPAT DIRUBAH.",
-        "5. DENDA atas keterlambatan pembayaran sebesar 0,1% per hari.",
-        "6. Apabila terjadi perubahan kebijakan pemerintah/leasing, pemesan WAJIB MEMENUHI KEWAJIBAN pembayaran kepada PENJUAL/DEALER.",
-        "7. PEMBATALAN terjadi apabila pemesan tidak memenuhi persyaratan atau membatalkan secara sepihak.",
-        "8. Uang Muka yang telah dibayarkan TIDAK DAPAT DIAMBIL KEMBALI dan menjadi HAK PENJUAL/DEALER.",
-        "9. Pemesan SETUJU dan BERSEDIA mengembalikan kendaraan dan surat-surat kendaraan yang telah diserahkan oleh PENJUAL/DEALER apabila terjadi sesuatu di luar perjanjian."
+    // DEFINISI SYARAT & KETENTUAN DENGAN MARKDOWN **
+    // Catatan: Gunakan satu array string untuk kemudahan parsing
+    const termsWithBold = [
+        "1. Surat pesanan ini **TIDAK MENGIKAT** terhadap **HARGA JUAL** (sewaktu-waktu dapat berubah) dan **KETERSEDIAAN KENDARAAN** oleh PENJUAL/DEALER.",
+        "2. BBN atas harga on the road TIDAK TERMASUK **PAJAK PROGRESIF** (bila ada).",
+        "3. Surat pesanan ini dianggap **SAH** apabila: a. Telah ditandatangani oleh **PIMPINAN CABANG PENJUAL/DEALER**. b. **UANG MUKA/PELUNASAN/PENCAIRAN KREDIT** telah diterima di **REKENING PENJUAL/DEALER** pada bank ??? No??? PT. BAHANA CAHAYA MOBILINDO selambat-lambatnya 14 hari sejak SPK ditandatangani.",
+        "4. **DATA YANG TERTERA DI STNK/BPKB** TIDAK DAPAT **DIRUBAH**.",
+        "5. **DENDA** atas keterlambatan pembayaran sebesar 0,1% per hari.",
+        "6. Apabila terjadi perubahan kebijakan pemerintah/leasing, pemesan **WAJIB MEMENUHI KEWAJIBAN** pembayaran kepada PENJUAL/DEALER.",
+        "7. **PEMBATALAN** terjadi apabila pemesan tidak memenuhi persyaratan atau membatalkan secara sepihak.",
+        "8. Uang Muka yang telah dibayarkan **TIDAK DAPAT DIAMBIL KEMBALI** dan menjadi **HAK PENJUAL/DEALER**.",
+        "9. Pemesan **SETUJU dan BERSEDIA** mengembalikan kendaraan dan surat-surat kendaraan yang telah diserahkan oleh PENJUAL/DEALER apabila terjadi sesuatu di luar perjanjian."
     ];
     
     doc.setFontSize(7);
-    terms.forEach(term => {
-        const lines = doc.splitTextToSize(term, pageWidth - 2 * margin - 2);
-        doc.text(lines, margin + 2, y);
-        y += lines.length * 3;
+    const textMargin = margin + 2;
+
+    termsWithBold.forEach(term => {
+        let currentX = textMargin;
+        const parts = term.split(/(\*\*.*?\*\*)/g); // Membagi string berdasarkan penanda **teks**
+        
+        let initialY = y;
+        let linesWritten = 0;
+        
+        parts.forEach(part => {
+            const isBold = part.startsWith('**') && part.endsWith('**');
+            let textToPrint = isBold ? part.slice(2, -2) : part;
+
+            if (!textToPrint) return;
+
+            // Pastikan baris sudah benar
+            doc.setFont(undefined, isBold ? 'bold' : 'normal');
+            
+            // Logika Word Wrapping jsPDF (Sangat disederhanakan)
+            const words = textToPrint.split(' ');
+            
+            for (const word of words) {
+                if (word === "") continue;
+                
+                // Cek lebar saat ini ditambah kata baru
+                const wordWidth = doc.getStringUnitWidth(word) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+                const spaceWidth = doc.getStringUnitWidth(' ') * doc.internal.getFontSize() / doc.internal.scaleFactor;
+                
+                if (currentX + wordWidth > pageWidth - margin) {
+                    // Pindah Baris
+                    y += 3; // Kenaikan baris 3mm
+                    linesWritten++;
+                    currentX = textMargin;
+                }
+                
+                // Cetak kata
+                doc.text(word, currentX, y);
+                currentX += wordWidth + spaceWidth;
+            }
+        });
+
+        // Setelah selesai 1 item, tambahkan jarak ke item berikutnya.
+        // Jika hanya 1 baris, kita hanya perlu 3mm jaraknya.
+        if (linesWritten === 0) {
+            y += 3; 
+        } else {
+             // Jika lebih dari 1 baris, tambahkan sedikit ruang ekstra
+            y += 1;
+        }
     });
 
     y += 3;
@@ -402,6 +452,7 @@ export default function SPKAdvanced() {
               className="w-full p-3 border rounded-lg text-lg mb-4 text-center"
             />
             <button 
+              type='button'
               onClick={sendOTP} 
               disabled={loading || noHp.length < 10}
               className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 disabled:bg-gray-400"
@@ -424,12 +475,13 @@ export default function SPKAdvanced() {
               maxLength={4}
             />
             <button 
+              type='button'
               onClick={verifyOTP} 
               className="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 mb-2"
             >
               Verifikasi
             </button>
-            <button onClick={changeNumber} className="text-red-500 text-sm underline">
+            <button type='button' onClick={changeNumber} className="text-red-500 text-sm underline">
               Nomor Salah? Ganti Nomor
             </button>
           </div>
@@ -437,87 +489,145 @@ export default function SPKAdvanced() {
         </div>
         {/* STEP 3: FORM SPK UTAMA (Layout Formal BARU) */}
         {step === 3 && (
-          <div className="space-y-4 font-sans text-xs md:text-sm">
+          <div className="space-y-8 font-sans text-sm pb-10">
 
-            {/* HEADER & INFO DEALER */}
-            <div className="relative text-center border-b-2 border-red-200 pb-2">
-                
-                {/* Logo Kiri: Bahana Cianjur */}
-                <div className="absolute left-0 top-0 pt-1">
-                    <Image
-                        src="/logo-bahana.web"
-                        alt="Logo Bahana Cianjur"
-                        width={50} // Lebar yang diinginkan
-                        height={120} // Tinggi yang diinginkan
-                        className="w-12 h-auto"
-                        priority // Disarankan untuk gambar penting di atas fold
-                    />
-                </div>
-
-                {/* Logo Kanan: RPRI */}
-                <div className="absolute right-0 top-0 pt-1">
-                    <Image
-                        src="/logorpri.jpg" // Ganti dengan path logo RPRI Anda
-                        alt="Logo RPRI"
-                        width={50} // Lebar yang diinginkan
-                        height={50} // Tinggi yang diinginkan
-                        className="w-12 h-auto"
-                        priority
-                    />
-                </div>
-                
-                {/* Teks Kop Surat di Tengah */}
-                <p className="text-[10px] md:text-xs">AUTHORIZED DEALER ISUZU CIANJUR</p>
-                    <h2 className="text-sm md:text-lg font-bold">PT. CAHAYA CAHAYA MOBILINDO</h2>
-                    <p className="text-[9px] md:text-xs text-gray-600">Jl Raya Bandung Km 03 no. 138, Kp Sadewata Desa Bojong, Kec Karangtengah, Kab Cianjur (43281)</p>
-                </div>
-              {/* JUDUL DAN NOMOR FORM */}
-              <div className="flex justify-between items-center mb-2 pt-2 border-t">
-                  <h3 className="text-sm font-bold">SURAT PESANAN KENDARAAN</h3>
-                  <div className="flex items-center">
-                      <p className="mr-1">Nomor:</p>
-                      <div className="border border-gray-200 px-2 py-1 h-6 flex items-center bg-gray-100">00025</div>
+              {/* HEADER & INFO DEALER */}
+              <div className="relative text-center border-b-2 border-red-200 pb-4">
+                  <div className="absolute left-0 top-0">
+                      <Image src="/logo-bahana.webp" alt="Logo Bahana" width={60} height={60} className="w-16 h-auto object-contain" />
                   </div>
+                  <div className="absolute right-0 top-0">
+                      <Image src="/logorpri.jpg" alt="Logo RPRI" width={60} height={60} className="w-16 h-auto object-contain" />
+                  </div>
+                  
+                  <p className="text-[10px] md:text-xs text-gray-500 tracking-widest uppercase mb-1">Authorized Dealer Isuzu Cianjur</p>
+                  <h2 className="text-lg md:text-xl font-extrabold text-red-700 tracking-wide">PT. CAHAYA CAHAYA MOBILINDO</h2>
+                  <p className="text-[10px] md:text-xs text-gray-500">Jl Raya Bandung Km 03 No.138 Kp. Sadewata (43281)</p>
               </div>
               
-              {/* ======================================================= */}
-              {/* I. DATA PEMESAN & II. DATA STNK/BPKB (SIDE BY SIDE) */}
-              {/* ======================================================= */}
-                  {/* KOLOM KIRI: I. DATA PEMESAN */}
-                  <div className="border border-gray-200 p-2 space-y-1">
-                      <h3 className="text-xs font-bold border-b pb-1">I. DATA PEMESAN</h3>
-                      <div className="grid grid-cols-1 gap-1">
-                          {/* Nama & Jabatan */}
-                          <div className="flex items-center h-6 border-b border-gray-300">
-                              <FormRow label="Nama" name="namaPemesan" type="text" formData={formData} handler={handleInputChange} isAlphabet required />
-                              <FormRow label="Jabatan" name="jabatanPemesan" type="text" formData={formData} handler={handleInputChange} isAlphabet />
-                          </div>
-                          {/* Alamat & Kodepos */}
-                          <FormRow label="Alamat" name="alamatPemesan" type="text" formData={formData} handler={handleInputChange} />
-                          <InputKodepos name="kodePosPemesan" formData={formData} handler={handleInputChange} />
-                          <FormRow label="KTP/TDP" name="ktpPemesan" type="text" formData={formData} handler={handleInputChange} isNumeric required />
-                          <FormRow label="NPWP" name="npwpPemesan" type="text" formData={formData} handler={handleInputChange} isNumeric />
-                          <FormRow label="No. Telpon" name="telpPemesan" type="tel" formData={formData} handler={handleInputChange} isNumeric />
-                          <FormRow label="No. HP" name="hpPemesan" type="tel" value={noHp} disabled />
-                          <FormRow label="Email" name="emailPemesan" type="email" formData={formData} handler={handleInputChange} isEmail />
+              {/* JUDUL DAN NOMOR FORM */}
+              <div className="flex justify-between items-end mb-6">
+                  <h3 className="text-xl font-bold text-gray-800 border-b-4 border-red-600 inline-block pb-1">SPK DIGITAL</h3>
+                  <div className="flex flex-col items-end">
+                      <span className="text-[10px] text-gray-400">Nomor Dokumen:</span>
+                      <div className="bg-gray-100 text-gray-700 font-mono px-3 py-1 rounded-md text-sm border border-gray-300 shadow-inner">
+                          00025/SPK/2025
                       </div>
                   </div>
-                  {/* KOLOM KANAN: II. DATA STNK & BPKB */}
-                  <div className="border border-gray-200 p-2 space-y-1">
-                      <h3 className="text-xs font-bold border-b pb-1">II. DATA YANG TERTERA DI STNK & BPKB</h3>
-                      <div className="grid grid-cols-1 gap-1">
-                          <FormRow label="Nama" name="namaStnk" type="text" formData={formData} handler={handleInputChange} isAlphabet required />
-                          {/* Alamat & Kodepos */}
-                              <FormRow label="Alamat" name="alamatStnk" type="text" formData={formData} handler={handleInputChange} />
-                                  <InputKodepos name="kodePosStnk" formData={formData} handler={handleInputChange} />
-                          <FormRow label="KTP/TDP" name="ktpStnk" type="text" formData={formData} handler={handleInputChange} isNumeric required />
-                          <FormRow label="NPWP" name="npwpStnk" type="text" formData={formData} handler={handleInputChange} isNumeric />
-                          <FormRow label="No. Telpon" name="telpStnk" type="tel" formData={formData} handler={handleInputChange} isNumeric />
-                          <FormRow label="No. HP" name="hpStnk" type="tel" formData={formData} handler={handleInputChange} isNumeric />
-                          <FormRow label="Email" name="emailStnk" type="email" formData={formData} handler={handleInputChange} isEmail />
+              </div>
+
+              {/* ======================================================= */}
+              {/* I. DATA PEMESAN (LOGIKA BARU) */}
+              {/* ======================================================= */}
+              <section className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 md:p-6 transition-all hover:shadow-md">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3 mb-4">
+                      <h3 className="text-base font-bold text-gray-800 flex items-center">
+                          <span className="bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2">1</span>
+                          DATA PEMESAN
+                      </h3>
+                      
+                      {/* Radio Button Tipe Pemesan */}
+                      <div className="flex bg-gray-100 p-1 rounded-lg">
+                          {['Perseorangan', 'Korporasi'].map((type) => (
+                              <button
+                                  type='button'
+                                  key={type}
+                                  onClick={() => setFormData({...formData, tipePemesan: type})}
+                                  className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${
+                                      formData.tipePemesan === type 
+                                      ? 'bg-white text-red-600 shadow-sm border border-gray-200' 
+                                      : 'text-gray-500 hover:text-gray-700'
+                                  }`}
+                              >
+                                  {type}
+                              </button>
+                          ))}
                       </div>
                   </div>
 
+                  <div className="space-y-1">
+                      {/* LOGIKA PERSEORANGAN VS KORPORASI */}
+                      {formData.tipePemesan === 'Perseorangan' ? (
+                          <FormRow label="Nama Lengkap" name="namaPemesan" type="text" formData={formData} handler={handleInputChange} isAlphabet required />
+                      ) : (
+                          <div className="bg-red-50 p-4 rounded-lg mb-4 border border-red-100 space-y-2">
+                              <FormRow label="Nama Instansi/PT" name="namaPemesan" type="text" formData={formData} handler={handleInputChange} required />
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  <FormRow label="Nama PIC" name="namaPic" type="text" formData={formData} handler={handleInputChange} isAlphabet required />
+                                  <FormRow label="Jabatan PIC" name="jabatanPemesan" type="text" formData={formData} handler={handleInputChange} isAlphabet />
+                              </div>
+                          </div>
+                      )}
+
+                      {/* Data Umum */}
+                      <div className="flex flex-col md:flex-row md:items-start py-2 border-t border-dashed border-gray-200 mt-2">
+                          <label className="w-full md:w-1/3 text-xs font-semibold text-gray-600 mb-1 mt-2">Alamat Lengkap & Kode Pos</label>
+                          <div className="w-full md:w-2/3 space-y-2">
+                              <textarea 
+                                  name="alamatPemesan" 
+                                  value={formData.alamatPemesan} 
+                                  onChange={handleInputChange}
+                                  rows="2"
+                                  className="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 outline-none"
+                                  placeholder="Jalan, RT/RW, Kelurahan, Kecamatan"
+                              />
+                              <div className="flex items-center justify-end space-x-2">
+                                  <span className="text-[10px] text-gray-500">Kode Pos:</span>
+                                  <InputKodepos name="kodePosPemesan" formData={formData} handler={handleInputChange} />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
+                          <FormRow label="No. KTP/TDP" name="ktpPemesan" type="text" formData={formData} handler={handleInputChange} isNumeric required />
+                          <FormRow label="No. NPWP" name="npwpPemesan" type="text" formData={formData} handler={handleInputChange} isNumeric />
+                          <FormRow label="No. Telpon Kantor/Rumah" name="telpPemesan" type="tel" formData={formData} handler={handleInputChange} isNumeric />
+                          <FormRow label="No. HP (WA)" name="hpPemesan" type="tel" value={noHp} disabled />
+                      </div>
+                      <FormRow label="Alamat Email" name="emailPemesan" type="email" formData={formData} handler={handleInputChange} isEmail />
+                  </div>
+              </section>
+
+              {/* ======================================================= */}
+              {/* II. DATA STNK & BPKB */}
+              {/* ======================================================= */}
+              <section className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 md:p-6 hover:shadow-md transition-all">
+                  <div className="border-b border-gray-100 pb-3 mb-4">
+                      <h3 className="text-base font-bold text-gray-800 flex items-center">
+                          <span className="bg-gray-700 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2">2</span>
+                          DATA STNK & BPKB
+                      </h3>
+                  </div>
+                  
+                  <div className="space-y-1">
+                      <FormRow label="Nama di STNK" name="namaStnk" type="text" formData={formData} handler={handleInputChange} isAlphabet required />
+                      
+                      <div className="flex flex-col md:flex-row md:items-start py-2 border-t border-dashed border-gray-200 mt-2">
+                          <label className="w-full md:w-1/3 text-xs font-semibold text-gray-600 mb-1 mt-2">Alamat STNK</label>
+                          <div className="w-full md:w-2/3 space-y-2">
+                              <textarea 
+                                  name="alamatStnk" 
+                                  value={formData.alamatStnk} 
+                                  onChange={handleInputChange}
+                                  rows="2"
+                                  className="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 outline-none"
+                              />
+                              <div className="flex items-center justify-end space-x-2">
+                                  <span className="text-[10px] text-gray-500">Kode Pos:</span>
+                                  <InputKodepos name="kodePosStnk" formData={formData} handler={handleInputChange} />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
+                          <FormRow label="No. KTP" name="ktpStnk" type="text" formData={formData} handler={handleInputChange} isNumeric required />
+                          <FormRow label="No. NPWP" name="npwpStnk" type="text" formData={formData} handler={handleInputChange} isNumeric />
+                          <FormRow label="No. Telpon" name="telpStnk" type="tel" formData={formData} handler={handleInputChange} isNumeric />
+                          <FormRow label="No. HP" name="hpStnk" type="tel" formData={formData} handler={handleInputChange} isNumeric />
+                      </div>
+                      <FormRow label="Email" name="emailStnk" type="email" formData={formData} handler={handleInputChange} isEmail />
+                  </div>
+              </section>
               {/* ======================================================= */}
               {/* III. JUMLAH DAN DATA KENDARAAN */}
               {/* ======================================================= */}
@@ -540,12 +650,12 @@ export default function SPKAdvanced() {
               <div className="border border-gray-200 p-2 space-y-1">
                   <h3 className="text-xs font-bold border-b pb-1">IV. DATA PENGIRIMAN</h3>
                   <div className="flex items-center h-6 border-b border-gray-300">
-                      <FormRow label="Alamat" name="alamatPengiriman" type="text" formData={formData} handler={handleInputChange} />
                       <div className="pl-2 flex-shrink-0">
                           {/* <span className="text-[10px] pr-1">KodePos</span> */}
-                          <InputKodepos name="kodePosPengiriman" formData={formData} handler={handleInputChange} />
                       </div>
                   </div>
+                      <FormRow label="Alamat" name="alamatPengiriman" type="text" formData={formData} handler={handleInputChange} />
+                          <InputKodepos name="kodePosPengiriman" formData={formData} handler={handleInputChange} />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       <FormRow label="Penerima (Nama)" name="namaPenerima" type="text" formData={formData} handler={handleInputChange} isAlphabet />
                       <FormRow label="Penerima (HP)" name="hpPenerima" type="tel" formData={formData} handler={handleInputChange} isNumeric />
@@ -568,15 +678,15 @@ export default function SPKAdvanced() {
                       />
                       
                       {formData.pilihanPembelian === 'Kredit' && (
-                          <>
+                        <>
                               <InputRupiah label="Uang Muka" name="uangMuka" formData={formData} handler={handleInputChange} />
                               <InputRupiah label="Angsuran Pertama" name="angsuranPertama" formData={formData} handler={handleInputChange} />
-                              <InputRupiah label="Biaya Administrasi" name="biayaAdministrasi" formData={formData} handler={handleInputChange} />
-                              <InputRupiah label="Biaya Provisi" name="biayaProvisi" formData={formData} handler={handleInputChange} />
-                              <InputRupiah label="Asuransi Mobil" name="asuransiMobil" formData={formData} handler={handleInputChange} />
-                              <InputRupiah label="Asuransi Jiwa" name="asuransiJiwa" formData={formData} handler={handleInputChange} />
                           </>
                       )}
+                      <InputRupiah label="Biaya Administrasi" name="biayaAdministrasi" formData={formData} handler={handleInputChange} />
+                      <InputRupiah label="Biaya Provisi" name="biayaProvisi" formData={formData} handler={handleInputChange} />
+                      <InputRupiah label="Asuransi Mobil" name="asuransiMobil" formData={formData} handler={handleInputChange} />
+                      <InputRupiah label="Asuransi Jiwa" name="asuransiJiwa" formData={formData} handler={handleInputChange} />
                       <div className="pt-2 border-t-2 border-red-500">
                           <InputRupiah label="TOTAL BAYAR" name="totalBayar" formData={formData} handler={handleInputChange} required />
                       </div>
@@ -600,20 +710,20 @@ export default function SPKAdvanced() {
               <div className="border border-gray-200 p-2 space-y-1">
                   <h3 className="text-xs font-bold border-b pb-1">VII. SYARAT DAN KETENTUAN</h3>
                   <ol className="list-decimal list-inside text-[10px] space-y-0.5">
-                      <li>Surat pesanan kendaraan ini merupakan bukti pemesanan kendaraan yang sifatnya **TIDAK MENGIKAT** terhadap **HARGA JUAL** (sewaktu-waktu dapat berubah dan **KETERSEDIAAN KENDARAAN** oleh PENJUAL/DEALER).</li>
-                      <li>BBN atas harga on the road tidak **TERMASUK PAJAK PROGRESIF** bila ada.</li>
-                      <li>Surat pesanan kendaraan ini dianggap **SAH** apabila:
+                      <li>Surat pesanan kendaraan ini merupakan bukti pemesanan kendaraan yang sifatnya <strong>TIDAK MENGIKAT</strong> terhadap <strong>HARGA JUAL</strong> (sewaktu-waktu dapat berubah dan <strong>KETERSEDIAAN KENDARAAN</strong> oleh PENJUAL/DEALER).</li>
+                      <li>BBN atas harga on the road tidak <strong>TERMASUK PAJAK PROGRESIF</strong> bila ada.</li>
+                      <li>Surat pesanan kendaraan ini dianggap <strong>SAH</strong> apabila:
                           <ul className="list-disc list-inside ml-4">
-                              <li>telah ditandatangani oleh **PIMPINAN CABANG PENJUAL / DEALER**</li>
-                              <li>**UANG MUKA, PELUNASAN, dan PENCAIRAN KREDIT** telah diterima di **REKENING PENJUAL/DEALER** pada bank ??? No??? PT. BAHANA CAHAYA MOBILINDO selambat-lambatnya 14 hari sejak ditandatangani Surat Pesanan Kendaraan ini.</li>
+                              <li>telah ditandatangani oleh <strong>PIMPINAN CABANG PENJUAL / DEALER</strong></li>
+                              <li><strong>UANG MUKA, PELUNASAN, dan PENCAIRAN KREDIT</strong> telah diterima di <strong>REKENING PENJUAL/DEALER</strong> pada bank ??? No??? PT. BAHANA CAHAYA MOBILINDO selambat-lambatnya 14 hari sejak ditandatangani Surat Pesanan Kendaraan ini.</li>
                           </ul>
                       </li>
-                      <li>**DATA YANG TERTERA DI STNK/BPKB** yang tercantum pada surat pesanan kendaraan **TIDAK DAPAT DIRUBAH**.</li>
-                      <li>**DENDA** atas keterlambatan pembayaran sebesar 0,1% perhari.</li>
-                      <li>apabila terjadi perubahan kebijakan pemerintah atau leasing, maka pemesan **WAJIB MEMENUHI KEWAJIBAN** pembayaran kepada PENJUAL/DEALER.</li>
-                      <li>**PEMBATALAN** terjadi apabila pemesan tidak memenuhi persyaratan yang tercantum pada Surat Pesanan Kendaraan ini atau Pemesan membatalkan secara sepihak.</li>
-                      <li>Uang Muka yang telah dibayarkan pemesan **TIDAK DAPAT DIAMBIL KEMBALI** dan menjadi **HAK PENJUAL/DEALER**.</li>
-                      <li>Pemesan **SETUJU dan BERSEDIA** mengembalikan kendaraan dan surat-surat kendaraan yang telah diserahkan oleh PENJUAL/DEALER kepada pemesan apabila terjadi sesuatu diluar perjanjian diatas.</li>
+                      <li><strong>DATA YANG TERTERA DI STNK/BPKB</strong> yang tercantum pada surat pesanan kendaraan <strong>TIDAK DAPAT DIRUBAH</strong>.</li>
+                      <li><strong>DENDA</strong> atas keterlambatan pembayaran sebesar 0,1% perhari.</li>
+                      <li>apabila terjadi perubahan kebijakan pemerintah atau leasing, maka pemesan <strong>WAJIB MEMENUHI KEWAJIBAN</strong> pembayaran kepada PENJUAL/DEALER.</li>
+                      <li><strong>PEMBATALAN</strong> terjadi apabila pemesan tidak memenuhi persyaratan yang tercantum pada Surat Pesanan Kendaraan ini atau Pemesan membatalkan secara sepihak.</li>
+                      <li>Uang Muka yang telah dibayarkan pemesan <strong>TIDAK DAPAT DIAMBIL KEMBALI</strong> dan menjadi <strong>HAK PENJUAL/DEALER</strong>.</li>
+                      <li>Pemesan <strong>SETUJU dan BERSEDIA</strong> mengembalikan kendaraan dan surat-surat kendaraan yang telah diserahkan oleh PENJUAL/DEALER kepada pemesan apabila terjadi sesuatu diluar perjanjian diatas.</li>
                   </ol>
               </div>
 
@@ -644,15 +754,28 @@ export default function SPKAdvanced() {
                       <p className="text-center text-xs font-bold">( Nama Pimpinan Cabang )</p>
                   </div>
               </div>
+              {/* TOMBOL SUBMIT */}
+              <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-10 md:static md:bg-transparent md:border-none md:shadow-none md:p-0 md:mt-8">
+                  <button 
+                      type="button"
+                      onClick={handleFinalSubmit}
+                      disabled={loading}
+                      className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 rounded-xl font-bold shadow-lg text-lg flex justify-center items-center gap-2 hover:from-red-700 hover:to-red-800 transform hover:scale-[1.01] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                      {loading ? (
+                          <>
+                              <svg className="animate-spin h-5 w-5 mr-3 text-white" viewBox="0 0 24 24">
+                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                              </svg>
+                              Memproses Dokumen...
+                          </>
+                      ) : (
+                          <>🚀 KONFIRMASI & KIRIM SPK</>
+                      )}
+                  </button>
+              </div>
 
-              {/* SUBMIT BUTTON */}
-              <button 
-                  onClick={handleFinalSubmit}
-                  disabled={loading}
-                  className="w-full mt-4 bg-red-600 text-white py-3 rounded-md font-bold text-sm hover:bg-red-700 transition duration-150 disabled:bg-gray-400"
-              >
-                  {loading ? "Memproses Dokumen..." : "🚀 DEAL & KIRIM SPK"}
-              </button>
           </div>
         )}
       </div>

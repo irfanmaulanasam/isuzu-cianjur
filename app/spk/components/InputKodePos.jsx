@@ -1,40 +1,59 @@
-import { useRef } from 'react';
-export default function InputKodepos ({ name, formData, handler }) {
-    const refs = useRef([]);
-    
-    const handleKodeposChange = (index, value) => {
+// components/InputKodepos.js
+import React, { useRef, useEffect } from 'react';
+
+export default function InputKodepos({ name, formData, handler }) {
+    // Inisialisasi useRef dengan array kosong
+    const inputRefs = useRef([]);
+
+    // Reset refs saat komponen unmount atau update agar tidak memory leak
+    useEffect(() => {
+        inputRefs.current = inputRefs.current.slice(0, 5);
+    }, []);
+
+    const handleChange = (index, value) => {
+        // Hanya ambil angka
         const cleanValue = value.replace(/[^0-9]/g, '').slice(0, 1);
-        const newKodepos = [...formData[name]];
+        
+        // Copy state array yang ada (Safety check jika undefined)
+        const currentKodepos = formData[name] || ['','','','',''];
+        const newKodepos = [...currentKodepos];
+        
         newKodepos[index] = cleanValue;
         
+        // Kirim ke parent
         handler({ target: { name: name, value: newKodepos } });
 
+        // Logic Auto-Focus Maju
         if (cleanValue && index < 4) {
-            refs.current[index + 1].focus();
+            inputRefs.current[index + 1]?.focus();
         }
     };
     
-    const handleKodeposKeyDown = (index, e) => {
-        if (e.key === 'Backspace' && !formData[name][index] && index > 0) {
-            refs.current[index - 1].focus();
+    const handleKeyDown = (index, e) => {
+        // Logic Auto-Focus Mundur (Backspace)
+        if (e.key === 'Backspace' && !formData[name]?.[index] && index > 0) {
+            inputRefs.current[index - 1]?.focus();
         }
     };
+
+    // Pastikan data kodepos ada, jika tidak buat array kosong 5 biji
+    const values = formData[name] || ['','','','',''];
 
     return (
         <div className="flex space-x-1">
-            <p className="w-1/3 text-[10px] md:text-xs font-medium text-gray-700 flex-shrink-0">Kode Pos:</p>
-            {formData[name].map((digit, index) => (
+            {values.map((digit, index) => (
                 <input
                     key={index}
-                    ref={el => refs.current[index] = el}
-                    type="text"
+                    // ✅ CARA AMAN: Assign ref di dalam callback ini, bukan di body function
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    type="tel" // Gunakan tel agar keyboard angka muncul di HP
                     value={digit}
-                    onChange={(e) => handleKodeposChange(index, e.target.value)}
-                    onKeyDown={(e) => handleKodeposKeyDown(index, e)}
+                    onChange={(e) => handleChange(index, e.target.value)}
+                    onKeyDown={(e) => handleKeyDown(index, e)}
                     maxLength={1}
-                    className="w-8 h-6 text-center border border-gray-400 text-[10px] focus:ring-red-500"
+                    className="w-8 h-8 text-center border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-red-500 outline-none transition-all"
                 />
             ))}
         </div>
     );
-};
+}
