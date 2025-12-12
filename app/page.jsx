@@ -1,4 +1,3 @@
-// src/app/page.jsx
 import Image from 'next/image';
 import Hero from './components/sections/Hero';
 import ValueProps from './components/sections/ValueProps';
@@ -18,7 +17,6 @@ export default function Home() {
   return (
     <main className="bg-white text-slate-900">
       <Hero />
-
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4">
           <ValueProps />

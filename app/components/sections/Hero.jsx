@@ -1,7 +1,26 @@
-// src/components/sections/Hero.jsx
 'use client';
 import Link from 'next/link';
+import ModelCombobox from '@/app/components/ModelCombobox';
+import { allIsuzuModels } from '@/src/data/products/isuzuPrices-utils';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { m } from 'framer-motion';
+
+
 export default function Hero() {
+  const router = useRouter();
+  const [model, setModel] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!model) return; // bisa kasih toast/error
+
+    const params = new URLSearchParams();
+    params.set("model", model); // kirim nama model utuh
+
+    router.push(`/simulasi-kredit?${params.toString()}`);
+  };
+
   return (
     <section className="relative bg-gradient-to-r from-[#E6F0FF] to-white">
       <div className="max-w-7xl mx-auto px-4 py-20 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -38,17 +57,15 @@ export default function Hero() {
         <div className="order-first lg:order-last flex justify-center lg:justify-end">
           <div className="w-full max-w-md bg-white rounded-xl shadow p-6">
             <h3 className="text-xl font-semibold mb-3">Simulasi Cepat TCO</h3>
-            <form action="/simulation/ownership-cost" method="get" className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="text-sm text-slate-600">Model Kendaraan</label>
-                <select name="model" className="w-full border rounded-md px-3 py-2 mt-1">
-                  <option value="elf">Isuzu ELF NMR</option>
-                  <option value="traga">Isuzu Traga</option>
-                  <option value="d-max">Isuzu D-MAX</option>
-                  <option value="mu-x">Isuzu MU-X</option>
-                  <option value="fvr">Isuzu FVR</option>
-                  <option value="giga">Isuzu GIGA</option>
-                </select>
+                <ModelCombobox
+                value={model}
+                models={allIsuzuModels}
+                onChange={setModel}
+                // placeholder='Cari model kendaraan...'
+                helperText={!model ? "Pilih model kendaraan untuk simulasi" : "hapus untuk ganti model"}
+                />
               </div>
               <div>
                 <label className="text-sm text-slate-600">Rata-rata Km per Hari</label>
