@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import { useSmartOTP } from "@/hooks/useSmartOtp";
 import { getProductTitle } from "@/src/lib/getProductTitle";
+import Breadcrumb from "@/app/components/Breadcrumb";
 
 // Perbaiki struktur outletData menjadi object
 const outletData = {
@@ -85,6 +86,7 @@ export default function UnitOrderForm() {
 
   return (
     <section className="py-12 bg-gray-50">
+      <Breadcrumb />
       <div className="container mx-auto max-w-2xl p-6 bg-white rounded-lg shadow-xl">
         <h2 className={sectionTitleClass}>Formulir Order Unit</h2>
         

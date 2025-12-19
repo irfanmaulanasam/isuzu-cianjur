@@ -1,0 +1,34 @@
+{
+  "title": "products we offer",
+  "empty": "No products available",
+  "categories":[
+    {
+    "id": "ALL",
+    "label": "ALL"
+    },
+    {
+    "id": "Pickup & LCV",
+    "label": "Pickup & LCV"
+    },
+    {
+    "id": "Medium Truck",
+    "label": "Medium Truck"
+    },
+    {
+    "id": "Heavy Truck",
+    "label": "Heavy Truck"
+    },
+    {
+      "id":"SUV",
+      "label":"SUV"
+    },
+    {
+    "id": "Microbus",
+    "label": "Microbus"
+    },
+    {
+    "id": "High Pick-up",
+    "label": "High Pick-up"
+    }
+  ]
+}

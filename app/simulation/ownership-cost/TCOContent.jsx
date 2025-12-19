@@ -6,6 +6,7 @@ import { TCOCalculator } from "@/src/data/utils/tco-calculator";
 import { Section } from "@/app/components/CalculatorUI/Section";
 import { Input } from "@/app/components/CalculatorUI/Input";
 import { Result } from "@/app/components/CalculatorUI/Result";
+import Breadcrumb from "@/app/components/Breadcrumb";
 
 const formatRp = (n) =>
   new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(n);
@@ -95,6 +96,7 @@ export default function VehicleCostCalculatorPage() {
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-0 min-h-screen bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       {/* Header */}
+      <Breadcrumb />
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400 pb-2">
           Vehicle Cost Calculator {modelParam ? `- ${modelParam.toUpperCase()}` : ''}

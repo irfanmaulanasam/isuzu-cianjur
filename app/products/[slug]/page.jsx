@@ -1,12 +1,14 @@
 'use client';
 
-import { useEffect, useMemo } from "react";
+import { use,useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { specs, allSpecSlugs } from "@/src/data/products/specs";
 import SpecPage from "@/app/products/components/SpecPage";
 import { autoCompleteSlug } from "@/src/data/config/autoCompleteTCOSlug";
+import { useLanguage } from "@/src/context/languageContext";
 
 export default function ProductDetailPage({ params }) {
+    const { language } = useLanguage();
     const router = useRouter();
     const unwrappedParams = use(params);
     const slug = unwrappedParams.slug;
@@ -47,8 +49,8 @@ export default function ProductDetailPage({ params }) {
     }
 
     return (
-        <div>
-            <SpecPage data={data} />
+        <div className=" min-h-screen pt-6 pb-12 px-4 sm:px-6 lg:px-8">
+            <SpecPage data={{data, language}} />
         </div>
     )
 }

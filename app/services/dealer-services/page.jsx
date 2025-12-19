@@ -4,7 +4,7 @@ import { useLanguage } from '@/src/context/languageContext';
 import ID from '@/src/data/services/dealer/forms/id.json';
 import EN from '@/src/data/services/dealer/forms/en.json';
 import FormItem from '../components/FormItem';
-
+import Breadcrumb from '@/app/components/Breadcrumb';
 export default function BookingServiceForm() {
   const { language } = useLanguage();
 
@@ -76,6 +76,7 @@ export default function BookingServiceForm() {
   return (
     <section className={pageSectionClass}>
       <div className={cardClass}>
+      <Breadcrumb />
         <h1 className={titleClass}>{text.title}</h1>
         {text.subtitle && (
           <p className={subtitleClass}>{text.subtitle}</p>

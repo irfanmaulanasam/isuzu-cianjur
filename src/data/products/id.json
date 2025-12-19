@@ -1,0 +1,35 @@
+{
+  "title": "Daftar Produk",
+  "empty": "Tidak ada produk.",
+  "all": "SEMUA",
+  "categories": [
+    {
+      "id": "ALL",
+      "label": "SEMUA"
+    },
+    {
+      "id": "Pickup & LCV",
+      "label": "Pickup & LCV"
+    },
+    {
+      "id": "Medium Truck",
+      "label": "Truk Sedang"
+    },
+    {
+      "id": "Heavy Truck",
+      "label": "Truk Berat"
+    },
+    {
+      "id": "SUV",
+      "label": "SUV"
+    },
+    {
+      "id": "Microbus",
+      "label": "bus mikro"
+    },
+    {
+      "id": "High Pick-up",
+      "label": "pickup tinggi"
+    }
+  ]
+}

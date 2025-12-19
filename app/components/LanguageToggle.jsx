@@ -7,7 +7,7 @@ export default function LanguageToggle() {
   return (
     <button
       onClick={toggleLanguage}
-      className="w-8 h-8 flex items-center justify-center rounded-md border border-gray-200 hover:bg-gray-50 transition-colors text-xs font-medium"
+      className="w-8 h-8 flex items-center justify-center rounded-md border border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors text-xs font-medium"
       aria-label={`Switch to ${language === 'id' ? 'English' : 'Indonesian'}`}
       title={`Current: ${language === 'id' ? 'Indonesian' : 'English'}`}
     >

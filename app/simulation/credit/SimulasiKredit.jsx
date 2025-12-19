@@ -6,6 +6,7 @@ import ModelCombobox from "@/app/components/ModelCombobox";
 import { LeasingData } from "@/src/data/leasing/Leasing_data";
 import { ChevronDown, ChevronUp } from 'lucide-react'; 
 import { allIsuzuModels } from "@/src/data/products/isuzuPrices-utils";
+import Breadcrumb from "@/app/components/Breadcrumb";
 
 // --- Utility Functions ---
 const commonTenors = [12, 24, 36, 48, 60, 72, 84];
@@ -241,6 +242,7 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
     <div className="flex justify-center p-4 sm:p-6 md:p-8 bg-gray-50 dark:bg-gray-800 min-h-screen">
       <div className="w-full max-w-6xl flex flex-col lg:flex-row shadow-xl rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800">
 
+        <Breadcrumb />
         {/* Form Input */}
         <div className="w-full lg:w-1/2 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-700">
           <h2 className="text-xl sm:text-2xl font-bold dark:text-white mb-6 text-center lg:text-left text-blue-700 dark:text-blue-400">

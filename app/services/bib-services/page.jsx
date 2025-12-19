@@ -5,6 +5,7 @@ import FormItem from '../components/FormItem';
 import { useLanguage } from '@/src/context/languageContext';
 import ID from '@/src/data/services/bib/forms/id.json';
 import EN from '@/src/data/services/bib/forms/en.json';
+import Breadcrumb from "@/app/components/Breadcrumb";
 
 export default function BookingServiceFormBIB() {
   const { language } = useLanguage();
@@ -195,6 +196,7 @@ export default function BookingServiceFormBIB() {
   return (
     <section className={pageSectionClass}>
       <div className={cardClass}>
+      <Breadcrumb />
         <h1 className={titleClass}>{text.title}</h1>
         <p className={subtitleClass}>{text.subtitle}</p>
 
