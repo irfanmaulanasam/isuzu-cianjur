@@ -1,0 +1,32 @@
+{
+  "title": "Formulir Order Sparepart",
+  "section": "Data Pelanggan & Lokasi",
+  "labels": {
+    "nama": "Nama*",
+    "nomorRangka": "Nomor Rangka*",
+    "noHP": "No HP*",
+    "email": "Email*",
+    "provinsi": "Provinsi*",
+    "kabupatenKota": "Kabupaten/Kota*",
+    "kebutuhanSparepart": "Kebutuhan Sparepart*",
+    "captcha": "Saya bukan robot",
+    "captchaTag": "reCAPTCHA",
+    "submit": "KIRIM FORM ORDER SPAREPART"
+  },
+  "placeholders": {
+    "nama": "Nama Anda",
+    "nomorRangka": "Nomor Rangka",
+    "noHP": "Nomor Handphone Anda",
+    "email": "Email Anda",
+    "kebutuhanSparepart": "Sampaikan Kebutuhan Sparepart Anda"
+  },
+  "location": {
+    "Jawa Barat": ["Bandung", "Bekasi", "Depok"],
+    "DKI Jakarta": ["Jakarta Pusat", "Jakarta Barat", "Jakarta Selatan"],
+    "Jawa Timur": ["Surabaya", "Malang", "Sidoarjo"]
+  },
+  "toast": {
+    "success": "Formulir order sparepart Anda telah berhasil dikirim!",
+    "error": "Terjadi kesalahan saat mengirim formulir. Coba lagi."
+  }
+}

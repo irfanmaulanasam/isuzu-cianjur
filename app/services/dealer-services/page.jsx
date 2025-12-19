@@ -1,30 +1,37 @@
-'use client'
-import { useState } from "react";
+'use client';
+import { useState, useMemo } from "react";
+import { useLanguage } from '@/src/context/languageContext';
+import ID from '@/src/data/services/dealer/forms/id.json';
+import EN from '@/src/data/services/dealer/forms/en.json';
+import FormItem from '../components/FormItem';
 
 export default function BookingServiceForm() {
+  const { language } = useLanguage();
+
+  const text = useMemo(
+    () => (language === 'en' ? EN : ID),
+    [language]
+  );
+
   const [formData, setFormData] = useState({
-    // Data Pelanggan
     nama: "",
     telepon: "",
     email: "",
     alamat: "",
-    
-    // Profil Unit
     jenisMobil: "",
     tahunMobil: "",
     nomorPolisi: "",
-    
-    // Data Layanan
     provinsi: "",
     bengkel: "",
     jenisService: "",
     tanggalBooking: "",
     jamBooking: "",
     keluhan: "",
-    
-    // Captcha tidak diimplementasikan penuh, hanya placeholder
     captchaChecked: false,
+    loading: false,
   });
+
+  const { options, labels, placeholders, sections } = text;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -36,159 +43,247 @@ export default function BookingServiceForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // LOGIKA PENGIRIMAN DATA FORM KE BACKEND DI SINI
-    console.log("Data Booking Dikirim:", formData);
-    alert("Formulir booking Anda telah berhasil dikirim!");
-
-    // Biasanya, setelah sukses kirim data, form akan di-reset atau dialihkan
-    // setFormData(/* reset data di sini */); 
+    try {
+      console.log("Data Booking Dikirim:", formData);
+      alert(text.toast.success);
+    } catch (err) {
+      console.error(err);
+      alert(text.toast.error);
+    }
   };
-  
-  // Data dummy untuk dropdown
-  const jenisMobilOptions = ["Toyota Avanza", "Honda Brio", "Mitsubishi Xpander"];
-  const tahunMobilOptions = ["2024", "2023", "2022"];
-  const provinsiOptions = ["DKI Jakarta", "Jawa Barat", "Jawa Timur"];
-  const bengkelOptions = ["Bengkel A - Jakarta", "Bengkel B - Bandung", "Bengkel C - Surabaya"];
-  const jenisServiceOptions = ["Service Rutin", "Ganti Oli", "Perbaikan Rem", "Service Berat"];
-  const jamBookingOptions = ["09:00", "10:00", "11:00", "13:00", "14:00"];
 
+  // === STYLE SAMA DENGAN BIB ===
+  const pageSectionClass = "py-12 bg-gray-50 dark:bg-slate-950";
+  const cardClass =
+    "container mx-auto max-w-4xl p-6 bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-gray-100 dark:border-slate-800";
+  const titleClass =
+    "text-3xl font-extrabold text-center mb-2 text-slate-800 dark:text-slate-50";
+  const subtitleClass =
+    "text-center text-sm text-slate-600 dark:text-slate-300 mb-6";
 
-  // Tailwind classes dasar untuk input
-  const inputClass = "mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-red-600 focus:border-red-600 sm:text-sm";
-  const labelClass = "block text-base font-semibold text-slate-800 mb-1";
-  const sectionTitleClass = "text-xl font-bold text-bahana-light mt-6 mb-3 border-b-2 border-bahana-light pb-1";
+  const sectionWrapperClass =
+    "border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-900 shadow-sm";
+  const sectionHeaderBarClass =
+    "px-3 py-2 bg-slate-50 dark:bg-slate-800/70 border-b border-gray-200 dark:border-slate-700";
+  const sectionHeaderTextClass =
+    "text-xs font-semibold tracking-wide text-slate-700 dark:text-slate-100 uppercase";
+  const sectionBodyGridClass =
+    "p-3 grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-3";
+
+  const submitButtonClass =
+    "w-full max-w-sm flex justify-center py-3 px-4 rounded-lg shadow-lg text-lg font-bold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-red-500 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed";
 
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="container mx-auto max-w-2xl p-6 bg-white rounded-lg shadow-xl">
-        <h1 className="text-3xl font-extrabold text-center mb-8 text-slate-800">
-          Formulir Booking Service
-        </h1>
+    <section className={pageSectionClass}>
+      <div className={cardClass}>
+        <h1 className={titleClass}>{text.title}</h1>
+        {text.subtitle && (
+          <p className={subtitleClass}>{text.subtitle}</p>
+        )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          
-          {/* Bagian 1: Data Pelanggan */}
-          <h2 className={sectionTitleClass}>Data Pelanggan</h2>
-          
-          <div>
-            <label htmlFor="nama" className={labelClass}>Nama*</label>
-            <input type="text" id="nama" name="nama" value={formData.nama} onChange={handleChange} required className={inputClass} placeholder="Nama Anda" />
-          </div>
-          
-          <div>
-            <label htmlFor="telepon" className={labelClass}>Telepon*</label>
-            <input type="tel" id="telepon" name="telepon" value={formData.telepon} onChange={handleChange} required className={inputClass} placeholder="Telepon Anda" />
-          </div>
-          
-          <div>
-            <label htmlFor="email" className={labelClass}>Email*</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="Email Anda" />
-          </div>
-          
-          <div>
-            <label htmlFor="alamat" className={labelClass}>Alamat*</label>
-            <textarea id="alamat" name="alamat" rows="3" value={formData.alamat} onChange={handleChange} required className={`${inputClass} resize-y`} placeholder="Alamat Anda"></textarea>
-          </div>
-
-          ---
-          
-          {/* Bagian 2: Profil Unit */}
-          <h2 className={sectionTitleClass}>Profil Unit</h2>
-          
-          <div>
-            <label htmlFor="jenisMobil" className={labelClass}>Jenis Mobil*</label>
-            <select id="jenisMobil" name="jenisMobil" value={formData.jenisMobil} onChange={handleChange} required className={inputClass}>
-              <option value="" disabled>Pilih Jenis Mobil</option>
-              {jenisMobilOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select>
-          </div>
-          
-          <div>
-            <label htmlFor="tahunMobil" className={labelClass}>Tahun Mobil*</label>
-            <select id="tahunMobil" name="tahunMobil" value={formData.tahunMobil} onChange={handleChange} required className={inputClass}>
-              <option value="" disabled>Pilih Tahun Mobil</option>
-              {tahunMobilOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select>
-          </div>
-          
-          <div>
-            <label htmlFor="nomorPolisi" className={labelClass}>Nomor Polisi*</label>
-            <input type="text" id="nomorPolisi" name="nomorPolisi" value={formData.nomorPolisi} onChange={handleChange} required className={inputClass} placeholder="Nomor Polisi Kendaraan Anda" />
-          </div>
-
-          ---
-
-          {/* Bagian 3: Data Layanan */}
-          <h2 className={sectionTitleClass}>Data Layanan</h2>
-
-          <div>
-            <label htmlFor="provinsi" className={labelClass}>Provinsi*</label>
-            <select id="provinsi" name="provinsi" value={formData.provinsi} onChange={handleChange} required className={inputClass}>
-              <option value="" disabled>Pilih Provinsi</option>
-              {provinsiOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select>
-          </div>
-          
-          <div>
-            <label htmlFor="bengkel" className={labelClass}>Bengkel*</label>
-            <select id="bengkel" name="bengkel" value={formData.bengkel} onChange={handleChange} required className={inputClass}>
-              <option value="" disabled>Pilih Bengkel</option>
-              {bengkelOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select>
-          </div>
-          
-          <div>
-            <label htmlFor="jenisService" className={labelClass}>Jenis Service*</label>
-            <select id="jenisService" name="jenisService" value={formData.jenisService} onChange={handleChange} required className={inputClass}>
-              <option value="" disabled>Pilih Jenis Service</option>
-              {jenisServiceOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select>
-          </div>
-
-          {/* Tanggal dan Jam Booking (dalam satu baris) */}
-          <div className="flex gap-4">
-            <div className="flex-1">
-              <label htmlFor="tanggalBooking" className={labelClass}>Tanggal Booking*</label>
-              <input type="date" id="tanggalBooking" name="tanggalBooking" value={formData.tanggalBooking} onChange={handleChange} required className={inputClass} />
+        <form onSubmit={handleSubmit} className="space-y-6 text-slate-800 dark:text-slate-100">
+          {/* 1. Data Pelanggan */}
+          <div className={sectionWrapperClass}>
+            <div className={sectionHeaderBarClass}>
+              <div className={sectionHeaderTextClass}>{sections.customer}</div>
             </div>
-            <div className="flex-1">
-              <label htmlFor="jamBooking" className={labelClass}>Jam*</label>
-              <select id="jamBooking" name="jamBooking" value={formData.jamBooking} onChange={handleChange} required className={inputClass}>
-                <option value="" disabled>Pilih Jam</option>
-                {jamBookingOptions.map(option => <option key={option} value={option}>{option}</option>)}
-              </select>
-            </div>
-          </div>
-          
-          <div>
-            <label htmlFor="keluhan" className={labelClass}>Keluhan*</label>
-            <textarea id="keluhan" name="keluhan" rows="4" value={formData.keluhan} onChange={handleChange} required className={`${inputClass} resize-y`} placeholder="Sampaikan keluhan Anda"></textarea>
-          </div>
-
-          {/* Captcha Placeholder */}
-          <div className="mt-6">
-            <div className="flex items-center space-x-2 border border-slate-300 p-3 w-max rounded-md bg-white">
-                <input 
-                    type="checkbox" 
-                    id="captcha" 
-                    name="captchaChecked" 
-                    checked={formData.captchaChecked} 
-                    onChange={handleChange} 
-                    required 
-                    className="h-5 w-5 text-red-600 border-gray-300 rounded focus:ring-red-500"
+            <div className={sectionBodyGridClass}>
+              <div className="md:col-span-4">
+                <FormItem
+                  label={labels.nama}
+                  name="nama"
+                  type="text"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  placeholder={placeholders.nama}
                 />
-                <label htmlFor="captcha" className="text-sm text-slate-700">I`m not a robot</label>
-                <span className="text-xs text-slate-500 ml-4">reCAPTCHA</span>
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.telepon}
+                  name="telepon"
+                  type="tel"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  isNumeric
+                  placeholder={placeholders.telepon}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.email}
+                  name="email"
+                  type="email"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  placeholder={placeholders.email}
+                />
+              </div>
+
+              <div className="md:col-span-4">
+                <FormItem
+                  label={labels.alamat}
+                  name="alamat"
+                  type="textarea"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  rows={3}
+                  placeholder={placeholders.alamat}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Tombol Submit */}
-          <button
-            type="submit"
-            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-lg font-semibold text-white bg-bahana-primary hover:bg-bahana-light focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-bahana-light-10 transition-colors mt-8"
-          >
-            SUBMIT
-          </button>
+          {/* 2. Profil Unit */}
+          <div className={sectionWrapperClass}>
+            <div className={sectionHeaderBarClass}>
+              <div className={sectionHeaderTextClass}>{sections.vehicle}</div>
+            </div>
+            <div className="p-3 grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-3">
+              <FormItem
+                label={labels.jenisMobil}
+                name="jenisMobil"
+                type="select"
+                formData={formData}
+                handler={handleChange}
+                required
+                options={options.jenisMobil}
+              />
+              <FormItem
+                label={labels.tahunMobil}
+                name="tahunMobil"
+                type="select"
+                formData={formData}
+                handler={handleChange}
+                required
+                options={options.tahunMobil}
+              />
+              <FormItem
+                label={labels.nomorPolisi}
+                name="nomorPolisi"
+                type="text"
+                formData={formData}
+                handler={handleChange}
+                required
+                placeholder={placeholders.nomorPolisi}
+              />
+            </div>
+          </div>
+
+          {/* 3. Data Layanan */}
+          <div className={sectionWrapperClass}>
+            <div className={sectionHeaderBarClass}>
+              <div className={sectionHeaderTextClass}>{sections.service}</div>
+            </div>
+            <div className={sectionBodyGridClass}>
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.provinsi}
+                  name="provinsi"
+                  type="select"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  options={options.provinsi}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.bengkel}
+                  name="bengkel"
+                  type="select"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  options={options.bengkel}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.jenisService}
+                  name="jenisService"
+                  type="select"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  options={options.jenisService}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.tanggalBooking}
+                  name="tanggalBooking"
+                  type="date"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.jamBooking}
+                  name="jamBooking"
+                  type="select"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  options={options.jamBooking}
+                />
+              </div>
+
+              <div className="md:col-span-4">
+                <FormItem
+                  label={labels.keluhan}
+                  name="keluhan"
+                  type="textarea"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  rows={3}
+                  placeholder={placeholders.keluhan}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Captcha + Submit */}
+          <div className="flex flex-col items-center pt-2">
+            <div className="flex items-center space-x-2 border border-slate-300 dark:border-slate-700 p-3 w-max rounded-md bg-gray-50 dark:bg-slate-900 shadow-inner mb-6">
+              <input
+                type="checkbox"
+                id="captcha"
+                name="captchaChecked"
+                checked={formData.captchaChecked}
+                onChange={handleChange}
+                required
+                className="h-5 w-5 text-red-600 border-gray-300 dark:border-slate-500 rounded focus:ring-red-500"
+              />
+              <label htmlFor="captcha" className="text-sm text-slate-700 dark:text-slate-200">
+                {labels.captcha}
+              </label>
+              <span className="text-xs text-slate-500 dark:text-slate-400 ml-4">
+                {labels.captchaTag}
+              </span>
+            </div>
+
+            <button
+              type="submit"
+              disabled={formData.loading}
+              className={submitButtonClass}
+            >
+              {labels.submit}
+            </button>
+          </div>
         </form>
       </div>
     </section>

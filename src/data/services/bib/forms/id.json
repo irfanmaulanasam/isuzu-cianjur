@@ -1,0 +1,30 @@
+{
+  "title": "Form Booking Bengkel Isuzu Berjalan (BIB)",
+  "subtitle": "Layanan mekanik panggilan darurat (On-Site Service) ke lokasi unit Anda.",
+  "sections": {
+    "customer": "1. DATA PELANGGAN & KONTAK",
+    "vehicle": "2. PROFIL UNIT KENDARAAN",
+    "service": "3. DETAIL LAYANAN & KELUHAN"
+  },
+  "labels": {
+    "nama": "Nama Lengkap",
+    "telepon": "No. Telepon (WA)",
+    "email": "Email",
+    "alamat": "Alamat (Lokasi Visit)*",
+    "jenisMobil": "Jenis Mobil",
+    "tahunMobil": "Tahun Mobil",
+    "nomorPolisi": "Nomor Polisi",
+    "jenisService": "Tipe Layanan",
+    "tanggalBooking": "Tanggal Visit (Estimasi)",
+    "jamBooking": "Jam Visit (Estimasi)",
+    "keluhan": "Detail Keluhan (Penting!)*",
+    "captcha": "Saya bukan robot",
+    "submit": "🚨 KIRIM FORM BOOKING BENGKEL ISUZU BERJALAN (BIB)",
+    "submitLoading": "Memproses & Mengirim..."
+  },
+  "placeholders": {
+    "keluhan": "Deskripsikan masalah (Contoh: Mesin mati mendadak, tidak bisa distarter, asap hitam, dll)."
+  },
+  "serviceType": "BIB - Bengkel Isuzu Berjalan",
+  "disclaimer": "* Dengan mengirimkan formulir ini, Anda setuju untuk dihubungi oleh perwakilan kami untuk mengonfirmasi pemesanan Anda dan membahas detail lebih lanjut."
+}

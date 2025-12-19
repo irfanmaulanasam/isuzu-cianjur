@@ -1,0 +1,46 @@
+{
+  "title": "Service Booking Form",
+  "sections": {
+    "customer": "Customer Information",
+    "vehicle": "Vehicle Profile",
+    "service": "Service Details"
+  },
+  "labels": {
+    "nama": "Name*",
+    "telepon": "Phone*",
+    "email": "Email*",
+    "alamat": "Address*",
+    "jenisMobil": "Vehicle Model*",
+    "tahunMobil": "Vehicle Year*",
+    "nomorPolisi": "License Plate*",
+    "provinsi": "Province*",
+    "bengkel": "Workshop*",
+    "jenisService": "Service Type*",
+    "tanggalBooking": "Booking Date*",
+    "jamBooking": "Time*",
+    "keluhan": "Complaint*",
+    "captcha": "I'm not a robot",
+    "captchaTag": "reCAPTCHA",
+    "submit": "SUBMIT SERVICE BOOKING FORM"
+  },
+  "placeholders": {
+    "nama": "Your Name",
+    "telepon": "Your Phone Number",
+    "email": "Your Email",
+    "alamat": "Your Address",
+    "nomorPolisi": "Your Vehicle License Plate",
+    "keluhan": "Describe your issue"
+  },
+  "options": {
+    "jenisMobil": ["Toyota Avanza", "Honda Brio", "Mitsubishi Xpander"],
+    "tahunMobil": ["2024", "2023", "2022"],
+    "provinsi": ["DKI Jakarta", "West Java", "East Java"],
+    "bengkel": ["Workshop A - Jakarta", "Workshop B - Bandung", "Workshop C - Surabaya"],
+    "jenisService": ["Regular Service", "Oil Change", "Brake Repair", "Major Service"],
+    "jamBooking": ["09:00", "10:00", "11:00", "13:00", "14:00"]
+  },
+  "toast": {
+    "success": "Your booking form has been submitted!",
+    "error": "An error occurred while submitting the form. Please try again."
+  }
+}

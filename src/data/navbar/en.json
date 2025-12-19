@@ -24,7 +24,7 @@
         "submenu": [
           {"title": "Bib Services", "path": "/services/bib-services"},
           {"title": "Dealer Services", "path": "/services/dealer-services"},
-          {"title": "Sparepart", "path": "/services/sparepart-order"}
+          {"title": "Sparepart Order", "path": "/services/sparepart-order"}
         ]
       },
       { "title": "Outlet", "path": "/outlet" },

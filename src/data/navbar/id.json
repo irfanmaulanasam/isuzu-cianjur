@@ -46,11 +46,11 @@
         "path": "/services",
         "submenu": [
           {
-            "title": "Layanan BIB",
+            "title": "Perawatan BIB",
             "path": "/services/bib-services"
           },
           {
-            "title": "Layanan Dealer",
+            "title": "Perawatan Dealer",
             "path": "/services/dealer-services"
           },
           {

@@ -1,16 +1,19 @@
-'use client'
+'use client';
 import { useState, useMemo } from "react";
-
-// Data Dummy untuk Dependent Dropdown
-const locationData = {
-  "Jawa Barat": ["Bandung", "Bekasi", "Depok"],
-  "DKI Jakarta": ["Jakarta Pusat", "Jakarta Barat", "Jakarta Selatan"],
-  "Jawa Timur": ["Surabaya", "Malang", "Sidoarjo"],
-};
+import { useLanguage } from '@/src/context/languageContext';
+import ID from '@/src/data/services/sparepart-order/forms/id.json';
+import EN from '@/src/data/services/sparepart-order/forms/en.json';
+import FormItem from '../components/FormItem';
 
 export default function SparepartOrderForm() {
+  const { language } = useLanguage();
+
+  const text = useMemo(
+    () => (language === 'en' ? EN : ID),
+    [language]
+  );
+
   const [formData, setFormData] = useState({
-    // Data Pelanggan & Lokasi
     nama: "",
     nomorRangka: "",
     noHP: "",
@@ -19,127 +22,202 @@ export default function SparepartOrderForm() {
     kabupatenKota: "",
     kebutuhanSparepart: "",
     captchaChecked: false,
+    loading: false,
   });
 
-  // Ambil daftar provinsi dari keys data
-  const provinsiOptions = useMemo(() => Object.keys(locationData), []);
-  
-  // Ambil daftar kabupaten/kota berdasarkan provinsi yang dipilih
+  const { labels, placeholders } = text;
+
+  const provinsiOptions = useMemo(
+    () => Object.keys(text.location),
+    [text]
+  );
+
   const kabupatenKotaOptions = useMemo(() => {
-    return formData.provinsi ? locationData[formData.provinsi] : [];
-  }, [formData.provinsi]);
+    return formData.provinsi ? text.location[formData.provinsi] || [] : [];
+  }, [formData.provinsi, text]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
-    // Jika ganti provinsi, reset Kabupaten/Kota
+
     if (name === 'provinsi' && value !== formData.provinsi) {
-        setFormData(prevData => ({
-            ...prevData,
-            provinsi: value,
-            kabupatenKota: '', // Reset Kabupaten/Kota
-        }));
-        return;
+      setFormData(prev => ({
+        ...prev,
+        provinsi: value,
+        kabupatenKota: '',
+      }));
+      return;
     }
 
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData(prev => ({
+      ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Data Order Sparepart Dikirim:", formData);
-    alert("Formulir order sparepart Anda telah berhasil dikirim!");
-    // Tambahkan logika pengiriman data ke API di sini
+    try {
+      console.log("Data Order Sparepart Dikirim:", formData);
+      alert(text.toast.success);
+    } catch (err) {
+      console.error(err);
+      alert(text.toast.error);
+    }
   };
 
-  // Tailwind classes dasar
-  const inputClass = "mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-red-600 focus:border-red-600 sm:text-sm";
-  const labelClass = "block text-base font-semibold text-red-600 mb-1"; // Label warna merah sesuai gambar
-  const sectionTitleClass = "text-xl font-bold text-red-600 mb-4"; // Judul utama
+  // === STYLE SAMA DENGAN BIB & DEALER ===
+  const pageSectionClass = "py-12 bg-gray-50 dark:bg-slate-950";
+  const cardClass =
+    "container mx-auto max-w-4xl p-6 bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-gray-100 dark:border-slate-800";
+  const titleClass =
+    "text-3xl font-extrabold text-center mb-2 text-slate-800 dark:text-slate-50";
+  const subtitleClass =
+    "text-center text-sm text-slate-600 dark:text-slate-300 mb-6";
+
+  const sectionWrapperClass =
+    "border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-900 shadow-sm";
+  const sectionHeaderBarClass =
+    "px-3 py-2 bg-slate-50 dark:bg-slate-800/70 border-b border-gray-200 dark:border-slate-700";
+  const sectionHeaderTextClass =
+    "text-xs font-semibold tracking-wide text-slate-700 dark:text-slate-100 uppercase";
+  const sectionBodyGridClass =
+    "p-3 grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-3";
+
+  const submitButtonClass =
+    "w-full max-w-sm flex justify-center py-3 px-4 rounded-lg shadow-lg text-lg font-bold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-red-500 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed";
 
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="container mx-auto max-w-2xl p-6 bg-white rounded-lg shadow-xl">
-        <h2 className={sectionTitleClass}>Data Pelanggan</h2>
+    <section className={pageSectionClass}>
+      <div className={cardClass}>
+        <h1 className={titleClass}>{text.title}</h1>
+        {text.subtitle && (
+          <p className={subtitleClass}>{text.subtitle}</p>
+        )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          
-          {/* 1. Nama */}
-          <div>
-            <label htmlFor="nama" className={labelClass}>Nama*</label>
-            <input type="text" id="nama" name="nama" value={formData.nama} onChange={handleChange} required className={inputClass} placeholder="Nama Anda" />
-          </div>
-          
-          {/* 2. Nomor Rangka */}
-          <div>
-            <label htmlFor="nomorRangka" className={labelClass}>Nomor Rangka*</label>
-            <input type="text" id="nomorRangka" name="nomorRangka" value={formData.nomorRangka} onChange={handleChange} required className={inputClass} placeholder="Nomor Rangka" />
-          </div>
-          
-          {/* 3. No HP */}
-          <div>
-            <label htmlFor="noHP" className={labelClass}>No HP*</label>
-            <input type="tel" id="noHP" name="noHP" value={formData.noHP} onChange={handleChange} required className={inputClass} placeholder="Nomor Handphone Anda" />
-          </div>
-          
-          {/* 4. Email */}
-          <div>
-            <label htmlFor="email" className={labelClass}>Email*</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="Email Anda" />
-          </div>
-          
-          {/* 5. Provinsi */}
-          <div>
-            <label htmlFor="provinsi" className={labelClass}>Provinsi*</label>
-            <select id="provinsi" name="provinsi" value={formData.provinsi} onChange={handleChange} required className={inputClass}>
-              <option value="" disabled>Pilih Provinsi</option>
-              {provinsiOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select>
-          </div>
-          
-          {/* 6. Kabupaten/Kota (Dependent Dropdown) */}
-          <div>
-            <label htmlFor="kabupatenKota" className={labelClass}>Kabupaten/Kota*</label>
-            <select 
-              id="kabupatenKota" 
-              name="kabupatenKota" 
-              value={formData.kabupatenKota} 
-              onChange={handleChange} 
-              required 
-              className={inputClass}
-              disabled={!formData.provinsi} // Disable jika Provinsi belum dipilih
-            >
-              <option value="" disabled>Pilih Kabupaten/Kota</option>
-              {kabupatenKotaOptions.map(option => <option key={option} value={option}>{option}</option>)}
-              {kabupatenKotaOptions.length === 0 && formData.provinsi && <option value="" disabled>Loading...</option>}
-            </select>
-          </div>
-          
-          {/* 7. Kebutuhan Sparepart */}
-          <div>
-            <label htmlFor="kebutuhanSparepart" className={labelClass}>Kebutuhan Sparepart*</label>
-            <textarea id="kebutuhanSparepart" name="kebutuhanSparepart" rows="4" value={formData.kebutuhanSparepart} onChange={handleChange} required className={`${inputClass} resize-y`} placeholder="Sampaikan Kebutuhan Sparepart Anda"></textarea>
-          </div>
+        <form onSubmit={handleSubmit} className="space-y-6 text-slate-800 dark:text-slate-100">
+          <div className={sectionWrapperClass}>
+            <div className={sectionHeaderBarClass}>
+              <div className={sectionHeaderTextClass}>{text.section}</div>
+            </div>
+            <div className={sectionBodyGridClass}>
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.nama}
+                  name="nama"
+                  type="text"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  placeholder={placeholders.nama}
+                />
+              </div>
 
-          {/* Captcha Placeholder */}
-          <div className="mt-6">
-            <div className="flex items-center space-x-2 border border-slate-300 p-3 w-max rounded-md bg-white">
-                <input type="checkbox" id="captcha" name="captchaChecked" checked={formData.captchaChecked} onChange={handleChange} required className="h-5 w-5 text-red-600 border-gray-300 rounded focus:ring-red-500"/>
-                <label htmlFor="captcha" className="text-sm text-slate-700">I`m not a robot</label>
-                <span className="text-xs text-slate-500 ml-4">reCAPTCHA</span>
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.nomorRangka}
+                  name="nomorRangka"
+                  type="text"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  placeholder={placeholders.nomorRangka}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.noHP}
+                  name="noHP"
+                  type="tel"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  isNumeric
+                  placeholder={placeholders.noHP}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.email}
+                  name="email"
+                  type="email"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  placeholder={placeholders.email}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <FormItem
+                  label={labels.provinsi}
+                  name="provinsi"
+                  type="select"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  options={provinsiOptions}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                {/* Dependent dropdown pakai FormItem tapi options dinamis */}
+                <FormItem
+                  label={labels.kabupatenKota}
+                  name="kabupatenKota"
+                  type="select"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  options={kabupatenKotaOptions}
+                  disabled={!formData.provinsi}
+                />
+              </div>
+
+              <div className="md:col-span-4">
+                <FormItem
+                  label={labels.kebutuhanSparepart}
+                  name="kebutuhanSparepart"
+                  type="textarea"
+                  formData={formData}
+                  handler={handleChange}
+                  required
+                  rows={4}
+                  placeholder={placeholders.kebutuhanSparepart}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Tombol Submit */}
-          <button
-            type="submit"
-            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-lg font-semibold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-red-500 transition-colors mt-8"
-          >
-            SUBMIT
-          </button>
+          {/* Captcha + Submit */}
+          <div className="flex flex-col items-center pt-2">
+            <div className="flex items-center space-x-2 border border-slate-300 dark:border-slate-700 p-3 w-max rounded-md bg-gray-50 dark:bg-slate-900 shadow-inner mb-6">
+              <input
+                type="checkbox"
+                id="captcha"
+                name="captchaChecked"
+                checked={formData.captchaChecked}
+                onChange={handleChange}
+                required
+                className="h-5 w-5 text-red-600 border-gray-300 dark:border-slate-500 rounded focus:ring-red-500"
+              />
+              <label htmlFor="captcha" className="text-sm text-slate-700 dark:text-slate-200">
+                {labels.captcha}
+              </label>
+              <span className="text-xs text-slate-500 dark:text-slate-400 ml-4">
+                {labels.captchaTag}
+              </span>
+            </div>
+
+            <button
+              type="submit"
+              disabled={formData.loading}
+              className={submitButtonClass}
+            >
+              {labels.submit}
+            </button>
+          </div>
         </form>
       </div>
     </section>

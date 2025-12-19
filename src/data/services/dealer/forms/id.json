@@ -1,0 +1,46 @@
+{
+  "title": "Formulir Booking Service",
+  "sections": {
+    "customer": "Data Pelanggan",
+    "vehicle": "Profil Unit",
+    "service": "Data Layanan"
+  },
+  "labels": {
+    "nama": "Nama*",
+    "telepon": "Telepon*",
+    "email": "Email*",
+    "alamat": "Alamat*",
+    "jenisMobil": "Jenis Mobil*",
+    "tahunMobil": "Tahun Mobil*",
+    "nomorPolisi": "Nomor Polisi*",
+    "provinsi": "Provinsi*",
+    "bengkel": "Bengkel*",
+    "jenisService": "Jenis Service*",
+    "tanggalBooking": "Tanggal Booking*",
+    "jamBooking": "Jam*",
+    "keluhan": "Keluhan*",
+    "captcha": "Saya bukan robot",
+    "captchaTag": "reCAPTCHA",
+    "submit": "KIRIM FORM BOOKING SERVICE"
+  },
+  "placeholders": {
+    "nama": "Nama Anda",
+    "telepon": "Telepon Anda",
+    "email": "Email Anda",
+    "alamat": "Alamat Anda",
+    "nomorPolisi": "Nomor Polisi Kendaraan Anda",
+    "keluhan": "Sampaikan keluhan Anda"
+  },
+  "options": {
+    "jenisMobil": ["Toyota Avanza", "Honda Brio", "Mitsubishi Xpander"],
+    "tahunMobil": ["2024", "2023", "2022"],
+    "provinsi": ["DKI Jakarta", "Jawa Barat", "Jawa Timur"],
+    "bengkel": ["Bengkel A - Jakarta", "Bengkel B - Bandung", "Bengkel C - Surabaya"],
+    "jenisService": ["Service Rutin", "Ganti Oli", "Perbaikan Rem", "Service Berat"],
+    "jamBooking": ["09:00", "10:00", "11:00", "13:00", "14:00"]
+  },
+  "toast": {
+    "success": "Formulir booking Anda telah berhasil dikirim!",
+    "error": "Terjadi kesalahan saat mengirim formulir. Coba lagi."
+  }
+}

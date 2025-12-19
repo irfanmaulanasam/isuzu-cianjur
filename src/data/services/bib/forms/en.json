@@ -1,0 +1,30 @@
+{
+  "title": "Isuzu Mobile Workshop Booking Form (BIB)",
+  "subtitle": "Emergency on-site service by our mechanic at your vehicle location.",
+  "sections": {
+    "customer": "1. CUSTOMER DATA & CONTACT",
+    "vehicle": "2. VEHICLE PROFILE",
+    "service": "3. SERVICE DETAILS & COMPLAINT"
+  },
+  "labels": {
+    "nama": "Full Name",
+    "telepon": "Phone Number (WhatsApp)",
+    "email": "Email",
+    "alamat": "Address (Visit Location)*",
+    "jenisMobil": "Vehicle Model",
+    "tahunMobil": "Vehicle Year",
+    "nomorPolisi": "License Plate Number",
+    "jenisService": "Service Type",
+    "tanggalBooking": "Visit Date (Estimate)",
+    "jamBooking": "Visit Time (Estimate)",
+    "keluhan": "Complaint Details (Important!)*",
+    "captcha": "I am not a robot",
+    "submit": "🚨 SUBMIT BREAKDOWN SERVICE BOOKING FORM",
+    "submitLoading": "Processing & Sending..."
+  },
+  "placeholders": {
+    "keluhan": "Describe the issue (Example: Engine suddenly stops, cannot start, black smoke, etc.)."
+  },
+  "serviceType": "BIB - Isuzu Mobile Workshop",
+  "disclaimer": "* By submitting this form, you agree to be contacted by our representative to confirm your booking and discuss further details."
+}

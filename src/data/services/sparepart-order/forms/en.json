@@ -1,0 +1,32 @@
+{
+  "title": "Spare Parts Order Form",
+  "section": "Customer & Location Information",
+  "labels": {
+    "nama": "Name*",
+    "nomorRangka": "Chassis Number*",
+    "noHP": "Phone Number*",
+    "email": "Email*",
+    "provinsi": "Province*",
+    "kabupatenKota": "City / Regency*",
+    "kebutuhanSparepart": "Spare Parts Requirement*",
+    "captcha": "I'm not a robot",
+    "captchaTag": "reCAPTCHA",
+    "submit": "SUBMIT SPARE PARTS ORDER FORM"
+  },
+  "placeholders": {
+    "nama": "Your Name",
+    "nomorRangka": "Chassis Number",
+    "noHP": "Your Phone Number",
+    "email": "Your Email",
+    "kebutuhanSparepart": "Describe the spare parts you need"
+  },
+  "location": {
+    "West Java": ["Bandung", "Bekasi", "Depok"],
+    "Jakarta": ["Central Jakarta", "West Jakarta", "South Jakarta"],
+    "East Java": ["Surabaya", "Malang", "Sidoarjo"]
+  },
+  "toast": {
+    "success": "Your spare parts order form has been submitted!",
+    "error": "An error occurred while submitting the form. Please try again."
+  }
+}

@@ -1,6 +1,3 @@
-// FormItem.jsx
-// Komponen serbaguna untuk tata letak yang ringkas (label di atas input)
-
 export default function FormItem({ 
     label, 
     name, 
@@ -26,8 +23,8 @@ export default function FormItem({
         handler({ target: { name: name, value: val, type: e.target.type } });
     };
 
-    const inputClass = "w-full p-2 text-xs border border-gray-400 rounded-sm focus:ring-1 focus:ring-red-600 focus:border-red-600 outline-none transition-all disabled:bg-gray-100 placeholder:text-gray-400";
-    const labelClass = "block text-xs font-semibold text-gray-700 mb-0.5";
+    const inputClass = "w-full p-2 text-xs border border-gray-400 rounded-sm focus:ring-1 focus:ring-red-600 focus:border-red-600 outline-none transition-all disabled:bg-gray-100 placeholder:text-gray-400 dark:disabled:bg-gray-700 dark:border-gray-600 dark:focus:ring-red-400 dark:focus:border-red-400";
+    const labelClass = "block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-0.5";
 
     const renderInput = () => {
         if (type === 'select') {
