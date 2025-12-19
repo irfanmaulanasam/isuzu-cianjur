@@ -1,6 +1,6 @@
 'use client';
-
 import Breadcrumb from "@/app/components/Breadcrumb";
+import Link from "next/link";
 
 export default function SpecPage({ data:{data, language="id"} }) {
   if (!data) {
@@ -43,10 +43,39 @@ export default function SpecPage({ data:{data, language="id"} }) {
               </p>
             )}
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-               {language === 'en'
-                 ? 'Technical specification values are presented in Indonesian as per official brochure.'
-                 : 'Nilai spesifikasi teknis disajikan dalam Bahasa Indonesia sesuai brosur resmi.'}
-             </p>
+              {language === 'en'
+                ? 'Technical specification values are presented in Indonesian as per official brochure.'
+                : 'Nilai spesifikasi teknis disajikan dalam Bahasa Indonesia sesuai brosur resmi.'}
+            </p>
+            {/* CTA BAR */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Link
+                href={`/simulation/ownership-cost?model=${encodeURIComponent(
+                  data.slug
+                )}`}
+                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md bg-bahana-primary text-white hover:bg-bahana-dark transition"
+              >
+                Hitung Biaya Kepemilikan
+              </Link>
+
+              <Link
+                href={`/simulation/credit?model=${encodeURIComponent(data.slug)}`}
+                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md border border-bahana-primary text-bahana-primary hover:bg-bahana-light/20 dark:hover:bg-bahana-light/10 rounded-md transition"
+              >
+                Simulasi Kredit
+              </Link>
+
+              <a
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_SALES_PHONE}?text=${encodeURIComponent(
+                  `Halo, saya tertarik dengan ${data.title}. Bisa dibantu info lebih lanjut?`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-400 transition"
+              >
+                Tanya Sales
+              </a>
+            </div>
           </header>
 
           {/* BODY CARD */}
