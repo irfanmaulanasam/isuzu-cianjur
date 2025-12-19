@@ -4,6 +4,10 @@ export const specs = {
     title: "Traga Pick Up (FD)",
     subtitle: "Spesifikasi Teknis",
     price: "Rp. 289.000.000",
+    tco: {
+    yearlyCost: "Rp 65.000.000",
+    costPerKm: "Rp 2.500"
+    },
     sections: [
       {
         label: "DIMENSI",
