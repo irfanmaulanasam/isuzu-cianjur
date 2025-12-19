@@ -18,7 +18,7 @@ export default function Hero() {
     const params = new URLSearchParams();
     params.set("model", model); // kirim nama model utuh
 
-    router.push(`/simulasi-kredit?${params.toString()}`);
+    router.push(`/simulation/ownership-cost?${params.toString()}`);
   };
 
   return (
@@ -70,10 +70,12 @@ export default function Hero() {
               <div>
                 <label className="text-sm text-slate-600">Rata-rata Km per Hari</label>
                 <input name="km" type="number" defaultValue={100} className="w-full border rounded-md px-3 py-2 mt-1" />
+                <span className='text-xs text-slate-500'>Contoh: 100 km/hari</span>
               </div>
               <div>
-                <label className="text-sm text-slate-600">Harga Solar (Rp/L)</label>
+                <label className="text-sm text-slate-600">Harga Bahan Bakar (Rp/L)</label>
                 <input name="fuel" type="number" defaultValue={12000} className="w-full border rounded-md px-3 py-2 mt-1" />
+                <span className='text-xs text-slate-500'>Contoh: 12000 Rp/Liter( harga dexlite )</span>
               </div>
               <div className="flex gap-2">
                 <button className="flex-1 px-4 py-2 bg-[#E31E26] text-white rounded-md">Hitung</button>

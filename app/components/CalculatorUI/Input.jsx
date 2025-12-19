@@ -8,8 +8,8 @@ export function Input({ label, name, value, onChange, info, isCurrency, suffix =
 
   return (
     <div>
-      <label className="font-medium text-sm text-gray-700 flex items-center gap-1">
-        {label} <Info className="w-4 h-4 text-gray-400" title={info} />
+      <label className="font-medium text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1">
+        {label} <Info className="w-4 h-4 text-gray-400 dark:text-gray-500" title={info} />
       </label>
 
       <NumericFormat
@@ -37,7 +37,7 @@ export function Input({ label, name, value, onChange, info, isCurrency, suffix =
         className="w-full border rounded-lg p-2 mt-1 text-sm"
       />
       {/* Keterangan info di bawah input, dipindahkan dari file utama */}
-      <span className="text-xs text-gray-500 block mt-1">{info}</span>
+      <span className="text-xs text-gray-500 dark:text-gray-200 block mt-1">{info}</span>
     </div>
   );
 }
