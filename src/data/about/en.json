@@ -1,0 +1,34 @@
+{
+  "title": "About Us",
+  "description": [
+    "Every day, thousands of Isuzu fleets operate across Indonesia, carrying logistics, hopes, and business spirit from cities to remote areas.",
+    "We are here not just to sell vehicles, but to be partners for transportation and logistics businesses to keep moving forward in the Euro4 era.",
+    "The transition to Euro4 technology is more than just an engine change—it's about efficiency, responsibility, and sustainability. We ensure you receive full support from consultation, financing, to after-sales service.",
+    "With Isuzu Cianjur, you're not just buying vehicles, but building a competitive and growing fleet system."
+  ],
+  "vision": {
+    "title": "Our Vision",
+    "value": "To become the primary partner for efficient, eco-friendly, and highly competitive Euro4 fleet solutions in Indonesia."
+  },
+  "mission": {
+    "title": "Our Mission",
+    "value":
+    [
+      "Providing fit-for-purpose fleet solutions for every business need.",
+      "Supporting the Euro4 transition through education and technical services.",
+      "Maintaining fleet reliability through trusted after-sales services.",
+      "Contributing to sustainable and eco-friendly transportation."
+    ]
+  },
+  "sections": {
+    "title": "Our Core Values",
+    "items":
+    [
+      { "name": "Tough", "desc": "Isuzu is known for the toughness of its engines and services—ready to face challenges in any terrain." },
+      { "name": "Honest & Trusted", "desc": "Customer trust is our priority. Service transparency is our core value." },
+      { "name": "Caring", "desc": "We understand your business, that's why we are partners who care about your success." },
+      { "name": "Innovative", "desc": "We continuously adapt to deliver relevant and efficient fleet solutions." },
+      { "name": "Collaborative", "desc": "We believe success comes through good collaboration between customers, teams, and communities." }
+    ]
+  }
+}
