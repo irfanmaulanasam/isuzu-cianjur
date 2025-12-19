@@ -1,5 +1,5 @@
 // app/outlet/page.jsx
-import outlet_list from "@/src/data/outlet/outlet_list";
+import outlet_list from "@/src/data/outlets/outlet_list";
 import OutletClient from "./OutletClient";
 import { Suspense } from "react";
 import Loading from "../components/Loading";

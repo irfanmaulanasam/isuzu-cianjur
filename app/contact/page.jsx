@@ -1,5 +1,5 @@
-import ContactCard from "@/app/components/ContactCard";
-import { contacts } from "@/src/data/contact/data";
+import ContactCard from "@/app/contact/components/ContactCard";
+import contacts from "@/src/data/contacts/data";
 
 export default function ContactPage() {
   const sales = contacts.filter((c) => c.role === "sales");

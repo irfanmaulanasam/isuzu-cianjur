@@ -1,0 +1,74 @@
+[
+  {
+    "id": "s1",
+    "role": "sales",
+    "name": "Andi Pratama",
+    "phone": "628111111111",
+    "regions": ["Cianjur", "Cianjur Kota"],
+    "photo": "https://randomuser.me/api/portraits/men/40.jpg",
+    "status": "online"
+  },
+  {
+    "id": "s2",
+    "role": "sales",
+    "name": "Budi Santoso",
+    "phone": "628222222222",
+    "regions": ["Cipanas", "Puncak"],
+    "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+    "status": "busy"
+  },
+  {
+    "id": "s3",
+    "role": "sales",
+    "name": "Citra Lestari",
+    "phone": "628333333333",
+    "regions": ["Cianjur Selatan", "Pagelaran"],
+    "photo": "https://randomuser.me/api/portraits/women/32.jpg",
+    "status": "online"
+  },
+  {
+    "id": "s4",
+    "role": "sales",
+    "name": "Dedi Firmansyah",
+    "phone": "628444444444",
+    "regions": ["Sukabumi"],
+    "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+    "status": "offline"
+  },
+  {
+    "id": "s5",
+    "role": "sales",
+    "name": "Eka Putri",
+    "phone": "628555555555",
+    "regions": ["Cugenang"],
+    "photo": "https://randomuser.me/api/portraits/women/21.jpg",
+    "status": "busy"
+  },
+  {
+    "id": "s6",
+    "role": "sales",
+    "name": "Fajar Ramadhan",
+    "phone": "628666666666",
+    "regions": ["Campaka", "Warungkondang"],
+    "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+    "status": "online"
+  },
+  {
+    "id": "a1",
+    "role": "aftersales",
+    "name": "Admin Service 1",
+    "phone": "628777777777",
+    "regions": ["Isuzu Cianjur Bengkel"],
+    "photo": "https://randomuser.me/api/portraits/men/40.jpg",
+    "status": "online"
+  },
+  {
+    "id": "a2",
+    "role": "aftersales",
+    "name": "Admin Service 2",
+    "phone": "628888888888",
+    "regions": ["Isuzu Cianjur Bengkel"],
+    "photo": "https://randomuser.me/api/portraits/men/40.jpg",
+    "status": "offline"
+  }
+]
