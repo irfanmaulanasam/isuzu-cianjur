@@ -11,7 +11,8 @@
     "kebutuhanSparepart": "Spare Parts Requirement*",
     "captcha": "I'm not a robot",
     "captchaTag": "reCAPTCHA",
-    "submit": "SUBMIT SPARE PARTS ORDER FORM"
+    "submit": "SUBMIT SPARE PARTS ORDER FORM",
+    "submitLoading": "Processing & Sending..."
   },
   "placeholders": {
     "nama": "Your Name",
@@ -28,5 +29,7 @@
   "toast": {
     "success": "Your spare parts order form has been submitted!",
     "error": "An error occurred while submitting the form. Please try again."
-  }
+  },
+  "serviceType": "Spare Parts Order",
+  "disclaimer": " * By submitting this form, you agree to be contacted by our representative to confirm your order and discuss further details."
 }

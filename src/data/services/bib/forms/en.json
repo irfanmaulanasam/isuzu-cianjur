@@ -19,11 +19,15 @@
     "jamBooking": "Visit Time (Estimate)",
     "keluhan": "Complaint Details (Important!)*",
     "captcha": "I am not a robot",
-    "submit": "🚨 SUBMIT BREAKDOWN SERVICE BOOKING FORM",
+    "submit": "🚨 SUBMIT BREAKDOWN SERVICE BOOKING (BIB) FORM",
     "submitLoading": "Processing & Sending..."
   },
   "placeholders": {
     "keluhan": "Describe the issue (Example: Engine suddenly stops, cannot start, black smoke, etc.)."
+  },
+  "toast": {
+    "success": "Your booking form has been submitted!",
+    "error": "An error occurred while submitting the form. Please try again."
   },
   "serviceType": "BIB - Isuzu Mobile Workshop",
   "disclaimer": "* By submitting this form, you agree to be contacted by our representative to confirm your booking and discuss further details."

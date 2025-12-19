@@ -21,7 +21,8 @@
     "keluhan": "Complaint*",
     "captcha": "I'm not a robot",
     "captchaTag": "reCAPTCHA",
-    "submit": "SUBMIT SERVICE BOOKING FORM"
+    "submit": "SUBMIT SERVICE BOOKING FORM",
+    "submitLoading": "Processing & Sending..."
   },
   "placeholders": {
     "nama": "Your Name",
@@ -42,5 +43,7 @@
   "toast": {
     "success": "Your booking form has been submitted!",
     "error": "An error occurred while submitting the form. Please try again."
-  }
+  },
+  "serviceType": "Service Booking",
+  "disclaimer": "* By submitting this form, you agree to be contacted by our representative to confirm your booking and discuss further details."
 }

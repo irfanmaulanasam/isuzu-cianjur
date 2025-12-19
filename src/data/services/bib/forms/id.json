@@ -25,6 +25,10 @@
   "placeholders": {
     "keluhan": "Deskripsikan masalah (Contoh: Mesin mati mendadak, tidak bisa distarter, asap hitam, dll)."
   },
+  "toast": {
+    "success": "pemesanan Anda telah berhasil dikirim!",
+    "error": "kesalahan terjadi saat mengirim formulir. Silakan coba lagi."
+  },
   "serviceType": "BIB - Bengkel Isuzu Berjalan",
   "disclaimer": "* Dengan mengirimkan formulir ini, Anda setuju untuk dihubungi oleh perwakilan kami untuk mengonfirmasi pemesanan Anda dan membahas detail lebih lanjut."
 }

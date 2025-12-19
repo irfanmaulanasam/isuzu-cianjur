@@ -285,6 +285,7 @@ export default function BookingServiceForm() {
             </button>
           </div>
         </form>
+        <span className="text-xs text-slate-500 dark:text-slate-400 mt-4 block text-center">{text.disclaimer}</span>
       </div>
     </section>
   );

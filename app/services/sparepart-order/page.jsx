@@ -220,6 +220,7 @@ export default function SparepartOrderForm() {
           </div>
         </form>
       </div>
+      <span className="text-xs text-slate-500 dark:text-slate-400 mt-4 block text-center">{text.disclaimer}</span>  
     </section>
   );
 }
