@@ -1,6 +1,6 @@
 import ProductsGrid from "./components/ProductGrid"
 import { Suspense } from "react"
-import Loading from "../components/Loading"
+import Loading from "./Loading"
 
 export const metadata = {
   title: 'Daftar Produk Isuzu | Bahana Isuzu Cianjur',

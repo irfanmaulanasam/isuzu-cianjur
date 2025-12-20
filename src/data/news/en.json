@@ -1,0 +1,22 @@
+{
+  "title": "News & Updates",
+  "tabs": {
+    "article": "Articles",
+    "promo": "Promos",
+    "event": "Events"
+  },
+  "sections": {
+    "article": {
+      "title": "Latest Articles",
+      "seeAll": "View All →"
+    },
+    "promo": {
+      "title": "Latest Promotions",
+      "seeAll": "View All →"
+    },
+    "event": {
+      "title": "Latest Events",
+      "seeAll": "View All →"
+    }
+  }
+}

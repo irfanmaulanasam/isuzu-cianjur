@@ -1,10 +1,9 @@
-// app/products/[slug]/page.js
 import ProductDetailClient from "@/app/products/components/ProductDetailClient";
 import { getAllProductSlugs, getProductBySlug } from "@/src/lib/products";
 import { generateProductMetadata } from "@/src/lib/generateMetadata";
 
 export async function generateStaticParams() {
-  return getAllProductSlugs(); // [{ slug }]
+  return getAllProductSlugs();
 }
 
 export async function generateMetadata({ params }) {

@@ -1,0 +1,22 @@
+{
+  "title": "Berita & Informasi",
+  "tabs": {
+    "article": "Artikel",
+    "promo": "Promo",
+    "event": "Event"
+  },
+  "sections": {
+    "article": {
+      "title": "Artikel Terbaru",
+      "seeAll": "Lihat Semua →"
+    },
+    "promo": {
+      "title": "Promo Terbaru",
+      "seeAll": "Lihat Semua →"
+    },
+    "event": {
+      "title": "Event Terbaru",
+      "seeAll": "Lihat Semua →"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { specs } from "../src/data/products/specs";
+import  {specs}  from "@/src/data/products/specs";
 
 export function getSpec(slug) {
   return specs[slug] || null;
