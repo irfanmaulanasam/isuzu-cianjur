@@ -13,6 +13,7 @@ const formatRp = (n) =>
 
 export default function VehicleCostCalculatorPage() {
   const searchParams = useSearchParams();
+  console.log(searchParams);
   
   const modelParam = searchParams.get('model');
   const kmParam = searchParams.get('km');

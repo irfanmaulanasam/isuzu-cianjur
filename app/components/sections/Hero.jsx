@@ -4,20 +4,21 @@ import ModelCombobox from '@/app/components/ModelCombobox';
 import { allIsuzuModels } from '@/src/data/products/isuzuPrices-utils';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { m } from 'framer-motion';
 
 
 export default function Hero() {
   const router = useRouter();
   const [model, setModel] = useState("");
-
+  const [km, setKm]= useState(150);
+  const [fuel, setFuel]= useState(12000)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!model) return; // bisa kasih toast/error
 
     const params = new URLSearchParams();
-    params.set("model", model); // kirim nama model utuh
-
+    params.set("model", model)
+    params.set('km',km)
+    params.set('fuel',fuel)
     router.push(`/simulation/ownership-cost?${params.toString()}`);
   };
 
@@ -69,12 +70,24 @@ export default function Hero() {
               </div>
               <div>
                 <label className="text-sm text-slate-600">Rata-rata Km per Hari</label>
-                <input name="km" type="number" defaultValue={100} className="w-full border rounded-md px-3 py-2 mt-1" />
-                <span className='text-xs text-slate-500'>Contoh: 100 km/hari</span>
+                <input 
+                  name="km"
+                  type="number"
+                  defaultValue={100}
+                  onChange={setKm}
+                className="w-full border rounded-md px-3 py-2 mt-1" 
+                />
+                <span className='text-xs text-slate-500'>Estimasi Jarak ditempuh per Hari (Contoh 100km)</span>
               </div>
               <div>
                 <label className="text-sm text-slate-600">Harga Bahan Bakar (Rp/L)</label>
-                <input name="fuel" type="number" defaultValue={12000} className="w-full border rounded-md px-3 py-2 mt-1" />
+                <input 
+                  name="fuel"
+                  type="number"
+                  defaultValue={12000}
+                  onChange={setFuel}
+                  className="w-full border rounded-md px-3 py-2 mt-1" 
+                  />
                 <span className='text-xs text-slate-500'>Contoh: 12000 Rp/Liter( harga dexlite )</span>
               </div>
               <div className="flex gap-2">

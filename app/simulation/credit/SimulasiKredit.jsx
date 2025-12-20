@@ -262,7 +262,6 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
                 value={selectedModel}
                 models={allIsuzuModels}
                 onChange={(modelName) => {
-                  // di sini kamu bisa tetap pakai slug + hash logic yang lama
                   setSelectedModel(modelName);
 
                   if (typeof window !== "undefined") {
