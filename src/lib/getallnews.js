@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { cache } from 'react' // ✅ Next.js cache
 
 const newsDirectory = path.join(process.cwd(), 'src/data/news')
 

@@ -1,6 +1,16 @@
 import ContactCard from "@/app/contact/components/ContactCard";
 import contacts from "@/src/data/contacts/data";
 
+export async function generateMetadata({ params }) {
+  return {
+    title: `Contact Us | Isuzu Bahana Cianjur`,
+    openGraph: {
+      images: `/og?contact`,  // Dynamic OG!
+      type: 'website'
+    }
+  }
+}
+
 export default function ContactPage() {
   const sales = contacts.filter((c) => c.role === "sales");
   const aftersales = contacts.filter((c) => c.role === "aftersales");

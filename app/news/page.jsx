@@ -2,9 +2,18 @@ import { getAllCategoriesData } from '@/src/lib/getallnews'
 import Link from 'next/link'
 import NewsCard from './components/NewsCard'
 
+export async function generateMetadata() {
+  return {
+    title: `Berita & Promo | Isuzu Bahana Cianjur`,
+    openGraph: {
+      images: `/og?newshome`, // Dynamic OG!
+      type: 'website'
+    }
+  }
+}
+
 export default function NewsHome() {
   const categoriesData = getAllCategoriesData()
-
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">

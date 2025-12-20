@@ -1,44 +1,37 @@
-import { getArticleData, getAllArticleSlugs } from '@/src/lib/getallnews'
-import ContentReader from '@/app/news/components/ContentReader'
-import { generateContentMetadata } from '@/src/lib/generateMetadata'
+// app/news/event/[slug]/page.tsx
+import { getArticleData, getAllArticleSlugs } from "@/src/lib/getallnews";
+import { generateContentMetadata } from "@/src/lib/generateMetadata";
+import ArticleClientShell from "@/app/news/components/ArticleClientShell";
 
 export async function generateStaticParams() {
-  return getAllArticleSlugs('event')
+  return getAllArticleSlugs("event");
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params
-  const event = getArticleData(slug, 'event')
-    
-  if (!event) {
-    return {
-      title: 'Event Tidak Ditemukan - Portal Berita',
-    }
-  }
+  const { slug } = await params;
+  const article = await getArticleData(slug, "event");
 
-  // Simple fix - pakai type: 'website' untuk event
-  return {
-    title: `${event.title} - Event`,
-    description: event.excerpt || event.description,
+  return generateContentMetadata({
+    content: article,
+    type: "event",
+    fallbackTitle: "Event Isuzu Bahana Cianjur",
+    fallbackDescription:
+      "Event dan kegiatan terbaru dari Bahana Isuzu Cianjur.",
+    title: article?.title
+      ? `${article.title} | Event Isuzu Bahana Cianjur`
+      : "Event Tidak Ditemukan",
     openGraph: {
-      title: event.title,
-      description: event.excerpt || event.description,
-      type: 'website', // ← INI YANG DIPERBAIKI
-      images: event.thumbnail ? [event.thumbnail] : [],
+      title: article?.title || "Event Isuzu Bahana Cianjur",
+      description: article?.excerpt || "Lihat detail event lengkapnya.",
+      images: article?.image ? [article.image] : ["/og-news.jpg"],
+      type: "article",
     },
-  }
+  });
 }
 
-export default async function EventDetail({ params }) {
-  const { slug } = await params
-  const event = getArticleData(slug, 'event')
+export default async function EventDetailPage({ params }) {
+  const { slug } = await params;
+  const article = await getArticleData(slug, "event");
 
-  return (
-    <ContentReader 
-      content={event}
-      type="event"
-      backPath="/events"
-      backLabel="Events"
-    />
-  )
+  return <ArticleClientShell article={article} slug={slug} />;
 }
