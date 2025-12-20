@@ -1,27 +1,20 @@
-'use client';
-
-import { useState, useMemo, useRef, useEffect } from "react";
+'use client'
+import { useMemo, useRef, useEffect, useState } from "react";
 
 export default function ModelCombobox ({
-  label,                  // string
-  value,                  // selectedModel (string)
-  onChange,               // (newValue: string) => void
-  models,                 // array of { model: string, ... }
+  label,
+  value,             // dikontrol dari luar
+  onChange,
+  models,
   placeholder = "Cari / pilih model...",
   className = "",
   helperText = "",
 })  {
-  const [query, setQuery] = useState(value || "");
   const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    if (value !== query){
-        setQuery(value || "");
-    }
-  }, [value]);
+  const query = value || ""; // ✅ langsung derived dari props
 
-  // filter sederhana (contains, case-insensitive)
   const filteredModels = useMemo(() => {
     if (!query) return models;
     const lower = query.toLowerCase();
@@ -30,7 +23,6 @@ export default function ModelCombobox ({
     );
   }, [query, models]);
 
-  // click outside => tutup dropdown
   useEffect(() => {
     const handler = (e) => {
       if (!containerRef.current) return;
@@ -43,16 +35,17 @@ export default function ModelCombobox ({
   }, []);
 
   const handleSelect = (modelName) => {
-    setQuery(modelName);
-    onChange?.(modelName);
+    onChange?.(modelName);   // parent ubah value
     setOpen(false);
   };
 
   return (
     <div className="mb-6" ref={containerRef}>
-      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">
-        {label}
-      </span>
+      {label && (
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">
+          {label}
+        </span>
+      )}
 
       <div className="relative">
         <input
@@ -60,7 +53,7 @@ export default function ModelCombobox ({
           value={query}
           placeholder={placeholder}
           onChange={(e) => {
-            setQuery(e.target.value);
+            onChange?.(e.target.value);  // langsung kirim ke parent
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
@@ -92,7 +85,7 @@ export default function ModelCombobox ({
                   key={item.model}
                   type="button"
                   onMouseDown={(e) => {
-                    e.preventDefault(); // cegah blur sebelum select
+                    e.preventDefault();
                     handleSelect(item.model);
                   }}
                   className="w-full text-left px-3 py-2 text-sm hover:bg-blue-50 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100"
@@ -104,6 +97,7 @@ export default function ModelCombobox ({
           </div>
         )}
       </div>
+
       {helperText && (
         <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
           {helperText}
@@ -111,4 +105,4 @@ export default function ModelCombobox ({
       )}
     </div>
   );
-};
+}

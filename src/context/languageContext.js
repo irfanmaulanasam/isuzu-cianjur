@@ -1,24 +1,32 @@
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
 
-const LanguageContext = createContext();
+const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('id'); // Default bahasa Indonesia
+  const [language, setLanguage] = useState('id'); // default SSR
+  const [isReady, setIsReady] = useState(false);
 
-  // Load language preference from localStorage on mount
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('preferred-language');
-    if (savedLanguage) {
-      setLanguage(savedLanguage);
+    const saved = window.localStorage.getItem('preferred-language');
+    if (saved) {
+      setLanguage(saved);
     }
+    setIsReady(true);
   }, []);
 
   const toggleLanguage = () => {
     const newLanguage = language === 'id' ? 'en' : 'id';
     setLanguage(newLanguage);
-    localStorage.setItem('preferred-language', newLanguage);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('preferred-language', newLanguage);
+    }
   };
+
+  if (!isReady) {
+    // Bisa return null atau skeleton kecil; yang penting SSR & client sama.
+    return null;
+  }
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, setLanguage }}>
