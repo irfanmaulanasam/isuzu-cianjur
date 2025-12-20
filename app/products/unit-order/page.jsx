@@ -86,8 +86,8 @@ export default function UnitOrderForm() {
 
   return (
     <section className="py-12 bg-gray-50">
-      <Breadcrumb />
       <div className="container mx-auto max-w-2xl p-6 bg-white rounded-lg shadow-xl">
+      <Breadcrumb />
         <h2 className={sectionTitleClass}>Formulir Order Unit</h2>
         
         {/* Modal OTP */}
