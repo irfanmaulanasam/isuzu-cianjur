@@ -125,7 +125,7 @@ export default function Header() {
       <div
         className={`fixed top-0 left-0 h-full w-72 z-50 transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}
-          bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-2xl border-r border-gray-200 dark:border-gray-800
+          bg-white dark:bg-gray-900/95 backdrop-blur-md shadow-2xl border-r border-gray-200 dark:border-gray-800
         `}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
@@ -140,20 +140,20 @@ export default function Header() {
           </button>
         </div>
 
-        <div className="p-4 border-b border-gray-200 dark:border-gray-800">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/95">
           <LanguageToggle />
         </div>
 
         <Link
           href="/search"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2 p-3 border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-100"
+          className="flex items-center gap-2 p-3 border-b border-gray-200 bg-white dark:bg-gray-900/95   dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-100"
         >
           <Search className="w-5 h-5" />
           <span>Cari</span>
         </Link>
 
-        <nav className="flex flex-col p-2 space-y-1">
+        <nav className="flex flex-col p-2 space-y-1 bg-white dark:bg-gray-900/95 dark:text-white">
           {navbarData.navbar.menu.map((m, index) => {
             const hasSubmenu = m.submenu && m.submenu.length > 0;
             const isOpen = openMobileSubmenu === index;

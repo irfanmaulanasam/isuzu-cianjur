@@ -18,9 +18,11 @@ export default function ProductsGrid() {
 
   const filtered = useMemo(() => {
     if (category === "ALL") return products_summary;
+    
     return products_summary.filter((p) => p.category === category);
   }, [category]);
-
+  console.log(products_summary.length, filtered.length, category);
+  
   return (
       <section className="px-4 py-8 bg-white dark:bg-slate-950">
         <header className="max-w-6xl mx-auto mb-6">

@@ -513,7 +513,7 @@
     "id": "giga-gvr-j-hp-abs",
     "slug": "giga-gvr-j-hp-abs",
     "name": "Isuzu GIGA GVR J HP ABS",
-    "category": "TRUCK",
+    "category": "TRACTOR-HEAD",
     "image": "/products/Isuzu-Giga-GVR-low-300x300.png",
     "details": {
       "seats": "3 orang",
@@ -528,7 +528,7 @@
     "id": "giga-gvz-k-hp-abs",
     "slug": "giga-gvz-k-hp-abs",
     "name": "Isuzu GIGA GVZ K HP ABS",
-    "category": "TRUCK",
+    "category": "TRACTOR-HEAD",
     "image": "/products/Isuzu-Giga-GVZ-400-300x300.png",
     "details": {
       "seats": "3 orang",
@@ -543,7 +543,7 @@
     "id": "giga-gxz-k-abs",
     "slug": "giga-gxz-k-abs",
     "name": "Isuzu GIGA GXZ K ABS",
-    "category": "TRUCK",
+    "category": "TRACTOR-HEAD",
     "image": "/products/2022_GXZ_EURO4_Container-300x300.png",
     "details": {
       "seats": "3 orang",

@@ -7,27 +7,31 @@
     "label": "ALL"
     },
     {
-    "id": "Pickup & LCV",
+    "id": "PICKUP-LCV",
     "label": "Pickup & LCV"
     },
     {
-    "id": "Medium Truck",
+    "id": "TRUCK-MEDIUM",
     "label": "Medium Truck"
     },
     {
-    "id": "Heavy Truck",
+    "id": "TRUCK",
     "label": "Heavy Truck"
+    },
+    {
+    "id": "TRACTOR-HEAD",
+    "label": "Tractor Head"
     },
     {
       "id":"SUV",
       "label":"SUV"
     },
     {
-    "id": "Microbus",
+    "id": "MICRO-BUS",
     "label": "Microbus"
     },
     {
-    "id": "High Pick-up",
+    "id": "HIGH-PICKUP",
     "label": "High Pick-up"
     }
   ]

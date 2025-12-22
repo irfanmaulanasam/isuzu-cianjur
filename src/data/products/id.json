@@ -8,27 +8,31 @@
       "label": "SEMUA"
     },
     {
-      "id": "Pickup & LCV",
+      "id": "Pickup-LCV",
       "label": "Pickup & LCV"
     },
     {
-      "id": "Medium Truck",
+      "id": "TRUCK-MEDIUM",
       "label": "Truk Sedang"
     },
     {
-      "id": "Heavy Truck",
+      "id": "TRUCK",
       "label": "Truk Berat"
     },
     {
-      "id": "SUV",
-      "label": "SUV"
+      "id": "TRACTOR-HEAD",
+      "label": "UNIT PENARIK TRAILER"
     },
     {
-      "id": "Microbus",
+      "id": "SUV",
+      "label": "MOBIL PENUMPANG"
+    },
+    {
+      "id": "MICRO-BUS",
       "label": "bus mikro"
     },
     {
-      "id": "High Pick-up",
+      "id": "HIGH-PICKUP",
       "label": "pickup tinggi"
     }
   ]
