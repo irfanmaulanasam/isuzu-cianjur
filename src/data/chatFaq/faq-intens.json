@@ -1,0 +1,74 @@
+[
+  {
+    "intent": "tco",
+    "page": "hero",
+    "question_patterns": ["biaya kepemilikan", "tco", "biaya operasional", "cost ownership"],
+    "answer": "Untuk mengetahui estimasi biaya kepemilikan Isuzu (BBM, servis, dan sparepart), gunakan fitur Hitung Biaya Kepemilikan di situs.",
+    "cta_label": "Hitung Biaya Kepemilikan",
+    "cta_url": "https://isuzu-cianjur.vercel.app/simulation/ownership-cost"
+  },
+  {
+    "intent": "kredit",
+    "page": "simulation_credit",
+    "question_patterns": ["kredit", "angsuran", "cicilan", "simulasi kredit"],
+    "answer": "Estimasi angsuran per bulan bisa dilihat melalui Simulator Kredit dengan mengatur tenor dan uang muka sesuai kebutuhan Anda.",
+    "cta_label": "Buka Simulator Kredit",
+    "cta_url": "https://isuzu-cianjur.vercel.app/simulation/credit"
+  },
+  {
+    "intent": "harga",
+    "page": "products",
+    "question_patterns": ["harga", "price list", "pricelist", "harga traga", "harga elf", "harga giga"],
+    "answer": "Perkiraan harga dan skema pembiayaan dapat dilihat setelah memilih unit di halaman Produk dan menjalankan simulasi kredit. Untuk harga resmi dan penawaran khusus, tim sales akan menghubungi setelah Anda mengirim form.",
+    "cta_label": "Lihat Unit & Ajukan Penawaran",
+    "cta_url": "https://isuzu-cianjur.vercel.app/products"
+  },
+  {
+    "intent": "spesifikasi",
+    "page": "products",
+    "question_patterns": ["spesifikasi", "spek", "torsi", "tenaga", "kapasitas muatan"],
+    "answer": "Ringkasan spesifikasi dan penggunaan tiap model Isuzu tersedia di halaman Produk. Pilih model yang Anda inginkan untuk melihat detail spesifikasinya.",
+    "cta_label": "Lihat Spesifikasi Unit",
+    "cta_url": "https://isuzu-cianjur.vercel.app/products"
+  },
+  {
+    "intent": "stok_outlet",
+    "page": "outlet",
+    "question_patterns": ["stok", "ketersediaan unit", "outlet", "dealer terdekat"],
+    "answer": "Ketersediaan unit dan lokasi outlet terdekat dapat dicek melalui halaman Outlet.",
+    "cta_label": "Cek Outlet & Stok",
+    "cta_url": "https://isuzu-cianjur.vercel.app/outlet"
+  },
+  {
+    "intent": "servis",
+    "page": "services",
+    "question_patterns": ["servis", "service", "bengkel", "bengkel berjalan", "bengkel isuzu berjalan", "bib"],
+    "answer": "Layanan Bengkel Isuzu Berjalan (BIB) dan bengkel/dealer dapat diakses melalui halaman Layanan. Pilih jenis layanan yang sesuai dengan kebutuhan armada Anda.",
+    "cta_label": "Lihat Layanan Servis",
+    "cta_url": "https://isuzu-cianjur.vercel.app/services/dealer-services"
+  },
+  {
+    "intent": "sparepart",
+    "page": "sparepart",
+    "question_patterns": ["sparepart", "suku cadang", "onderdil"],
+    "answer": "Pemesanan suku cadang resmi bisa dilakukan melalui halaman Suku Cadang dengan mengisi form sesuai tipe unit dan kebutuhan Anda.",
+    "cta_label": "Pesan Suku Cadang",
+    "cta_url": "https://isuzu-cianjur.vercel.app/services/sparepart-order"
+  },
+  {
+    "intent": "kontak",
+    "page": "contact",
+    "question_patterns": ["kontak", "hubungi", "telepon", "whatsapp", "wa"],
+    "answer": "Anda dapat menghubungi Bahana Isuzu Cianjur melalui halaman Kontak untuk konsultasi, atau langsung lewat WhatsApp dan telepon yang tercantum di sana.",
+    "cta_label": "Konsultasi Gratis",
+    "cta_url": "https://isuzu-cianjur.vercel.app/contact"
+  },
+  {
+    "intent": "promo",
+    "page": "promo",
+    "question_patterns": ["promo", "diskon", "penawaran khusus"],
+    "answer": "Daftar promo angsuran ringan, paket fleet, dan program trade-in ditampilkan di halaman Promo & Berita.",
+    "cta_label": "Lihat Promo",
+    "cta_url": "https://isuzu-cianjur.vercel.app/news/promo"
+  }
+]

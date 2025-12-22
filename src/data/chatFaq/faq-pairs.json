@@ -1,0 +1,82 @@
+[
+    {
+        "q": "Cara pesan unit?",
+        "a": "Isi form pemesanan di halaman produk"
+    },
+    {
+        "q": "Servis berkala?",
+        "a": "Kunjungi halaman servis untuk jadwal"
+    },
+    {
+        "q": "Garansi?",
+        "a": "1 tahun untuk unit baru"
+    },
+    {
+        "q": "Apa yang ditawarkan Bahana Isuzu Cianjur di halaman utama?",
+        "a": "Halaman utama menonjolkan solusi kendaraan komersial Euro 4 yang hemat, andal, dan siap regulasi, dengan fitur hitung TCO 2 menit, rekomendasi armada sesuai rute dan budget, serta layanan aftersales resmi."
+    },
+    {
+        "q": "CTA utama apa saja yang tersedia di hero?",
+        "a": "CTA utama di hero adalah tombol Hitung TCO, Lihat Unit, dan Konsultasi Gratis untuk menghubungi tim sales."
+    },
+    {
+        "q": "Siapa Bahana Isuzu Cianjur?",
+        "a": "Bahana Isuzu adalah dealer resmi Isuzu Commercial Vehicle yang menyediakan unit kendaraan, layanan aftersales, dan sparepart di Cianjur."
+    },
+    {
+        "q": "Apa fokus utama Bahana Isuzu Cianjur?",
+        "a": "Fokus utamanya adalah transparansi biaya, layanan purna jual, dan optimasi armada, termasuk konsultasi kebutuhan armada dan perhitungan biaya kepemilikan 5 tahun."
+    },
+    {
+        "q": "Bagaimana cara menggunakan simulasi TCO di situs Isuzu Cianjur?",
+        "a": "Pengunjung memilih model kendaraan, mengisi rata-rata kilometer per hari dan harga bahan bakar per liter, lalu menekan tombol Hitung untuk melihat estimasi biaya kepemilikan."
+    },
+    {
+        "q": "Apakah hasil simulasi TCO di situs bersifat final?",
+        "a": "Tidak, di bawah form tertulis bahwa hasil simulasi bersifat estimasi dan untuk angka final pelanggan diminta menghubungi sales."
+    },
+    {
+        "q": "Simulasi apa lagi yang tersedia selain TCO?",
+        "a": "Tersedia Simulator Kredit untuk menghitung perkiraan angsuran berdasarkan tenor dan uang muka yang dipilih pengunjung."
+    },
+    {
+        "q": "Informasi apa yang bisa dilihat pada halaman produk Isuzu Cianjur?",
+        "a": "Halaman produk menyediakan daftar unit Isuzu seperti Traga, Elf, dan Giga Euro 4, dengan ringkasan spesifikasi, fitur, dan akses ke pemesanan unit."
+    },
+    {
+        "q": "Bagaimana cara cek ketersediaan unit dan stok?",
+        "a": "Di bagian Alat Cepat terdapat tautan Cek Unit & Stok yang mengarahkan ke halaman Outlet untuk melihat ketersediaan unit di outlet terdekat."
+    },
+    {
+        "q": "Bagaimana cara menghubungi Bahana Isuzu Cianjur?",
+        "a": "Kontak yang tercantum adalah alamat Jl. Raya Bandung km 3 No. 138, telepon +6281221548054, WhatsApp +6287856277372, dan email isuzucianjur.office@gmail.com, serta halaman Kontak untuk formulir konsultasi."
+    },
+    {
+        "q": "Alur singkat jika ingin memulai proses pembelian unit?",
+        "a": "Di bagian Proses Singkat dijelaskan langkah: hubungi sales atau konsultasi, riset kebutuhan rute dan muatan, simulasi biaya kepemilikan dan opsi pembiayaan, lalu SPK dan pengiriman."
+    },
+    {
+        "q": "Apa fungsi halaman Outlet di situs Isuzu Cianjur?",
+        "a": "Halaman Outlet digunakan untuk mengecek unit dan stok yang tersedia di outlet terdekat yang bekerja sama dengan jaringan Bahana Isuzu."
+    },
+    {
+        "q": "Di mana menemukan promo dan berita Bahana Isuzu Cianjur?",
+        "a": "Bagian Promo & Penawaran menampilkan promo seperti Promo Angsuran Ringan, Paket Fleet, dan Trade-In, dengan tautan Lihat Detail ke halaman berita/promo."
+    },
+    {
+        "q": "Apa manfaat kisah pelanggan yang ditampilkan?",
+        "a": "Kisah Pelanggan menampilkan testimoni seperti pengurangan 12% biaya operasional berkat perhitungan TCO dan komentar positif terhadap proses dan aftersales."
+    },
+    {
+        "q": "Informasi kecil apa yang ditonjolkan di hero?",
+        "a": "Di hero terdapat metrik seperti 99% ketersediaan suku cadang, rating kepuasan pelanggan 4.8/5, estimasi konsumsi BBM 3.5L per 100 km, dan lebih dari 200 fleet terlayani."
+    },
+    {
+        "q": "Tools cepat apa yang disediakan untuk pengusaha?",
+        "a": "Tiga alat cepat adalah Simulasi Kredit, Hitung Biaya Kepemilikan, dan Cek Unit & Stok yang semuanya terhubung ke halaman simulasi dan outlet."
+    },
+    {
+        "q": "Di mana menemukan kebijakan privasi situs?",
+        "a": "Tautan Kebijakan Privasi dan Syarat & Ketentuan tersedia di bagian footer halaman."
+    }
+]

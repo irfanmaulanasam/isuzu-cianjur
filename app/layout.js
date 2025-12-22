@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
         <LanguageProvider>
         <Navbar />
           <main>{children}</main>
-          {/* <ChatWidget/> */}
+          <ChatWidget/>
           <Footer />
         </LanguageProvider>
         <GlobalLayer />

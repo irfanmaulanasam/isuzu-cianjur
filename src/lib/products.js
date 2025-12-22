@@ -1,5 +1,5 @@
-import { specs, allSpecSlugs } from '@/src/data/products/specs.js';
-
+import { specs } from '@/src/data/products/specs.js';
+const allSpecSlugs = Object.keys(specs)
 export async function getAllProductSlugs() {
   return allSpecSlugs.map(slug => ({ params: { slug } }));
 }
