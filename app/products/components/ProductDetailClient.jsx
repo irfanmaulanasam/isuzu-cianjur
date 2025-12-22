@@ -2,7 +2,8 @@
 
 import { use, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { specs, allSpecSlugs } from "@/src/data/products/specs";
+import specs from "@/src/data/products/specs";
+import { allSpecSlugs } from "@/src/lib/products";
 import SpecPage from "@/app/products/components/SpecPage";
 import { autoCompleteSlug } from "@/src/data/config/autoCompleteTCOSlug";
 import { useLanguage } from "@/src/context/languageContext";
