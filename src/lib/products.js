@@ -1,4 +1,4 @@
-import specs  from '@/src/data/products/specs.js';
+import specs  from '@/src/data/products/specs';
 export const allSpecSlugs = Object.keys(specs)
 export async function getAllProductSlugs() {
   return allSpecSlugs.map(slug => ({ params: { slug } }));
