@@ -9,8 +9,8 @@ export default function FormRow({ label, name, type, formData, handler, value, d
     };
 
     return (
-        <div className="flex flex-col md:flex-row md:items-center py-2">
-            <label htmlFor={name} className="w-full md:w-1/3 text-xs font-semibold text-gray-600 mb-1 md:mb-0">
+        <div className="flex flex-col md:flex-row md:items-center py-2 ">
+            <label htmlFor={name} className="w-full md:w-1/3 text-xs font-semibold text-gray-600 dark:text-gray-100 mb-1 md:mb-0">
                 {label} {required && <span className="text-red-500">*</span>}
             </label>
             <input
@@ -19,7 +19,7 @@ export default function FormRow({ label, name, type, formData, handler, value, d
                 type={isNumeric ? 'tel' : type}
                 value={inputValue}
                 onChange={handleChange}
-                className="w-full md:w-2/3 p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all disabled:bg-gray-100"
+                className="w-full md:w-2/3 p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all disabled:bg-gray-100 dark:disabled:bg-gray-700/80"
                 required={required}
                 disabled={disabled}
                 placeholder={`Masukkan ${label}`}

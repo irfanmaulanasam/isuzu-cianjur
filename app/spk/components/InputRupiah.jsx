@@ -12,7 +12,7 @@ export default function InputRupiah ({ label, name, formData, handler, required 
     return (
         <div className="flex items-center h-6 border-b border-gray-300">
             {showLabel && (
-                <label htmlFor={name} className="w-1/3 text-[10px] md:text-xs font-medium text-gray-700 flex-shrink-0">
+                <label htmlFor={name} className="w-1/3 text-[10px] md:text-xs font-medium text-gray-700 flex-shrink-0 dark:text-gray-100">
                     {label} (Rp): {required && <span className="text-red-500">*</span>}
                 </label>
             )}

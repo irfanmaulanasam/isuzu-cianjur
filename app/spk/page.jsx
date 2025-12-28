@@ -436,8 +436,8 @@ export default function SPKAdvanced() {
 
   // --- RENDER TAMPILAN ---
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 font-sans">
-      <div className="bg-white p-6 rounded-xl shadow-lg max-w-4xl w-full">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 font-sans dark:bg-blue-900 dark:text-white">
+      <div className="bg-white dark:bg-slate-700/80 p-6 rounded-xl shadow-lg max-w-4xl w-full">
         <div className="text-center">
         {/* STEP 1: INPUT WA */}
          {step === 1 && (
@@ -519,7 +519,7 @@ export default function SPKAdvanced() {
               {/* ======================================================= */}
               {/* I. DATA PEMESAN (LOGIKA BARU) */}
               {/* ======================================================= */}
-              <section className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 md:p-6 transition-all hover:shadow-md">
+              <section className="bg-white dark:bg-slate-700/80 border border-gray-200 rounded-xl shadow-sm p-5 md:p-6 transition-all hover:shadow-md">
                   <div className="flex justify-between items-center border-b border-gray-100 pb-3 mb-4">
                       <h3 className="text-base font-bold text-gray-800 flex items-center">
                           <span className="bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2">1</span>
@@ -527,7 +527,7 @@ export default function SPKAdvanced() {
                       </h3>
                       
                       {/* Radio Button Tipe Pemesan */}
-                      <div className="flex bg-gray-100 p-1 rounded-lg">
+                      <div className="flex bg-gray-100 p-1 rounded-lg dark:bg-slate-700/80">
                           {['Perseorangan', 'Korporasi'].map((type) => (
                               <button
                                   type='button'
@@ -536,7 +536,7 @@ export default function SPKAdvanced() {
                                   className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${
                                       formData.tipePemesan === type 
                                       ? 'bg-white text-red-600 shadow-sm border border-gray-200' 
-                                      : 'text-gray-500 hover:text-gray-700'
+                                      : 'text-gray-500 hover:text-gray-700 dark:hover:text-white'
                                   }`}
                               >
                                   {type}
@@ -550,7 +550,7 @@ export default function SPKAdvanced() {
                       {formData.tipePemesan === 'Perseorangan' ? (
                           <FormRow label="Nama Lengkap" name="namaPemesan" type="text" formData={formData} handler={handleInputChange} isAlphabet required />
                       ) : (
-                          <div className="bg-red-50 p-4 rounded-lg mb-4 border border-red-100 space-y-2">
+                          <div className=" p-4 rounded-lg mb-4 border border-red-100 space-y-2">
                               <FormRow label="Nama Instansi/PT" name="namaPemesan" type="text" formData={formData} handler={handleInputChange} required />
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                   <FormRow label="Nama PIC" name="namaPic" type="text" formData={formData} handler={handleInputChange} isAlphabet required />
@@ -561,7 +561,7 @@ export default function SPKAdvanced() {
 
                       {/* Data Umum */}
                       <div className="flex flex-col md:flex-row md:items-start py-2 border-t border-dashed border-gray-200 mt-2">
-                          <label className="w-full md:w-1/3 text-xs font-semibold text-gray-600 mb-1 mt-2">Alamat Lengkap & Kode Pos</label>
+                          <label className="w-full md:w-1/3 text-xs font-semibold text-gray-600 mb-1 mt-2 dark:text-gray-100">Alamat Lengkap & Kode Pos</label>
                           <div className="w-full md:w-2/3 space-y-2">
                               <textarea 
                                   name="alamatPemesan" 
@@ -591,7 +591,7 @@ export default function SPKAdvanced() {
               {/* ======================================================= */}
               {/* II. DATA STNK & BPKB */}
               {/* ======================================================= */}
-              <section className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 md:p-6 hover:shadow-md transition-all">
+              <section className="bg-white dark:bg-slate-700/80 border border-gray-200 rounded-xl shadow-sm p-5 md:p-6 hover:shadow-md transition-all">
                   <div className="border-b border-gray-100 pb-3 mb-4">
                       <h3 className="text-base font-bold text-gray-800 flex items-center">
                           <span className="bg-gray-700 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2">2</span>
@@ -603,7 +603,7 @@ export default function SPKAdvanced() {
                       <FormRow label="Nama di STNK" name="namaStnk" type="text" formData={formData} handler={handleInputChange} isAlphabet required />
                       
                       <div className="flex flex-col md:flex-row md:items-start py-2 border-t border-dashed border-gray-200 mt-2">
-                          <label className="w-full md:w-1/3 text-xs font-semibold text-gray-600 mb-1 mt-2">Alamat STNK</label>
+                          <label className="w-full md:w-1/3 text-xs font-semibold text-gray-600 mb-1 mt-2 dark:text-gray-100">Alamat STNK</label>
                           <div className="w-full md:w-2/3 space-y-2">
                               <textarea 
                                   name="alamatStnk" 
@@ -697,9 +697,9 @@ export default function SPKAdvanced() {
                       <h3 className="text-xs font-bold border-b pb-1">VI. TAHAPAN PEMBAYARAN</h3>
                       <div className="grid grid-cols-2 gap-2">
                           <InputRupiah label="Bayar Pertama" name="pembayaranPertama" formData={formData} handler={handleInputChange} required showLabel={false} />
-                          <FormRow label="Tgl Bayar I" name="tanggalBayar1" type="text" formData={formData} handler={handleInputChange} required />
+                          <FormRow label="Tgl Bayar I" name="tanggalBayar1" type="date" formData={formData} handler={handleInputChange} required />
                           <InputRupiah label="Bayar Kedua" name="pembayaranKedua" formData={formData} handler={handleInputChange} showLabel={false} />
-                          <FormRow label="Tgl Bayar II" name="tanggalBayar2" type="text" formData={formData} handler={handleInputChange} />
+                          <FormRow label="Tgl Bayar II" name="tanggalBayar2" type="date" formData={formData} handler={handleInputChange} />
                       </div>
                   </div>
               </div>
@@ -732,7 +732,7 @@ export default function SPKAdvanced() {
               {/* ======================================================= */}
               <h3 className="text-xs font-bold border-b border-gray-200 pb-1 mt-4">VIII. NAMA DAN TANDA TANGAN</h3>
               
-              <div className="border border-gray-200 flex">
+              <div className="border border-gray-200 flex mb:flex-row">
                   {/* Kolom 1: Konsumen */}
                   <div className="border-r border-gray-700 p-2 h-40 flex flex-col justify-between">
                       <SignatureCanvas ref={sigCanvasKonsumen} penColor='black' canvasProps={{ className: 'w-full h-32 border border-dashed' }} />

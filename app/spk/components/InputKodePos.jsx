@@ -40,7 +40,7 @@ export default function InputKodepos({ name, formData, handler }) {
     const values = formData[name] || ['','','','',''];
 
     return (
-        <div className="flex space-x-1">
+        <div className="flex space-x-1 dark:bg-slate-700/80">
             {values.map((digit, index) => (
                 <input
                     key={index}

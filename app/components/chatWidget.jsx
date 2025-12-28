@@ -2,7 +2,7 @@
 import { MessageCircle } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { matchIntent, matchShortFaq } from '@/src/utils/faqMatch'
-
+import { useChatNotifications } from '@/hooks/useChatNotification'
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
@@ -10,6 +10,7 @@ export default function ChatWidget() {
   const [input, setInput] = useState('')
   const messagesEndRef = useRef(null)
   const [hasGreeted, setHasGreeted] = useState(false)
+  const [unread, setUnread] = useState(0);
   const renderText = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g
     const parts = text.split(urlRegex)
@@ -29,14 +30,36 @@ export default function ChatWidget() {
   }
 
 
-useEffect(() => {
-  if (!isOpen || hasGreeted) return
+  // panggil hook notifikasi title
+  useChatNotifications({ unreadCount: unread });
 
-  setMessages([
-    { type: 'bot', text: 'Halo, mau dibantu apa? Bisa tanya kredit, biaya kepemilikan, stok, atau servis.' }
-  ])
-  setHasGreeted(true)
-}, [isOpen, hasGreeted])
+  // contoh: setiap pesan baru masuk
+  const handleIncomingMessage = (msg) => {
+    setMessages(prev => [...prev, msg]);
+    if (document.visibilityState === 'hidden') {
+      setUnread(prev => prev + 1);
+    }
+  };
+
+  // reset unread kalau user balik ke tab ini
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        setUnread(0);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange);
+  }, []);
+  useEffect(() => {
+    if (!isOpen || hasGreeted) return
+
+    setMessages([
+      { type: 'bot', 
+        text: 'Halo, mau dibantu apa? Bisa tanya kredit, biaya kepemilikan, stok, atau servis.' }
+    ])
+    setHasGreeted(true)
+  }, [isOpen, hasGreeted])
 
 
   useEffect(() => {
@@ -66,7 +89,7 @@ useEffect(() => {
 
     setTimeout(() => {
       setMessages(prev => [...prev, { type: 'bot', text: reply }])
-    }, 400)
+    }, 2400)
 
     setInput('')
   }
