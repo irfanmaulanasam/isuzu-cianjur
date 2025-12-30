@@ -37,7 +37,7 @@ export default function Breadcrumb() {
   }
 
   // Leaf untuk halaman berita (news article)
-  if (pathname.startsWith("/news/article/") && params?.slug) {
+  if (pathname.startsWith("/news/article/") && params?.slug || pathname.startsWith("/news/promo/") && params?.slug || pathname.startsWith("/news/event/") && params?.slug) {
     const raw = decodeURIComponent(params.slug);
     const newsLabel = raw.replace(/-/g, " "); // optional biar lebih rapi
 
