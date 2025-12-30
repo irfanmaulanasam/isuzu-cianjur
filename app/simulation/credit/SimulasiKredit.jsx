@@ -7,116 +7,75 @@ import { LeasingData } from "@/src/data/leasing/Leasing_data";
 import { ChevronDown, ChevronUp } from 'lucide-react'; 
 import { allIsuzuModels } from "@/src/data/products/isuzuPrices-utils";
 import Breadcrumb from "@/app/components/Breadcrumb";
-
-// --- Utility Functions ---
-const commonTenors = [12, 24, 36, 48, 60, 72, 84];
-
-const formatRupiah = (number) =>
-  new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-    minimumFractionDigits: 0,
-  }).format(number);
-
-const formatInputDisplay = (number) => {
-  if (number === 0 || number === null || number === undefined || isNaN(number)) return '';
-  const formatted = new Intl.NumberFormat('id-ID', {
-    style: 'decimal',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(number);
-  return `Rp ${formatted}`;
-};
-const cleanInputToNumber = (value) => {
-  if (!value) return 0;
-  const cleanValue = value.replace(/[^0-9]/g, '');
-  return Number(cleanValue) || 0;
-};
-const hitungAngsuran = (otrNumber, dp, tenor, bunga) => {
-  if (otrNumber <= 0 || tenor <= 0) return 0;
-  const loanAmount = otrNumber - dp;
-  const totalBunga = loanAmount * bunga * (tenor / 12);
-  return (loanAmount + totalBunga) / tenor;
-};
-const toSlug = (text) => {
-  if (!text) return '';
-  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-};
-const slugToModelName = (targetSlug, models) => {
-  return models.find(item => toSlug(item.model) === targetSlug)?.model;
-};
-// ---------------------------------------------
+import { commonTenors, formatRupiah, formatInputDisplay, cleanInputToNumber, hitungAngsuran,toSlug, slugToModelName } from "@/src/utils/creditSimulation";
 
 export default function SimulasiKredit({ initialModelName, initialModelPrice }) {
   // --- STATE UTAMA ---
   const [slug, setSlug] = useState('');
-  
-  // Model dan OTR price akan diinisialisasi dari props jika tersedia
+  const [initializedFromSlug, setInitializedFromSlug] = useState(false);
+
   const [selectedModel, setSelectedModel] = useState(initialModelName || "");
   const [otrPrice, setOtrPrice] = useState(initialModelPrice || 0);
-  
+
   const [dpRp, setDpRp] = useState(70000000);
   const [dpPercent, setDpPercent] = useState(20);
   const [displayDpRp, setDisplayDpRp] = useState(() => formatInputDisplay(70000000));
 
   const [customTenor, setCustomTenor] = useState(36);
   const [customRatePercent, setCustomRatePercent] = useState(5.5);
-  
-  // State untuk mengontrol Akordeon Leasing
+
   const [activeLeasing, setActiveLeasing] = useState(null);
 
-  // --- UTILITY CALLBACKS ---
   const findModelData = useCallback((modelName) => {
     return allIsuzuModels.find((item) => item.model === modelName);
   }, []);
 
-  const findModelDataFuzzy = useCallback((modelName) => {
-    if (!modelName) return null;
-    const lowerName = modelName.toLowerCase().trim();
-    return allIsuzuModels.find((item) => item.model.toLowerCase() === lowerName);
-  }, []);
-
-  const autoCompleteSlug = useCallback((shortSlug) => {
-    if (shortSlug === "blindvan") { shortSlug = "traga-blind-van"; }
-    if (shortSlug === 'nmr-58') { shortSlug = 'elf-nmr-hd-58'; }
-    if (shortSlug === 'nmr-65') { shortSlug = 'elf-nmr-hd-65'; }
-
-    const prefixMap = {
-      "nmr": "elf-", "nmr-65": "elf-", "nlr": "elf-", "nps": "elf-", "nqr": "elf-",
-      "dmax": "", "traga": "", "blind-van": "traga-", "box": "traga-",
-      "mu-x": "", "giga": "", "elf": ""
-    };
-    for (const [key, prefix] of Object.entries(prefixMap)) {
-      if (shortSlug.startsWith(key) || shortSlug === key.replace('-', '')) {
-        return prefix + shortSlug;
-      }
-    }
-    const foundModel = allIsuzuModels.find(item => {
-      const itemSlug = toSlug(item.model);
-      return itemSlug.includes(shortSlug);
-    });
-    return foundModel ? toSlug(foundModel.model) : shortSlug;
-  }, []);
-
+  // 1) Baca slug dari URL SEKALI di awal (kalau tidak ada initialModelName)
   useEffect(() => {
-    if (typeof window === 'undefined' || initialModelName) return;
+    if (typeof window === 'undefined') return;
+    if (initialModelName) return;          // jika dari props, abaikan slug
+    if (initializedFromSlug) return;       // jangan diulang
 
-    const getSlugFromHash = () => window.location.hash.substring(1).toLowerCase();
+    const hash = window.location.hash.substring(1).toLowerCase(); // #traga-blind-van -> traga-blind-van
+    if (!hash) return;
 
-    const initialSlug = getSlugFromHash();
-    if (initialSlug) setSlug(initialSlug);
+    setSlug(hash);
+  }, [initialModelName, initializedFromSlug]);
 
-    const handleHashChange = () => {
-      setSlug(getSlugFromHash());
-    };
+  // 2) Pakai slug untuk inisialisasi selectedModel & otrPrice (HANYA sekali)
+  useEffect(() => {
+    if (!slug) return;
+    if (initializedFromSlug) return;
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, [initialModelName]); // Dependensi ditambahkan
+    const modelName = slugToModelName(slug, allIsuzuModels);
 
-  // Handler saat input Rupiah diubah
+    if (modelName) {
+      setSelectedModel(modelName);
+      const modelData = allIsuzuModels.find(m => m.model === modelName);
+      if (modelData) setOtrPrice(Number(modelData.price));
+    }
+
+    setInitializedFromSlug(true); // setelah ini slug TIDAK lagi mengubah state
+  }, [slug, initializedFromSlug]);
+
+  // 3) Kalau initialModelName / initialModelPrice di‑pass dari props → jadikan sumber kebenaran
+  useEffect(() => {
+    if (initialModelName && initialModelPrice > 0) {
+      setSelectedModel(initialModelName);
+      setOtrPrice(initialModelPrice);
+    }
+  }, [initialModelName, initialModelPrice]);
+
+  // 4) Kalau selectedModel berubah (bukan dari slug props) dan tidak ada harga dari props → cari OTR
+  useEffect(() => {
+    if (initialModelPrice > 0) return; // harga sudah dari props
+
+    const modelData = findModelData(selectedModel);
+    if (modelData) setOtrPrice(Number(modelData.price));
+    else setOtrPrice(0);
+  }, [selectedModel, findModelData, initialModelPrice]);
+
+  // Handler input DP
   const handleDpRpChange = (e) => {
     const rawValue = e.target.value;
     setDisplayDpRp(rawValue);
@@ -124,50 +83,7 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
     setDpRp(numericValue);
   };
 
-  // EFFECT 1: Handle slug changes dan set selectedModel (Sumber Kebenaran Model)
-  useEffect(() => {
-    const isBrowser = typeof window !== 'undefined';
-    
-    // **PRIORITAS PROPS:** Jika data dari props sudah ada, abaikan logika slug/hash
-    if (initialModelName && initialModelPrice > 0) {
-        setSelectedModel(initialModelName);
-        setOtrPrice(initialModelPrice);
-        return; 
-    }
-
-    if (slug === "") {
-      return;
-    }
-
-    const targetSlug = autoCompleteSlug(slug);
-    const modelName = slugToModelName(targetSlug, allIsuzuModels);
-
-    if (modelName) {
-      setSelectedModel(modelName);
-      if (targetSlug !== slug && isBrowser) {
-        window.location.hash = targetSlug;
-      }
-    } else {
-      // Fallback
-      const defaultModel = allIsuzuModels[allIsuzuModels.length - 1];
-      setSelectedModel(defaultModel.model);
-      if (isBrowser) {
-        // window.location.hash = toSlug(defaultModel.model);
-      }
-    }
-  }, [slug, autoCompleteSlug, initialModelName, initialModelPrice]); // Dependensi ditambahkan
-
-  // EFFECT 2: Update OTR price (HANYA BERJALAN JIKA initialModelPrice KOSONG)
-  useEffect(() => {
-    // Jika harga sudah diset dari props, jangan lakukan pencarian OTR
-    if (initialModelPrice > 0) return; 
-    
-    const modelData = findModelData(selectedModel);
-    if (modelData) setOtrPrice(Number(modelData.price));
-    else setOtrPrice(0);
-  }, [selectedModel, findModelData, initialModelPrice]); // Dependensi ditambahkan
-
-  // EFFECT 3 & 4: Update DP & Sinkronisasi Tampilan Input Rupiah (Tetap sama)
+  // DP % → DP Rupiah
   useEffect(() => {
     let newDpRp = 0;
     if (otrPrice > 0) {
@@ -177,14 +93,13 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
     setDpRp(newDpRp);
   }, [dpPercent, otrPrice]);
 
+  // Sinkronisasi tampilan DP Rp
   useEffect(() => {
     setDisplayDpRp(formatInputDisplay(dpRp));
   }, [dpRp]);
 
-
-  // --- USEMEMO UNTUK SEMUA HASIL PERHITUNGAN DAN VALIDASI ---
+  // --- USEMEMO UNTUK SIMULASI ---
   const simulationResults = useMemo(() => {
-
     const isReady = otrPrice > 0 && dpRp > 0 && findModelData(selectedModel);
 
     if (!isReady) {
@@ -234,56 +149,70 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
       customResult,
       loanAmount
     };
-
   }, [otrPrice, dpRp, selectedModel, customTenor, customRatePercent, findModelData]);
 
-  // --- RENDER KOMPONEN ---
+  // --- RENDER ---
   return (
     <div className="flex justify-center p-4 sm:p-6 md:p-8 bg-gray-50 dark:bg-gray-800 min-h-screen">
       <div className="w-full max-w-6xl flex flex-col lg:flex-row shadow-xl rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800">
 
-        <Breadcrumb />
+
         {/* Form Input */}
         <div className="w-full lg:w-1/2 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-700">
+        <Breadcrumb />
           <h2 className="text-xl sm:text-2xl font-bold dark:text-white mb-6 text-center lg:text-left text-blue-700 dark:text-blue-400">
             Simulasi Kredit Mobil Baru 🚗
           </h2>
 
-          {/* Model (Input/Display - Pengecekan apakah menggunakan props) */}
+          {/* Model */}
           {initialModelName ? (
-             <div className="mb-6">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">Model Kendaraan</span>
-                <p className="font-extrabold text-lg text-blue-700 dark:text-blue-400 p-3 bg-blue-50 dark:bg-gray-800 rounded-lg border border-blue-100 dark:border-gray-700">
-                    {initialModelName}
-                </p>
+            <div className="mb-6">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">
+                Model Kendaraan
+              </span>
+              <p className="font-extrabold text-lg text-blue-700 dark:text-blue-400 p-3 bg-blue-50 dark:bg-gray-800 rounded-lg border border-blue-100 dark:border-gray-700">
+                {initialModelName}
+              </p>
             </div>
           ) : (
-             <ModelCombobox
-                value={selectedModel}
-                models={allIsuzuModels}
-                onChange={(modelName) => {
-                  setSelectedModel(modelName);
+            <ModelCombobox
+              value={selectedModel}
+              models={allIsuzuModels}
+              onChange={(model) => {
+                setSelectedModel(model);
 
-                  if (typeof window !== "undefined") {
-                    const newSlug = toSlug(modelName);
-                    window.location.hash = newSlug;
-                    setSlug(newSlug);
-                  }
-                }}
-              />
+                const data = allIsuzuModels.find(m => m.model === model);
+                setOtrPrice(data ? Number(data.price) : 0);
+
+                // Optional: update hash hanya untuk CTA/share
+                if (typeof window !== 'undefined') {
+                  window.location.hash = toSlug(model);
+                }
+              }}
+              helperText={
+                !selectedModel
+                  ? "Pilih model kendaraan untuk simulasi"
+                  : "hapus untuk ganti model"
+              }
+            />
           )}
+
           {/* Harga OTR */}
           <div className="bg-blue-50 dark:bg-gray-800 p-4 rounded-xl mb-6 shadow-inner border border-blue-100 dark:border-gray-700">
-            <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 block mb-1">Harga OTR (On The Road)</span>
+            <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 block mb-1">
+              Harga OTR (On The Road)
+            </span>
             <p className="font-extrabold text-2xl text-gray-800 dark:text-white">
               {simulationResults.formattedOtr}
             </p>
           </div>
 
-          {/* Uang Muka, Tenor, Bunga (Tetap sama) */}
+          {/* Uang Muka */}
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
             <label className="block w-full sm:w-1/2">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">Uang Muka (Rp)</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">
+                Uang Muka (Rp)
+              </span>
               <input
                 type="text"
                 value={displayDpRp}
@@ -295,7 +224,9 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
             </label>
 
             <label className="block w-full sm:w-1/2">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">Uang Muka (%)</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">
+                Uang Muka (%)
+              </span>
               <input
                 type="number"
                 value={dpPercent}
@@ -310,22 +241,29 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
             </label>
           </div>
 
+          {/* Tenor & Bunga */}
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
             <label className="block w-full sm:w-1/2">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">Jangka Waktu (Bulan)</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">
+                Jangka Waktu (Bulan)
+              </span>
               <select
                 value={customTenor}
                 onChange={(e) => setCustomTenor(Number(e.target.value))}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
               >
-                {commonTenors.map(tenor => (
-                  <option key={tenor} value={tenor}>{tenor} bulan ({tenor / 12} tahun)</option>
+                {commonTenors.map((tenor) => (
+                  <option key={tenor} value={tenor}>
+                    {tenor} bulan ({tenor / 12} tahun)
+                  </option>
                 ))}
               </select>
             </label>
 
             <label className="block w-full sm:w-1/2">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">Bunga Tahunan Flat (%)</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">
+                Bunga Tahunan Flat (%)
+              </span>
               <div className="relative">
                 <input
                   type="number"
@@ -335,33 +273,33 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
                   onChange={(e) => setCustomRatePercent(Number(e.target.value))}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 pr-10"
                 />
-                <span className="absolute right-0 top-0 h-full flex items-center pr-3 text-gray-500 dark:text-gray-400 pointer-events-none">%</span>
+                <span className="absolute right-0 top-0 h-full flex items-center pr-3 text-gray-500 dark:text-gray-400 pointer-events-none">
+                  %
+                </span>
               </div>
             </label>
           </div>
 
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            * Perhitungan cicilan menggunakan metode **Bunga Flat Rate**.
+            * Perhitungan cicilan menggunakan metode <b>Bunga Flat Rate</b>.
           </p>
         </div>
 
-        {/* Hasil Simulasi - REVISI TAMPILAN (Menghilangkan Scroll Ganda) */}
+        {/* Hasil Simulasi */}
         <div className="w-full lg:w-1/2 p-6 sm:p-8">
           <h2 className="text-xl sm:text-2xl font-bold dark:text-white mb-6 text-center lg:text-left text-green-700 dark:text-green-400">
             Hasil Simulasi Cicilan 🧾
           </h2>
 
           {simulationResults.isReady ? (
-            // --- KONTEN HASIL ---
-            <div className="space-y-6"> {/* max-h dan overflow Dihapus */}
-
-              {/* Hasil Simulasi Kustom */}
+            <div className="space-y-6">
+              {/* Kustom */}
               <div className="p-4 bg-green-50 dark:bg-green-900/50 rounded-xl shadow-lg border border-green-200 dark:border-green-700">
                 <h3 className="font-extrabold text-2xl mb-1 text-green-700 dark:text-green-300">
                   Cicilan Kustom Anda
                 </h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
-                  Pokok Pinjaman: **{formatRupiah(simulationResults.loanAmount)}**
+                  Pokok Pinjaman: <b>{formatRupiah(simulationResults.loanAmount)}</b>
                 </p>
                 <div className="flex justify-between items-center py-2 border-t border-green-300 dark:border-green-600 pt-3">
                   <span className="font-bold text-gray-800 dark:text-white">
@@ -377,16 +315,15 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
                 Perbandingan dengan Leasing Rekanan
               </h3>
 
-              {/* Perbandingan Leasing - Menggunakan AKORDEON */}
               {simulationResults.results.map((leasing) => {
                 const isActive = activeLeasing === leasing.name;
 
                 return (
-                  <div 
-                    key={leasing.name} 
+                  <div
+                    key={leasing.name}
                     className={`border-2 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800 transition-colors ${
-                      isActive 
-                        ? 'border-blue-500 dark:border-blue-400' 
+                      isActive
+                        ? 'border-blue-500 dark:border-blue-400'
                         : 'border-blue-200 dark:border-blue-700'
                     }`}
                   >
@@ -399,17 +336,21 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
                           {leasing.surname}
                         </h3>
                         <span className="text-xs text-gray-600 dark:text-gray-400">
-                          {leasing.name} (Bunga Flat Tahunan: **{Math.round(leasing.rate * 100)}%**)
+                          {leasing.name} (Bunga Flat Tahunan: <b>{Math.round(leasing.rate * 100)}%</b>)
                         </span>
                       </div>
-                      {isActive ? <ChevronUp className="w-5 h-5 text-blue-600" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
+                      {isActive ? (
+                        <ChevronUp className="w-5 h-5 text-blue-600" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-gray-400" />
+                      )}
                     </button>
 
-                    {/* Konten Akordeon (Hanya tampil jika isActive) */}
                     {isActive && (
                       <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Pilihan Tenor:</p>
-                        {/* Tabel Tenor */}
+                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                          Pilihan Tenor:
+                        </p>
                         <div className="divide-y divide-gray-200 dark:divide-gray-700">
                           {leasing.tenorData.map((data) => (
                             <div
@@ -432,13 +373,12 @@ export default function SimulasiKredit({ initialModelName, initialModelPrice }) 
               })}
             </div>
           ) : (
-            // --- KONTEN PESAN (jika belum siap) ---
             <div className="flex flex-col items-center justify-center min-h-[300px] p-8 text-center bg-blue-50 dark:bg-gray-800 rounded-xl border-2 border-dashed border-blue-300 dark:border-gray-600">
               <p className="font-semibold text-gray-700 dark:text-gray-300">
-                Mohon **Pilih Model** kendaraan dan isi **Uang Muka**.
+                Mohon <b>Pilih Model</b> kendaraan dan isi <b>Uang Muka</b>.
               </p>
               <p className="font-medium text-gray-500 dark:text-gray-400 mt-2 text-sm">
-                Pastikan **Harga OTR** dan **Uang Muka** terisi untuk simulasi.
+                Pastikan <b>Harga OTR</b> dan <b>Uang Muka</b> terisi untuk simulasi.
               </p>
             </div>
           )}

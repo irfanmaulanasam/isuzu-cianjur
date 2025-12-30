@@ -20,7 +20,7 @@ export default function ServicesHubPage() {
 
           <section className="px-4 sm:px-6 py-4 grid gap-4 sm:grid-cols-2">
             <Link
-              href="/simulation/credit-simulation"
+              href="/simulation/credit"
               className="block rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-3 hover:border-bahana-primary dark:hover:border-bahana-light hover:bg-slate-50 dark:hover:bg-slate-800/70 transition"
             >
               <h2 className="font-semibold text-slate-900 dark:text-slate-50">
@@ -32,7 +32,7 @@ export default function ServicesHubPage() {
             </Link>
 
             <Link
-              href="/simulation/owner-cost-simulation"
+              href="/simulation/ownership-cost"
               className="block rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-3 hover:border-bahana-primary dark:hover:border-bahana-light hover:bg-slate-50 dark:hover:bg-slate-800/70 transition"
             >
               <h2 className="font-semibold text-slate-900 dark:text-slate-50">

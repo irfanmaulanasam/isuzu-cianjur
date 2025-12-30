@@ -7,7 +7,7 @@ import enNav from "@/src/data/navbar/en.json";
 import idNav from "@/src/data/navbar/id.json";
 import productsSummary from "@/src/data/products/products_summary.json";
 import { findBreadcrumbTrail } from "@/src/utils/findBreadcrumbTrail";
-
+import { ChevronRight } from "lucide-react";
 function getProductNameFromSlug(slug) {
   const found = productsSummary.find((p) => p.slug === slug);
   return found?.name ?? slug.replace(/-/g, " ");
@@ -18,7 +18,8 @@ export default function Breadcrumb() {
   const params = useParams();
   const { language } = useLanguage();
   const navbarData = language === "id" ? idNav : enNav;
-
+  console.log(navbarData.navbar.menu[0]);
+  
   let trail = findBreadcrumbTrail(navbarData, pathname);
 
   // Tambah leaf untuk halaman produk detail
@@ -48,7 +49,9 @@ export default function Breadcrumb() {
 
           return (
             <li key={item.path} className="flex items-center gap-1">
-              {index > 0 && <span className="text-slate-400">/</span>}
+              {index > 0 && <span className="text-slate-400">
+                <ChevronRight className="text-red-400 text-xs"/>
+                </span>}
 
               {isLast ? (
                 <span className="font-semibold text-slate-700 dark:text-slate-100">

@@ -34,23 +34,23 @@ export default function ContentReader({
   const config = typeConfig[type] || typeConfig.article
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container ">
       <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-8 flex-wrap">
-        <Link href="/" className="hover:text-blue-600">
+        {/* <Link href="/" className="hover:text-blue-600">
           Beranda
-        </Link>
-        <span>/</span>
+        </Link> 
+        <span>/</span>*/}
         <Link href={backPath} className="hover:text-blue-600">
           {backLabel}
         </Link>
-        <span>/</span>
+         {/*<span>/</span>
         <Link href={config.basePath} className="hover:text-blue-600">
           {config.label}
         </Link>
         <span>/</span>
         <span className="text-gray-800 truncate" title={content.title}>
           {content.title.length > 30 ? `${content.title.substring(0, 30)}...` : content.title}
-        </span>
+        </span> */}
       </nav>
       
       <article className="bg-white rounded-lg shadow-lg p-8">
