@@ -2,7 +2,7 @@
 import { useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { DEFAULT_DATA } from "@/src/data/config/TCO_Default";
-import { TCOCalculator } from "@/src/data/utils/tco-calculator";
+import { TCOCalculator } from "@/src/utils/tco-calculator";
 import { Section } from "@/app/components/CalculatorUI/Section";
 import { Input } from "@/app/components/CalculatorUI/Input";
 import { Result } from "@/app/components/CalculatorUI/Result";

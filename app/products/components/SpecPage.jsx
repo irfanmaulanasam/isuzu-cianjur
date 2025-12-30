@@ -49,14 +49,14 @@ export default function SpecPage({ data:{data, language="id"} }) {
             </p>
             {/* CTA BAR */}
             <div className="mt-4 flex flex-wrap gap-2">
-              {/* <Link
+              <Link
                 href={`/simulation/ownership-cost?model=${encodeURIComponent(
                   data.slug
                 )}`}
-                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md bg-bahana-primary text-white hover:bg-bahana-dark transition"
+                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md bg-blue-900 text-white hover:bg-bahana-dark transition"
               >
                 Hitung Biaya Kepemilikan
-              </Link> */}
+              </Link>
 
               <Link
                 href={`/simulation/credit?model=${encodeURIComponent(data.slug)}`}

@@ -8,8 +8,6 @@ import remarkGfm from 'remark-gfm'
 export default function ContentReader({ 
   content, 
   type = 'article',
-  backPath = '/news',
-  backLabel = 'Berita'
 }) {
   if (!content) {
     notFound()
@@ -35,24 +33,6 @@ export default function ContentReader({
 
   return (
     <div className="container ">
-      <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-8 flex-wrap">
-        {/* <Link href="/" className="hover:text-blue-600">
-          Beranda
-        </Link> 
-        <span>/</span>*/}
-        <Link href={backPath} className="hover:text-blue-600">
-          {backLabel}
-        </Link>
-         {/*<span>/</span>
-        <Link href={config.basePath} className="hover:text-blue-600">
-          {config.label}
-        </Link>
-        <span>/</span>
-        <span className="text-gray-800 truncate" title={content.title}>
-          {content.title.length > 30 ? `${content.title.substring(0, 30)}...` : content.title}
-        </span> */}
-      </nav>
-      
       <article className="bg-white rounded-lg shadow-lg p-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
           {content.title}

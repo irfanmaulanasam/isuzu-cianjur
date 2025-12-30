@@ -1,6 +1,6 @@
 // utils/tco-calculator.js
-import { IsuzuPrices } from '../products/isuzuPrices';
-import { VEHICLE_COST_CONFIG } from '../config/vehicle-cost-config';
+import { IsuzuPrices } from '../data/products/isuzuPrices';
+import { VEHICLE_COST_CONFIG } from '../data/config/vehicle-cost-config';
 
 export class TCOCalculator {
   static calculateVehicleTCO(vehicleModel, customParams = {}) {

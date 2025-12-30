@@ -6,7 +6,7 @@
       { "title": "News", "path": "/news",
         "submenu": [
           { "title": "Promo", "path": "/news/promo" },
-          { "title": "Article", "path": "/news" },
+          { "title": "Article", "path": "/news/article" },
           { "title": "Event", "path": "/news/event" }
         ]
       },

@@ -22,7 +22,7 @@ export default function Breadcrumb() {
   
   let trail = findBreadcrumbTrail(navbarData, pathname);
 
-  // Tambah leaf untuk halaman produk detail
+  // leaf untuk halaman produk detail
   if (pathname.startsWith("/products/") && params?.slug) {
     const productLabel = getProductNameFromSlug(
       decodeURIComponent(params.slug)
@@ -31,6 +31,20 @@ export default function Breadcrumb() {
       ...trail,
       {
         title: productLabel,
+        path: pathname,
+      },
+    ];
+  }
+
+  // Leaf untuk halaman berita (news article)
+  if (pathname.startsWith("/news/article/") && params?.slug) {
+    const raw = decodeURIComponent(params.slug);
+    const newsLabel = raw.replace(/-/g, " "); // optional biar lebih rapi
+
+    trail = [
+      ...trail,
+      {
+        title: newsLabel.length > 30 ? newsLabel.substring(0, 30) + "..." : newsLabel,
         path: pathname,
       },
     ];

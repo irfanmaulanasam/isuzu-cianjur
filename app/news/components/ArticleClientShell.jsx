@@ -45,14 +45,10 @@ export default function ArticleClientShell({article, slug}){
             <Breadcrumb />
           </header>
 
-          <section className="px-4 sm:px-6 py-4">
+          <section>
             <ContentReader
               content={article}
               type="article"
-              backPath="/news"
-              backLabel={
-                language === "en" ? "← Back to News" : "← Kembali ke Berita"
-              }
             />
           </section>
         </div>

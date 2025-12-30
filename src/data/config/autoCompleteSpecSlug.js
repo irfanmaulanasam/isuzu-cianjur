@@ -1,4 +1,4 @@
-import { getAllSpecSlugs } from "../utils/getSpec";
+import { getAllSpecSlugs } from "../../utils/getSpec";
 
 export function autoCompleteSlug(input) {
   if (!input) return null;

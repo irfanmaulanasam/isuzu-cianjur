@@ -6,8 +6,11 @@ const TYPE_LABELS = {
 };
 
 function mapOpenGraphType(type) {
-  if (type === "product") return "product.item";
-  return "article";
+  
+  if (type === "article") return "article";
+  if (type === "event") return "article";  
+  if (type === "product") return "website"; 
+return 'website'
 }
 
 export function buildBaseMetadata({
