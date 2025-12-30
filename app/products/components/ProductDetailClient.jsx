@@ -40,14 +40,16 @@ export default function ProductDetailClient({ params }) {
       router.replace(shouldRedirect);
     }
   }, [shouldRedirect, router]);
-
   if (shouldRedirect) {
     return <div>Redirecting...</div>;
   }
 
   return (
     <div className="min-h-screen pt-6 pb-12 px-4 sm:px-6 lg:px-8">
-      <SpecPage data={{ data, language }} />
+      <SpecPage 
+      data={ data}
+      language={language}
+      />
     </div>
   );
 }

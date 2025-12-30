@@ -18,7 +18,7 @@ export default function Breadcrumb() {
   const params = useParams();
   const { language } = useLanguage();
   const navbarData = language === "id" ? idNav : enNav;
-  console.log(navbarData.navbar.menu[0]);
+  // console.log(navbarData.navbar.menu[0]);
   
   let trail = findBreadcrumbTrail(navbarData, pathname);
 

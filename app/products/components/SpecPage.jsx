@@ -2,7 +2,7 @@
 import Breadcrumb from "@/app/components/Breadcrumb";
 import Link from "next/link";
 
-export default function SpecPage({ data:{data, language="id"} }) {
+export default function SpecPage({ data }, language = "id") {
   if (!data) {
     return (
       <section className="py-12 bg-gray-50 dark:bg-slate-950">
@@ -17,7 +17,6 @@ export default function SpecPage({ data:{data, language="id"} }) {
       </section>
     );
   }
-
   return (
     <section className="py-12 bg-gray-50 dark:bg-slate-950">
       <div className="max-w-6xl mx-auto px-4">
@@ -39,7 +38,7 @@ export default function SpecPage({ data:{data, language="id"} }) {
 
             {data.price && (
               <p className="text-base font-semibold text-slate-900 dark:text-slate-100 mt-2">
-                {data.price}
+                Rp. {data.price.toLocaleString("id-ID")}
               </p>
             )}
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
@@ -48,94 +47,42 @@ export default function SpecPage({ data:{data, language="id"} }) {
                 : 'Nilai spesifikasi teknis disajikan dalam Bahasa Indonesia sesuai brosur resmi.'}
             </p>
             {/* CTA BAR */}
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Link
-                href={`/simulation/ownership-cost?model=${encodeURIComponent(
-                  data.slug
-                )}`}
-                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md bg-blue-900 text-white hover:bg-bahana-dark transition"
-              >
-                Hitung Biaya Kepemilikan
-              </Link>
 
+            <div className="mt-4 flex flex-wrap gap-2">
+              {/* Credit simulation */}
               <Link
                 href={`/simulation/credit?model=${encodeURIComponent(data.slug)}`}
-                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md border border-bahana-primary text-bahana-primary hover:bg-bahana-light/20 dark:hover:bg-bahana-light/10 rounded-md transition"
+                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md
+                          border border-bahana-primary text-bahana-primary
+                          hover:bg-bahana-light/20
+                          dark:border-bahana-light dark:text-bahana-light
+                          dark:hover:bg-bahana-light/10
+                          transition"
               >
                 {language === "en" ? "Simulate Credit" : "Simulasi Kredit"}
               </Link>
 
+              {/* WhatsApp CTA */}
               <a
                 href={`https://wa.me/${process.env.NEXT_PUBLIC_SALES_PHONE}?text=${encodeURIComponent(
                   `Halo, saya tertarik dengan ${data.title}. Bisa dibantu info lebih lanjut?`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-400 transition"
+                className="inline-flex items-center justify-center px-3 py-2 text-xs sm:text-sm rounded-md
+                          bg-green-600 text-white hover:bg-green-700
+                          dark:bg-green-500 dark:hover:bg-green-400
+                          transition"
               >
-                {language === "en" ? "Ask Sales" : "Tanya Sales"}
+                {language === "en"
+                  ? "consultation with Sales Consultant"
+                  : "Konsultasi dengan Bagian Penjualan"}
               </a>
             </div>
+
           </header>
 
           {/* BODY CARD */}
-          {data.tco && (
-            <section className="px-6 pb-4">
-              <div className="mt-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/70 px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                <div>
-                  <p className="text-xs font-semibold uppercase text-slate-600 dark:text-slate-300 tracking-wide">
-                    {
-                      language === "en"
-                        ? "Total Cost of Ownership (Estimate)"
-                        : "Ringkasan Biaya Kepemilikan (Estimasi)"
-                    }
-                  </p>
-                  <p className="mt-1 text-sm text-slate-700 dark:text-slate-100">
-                    {
-                      language === "en"
-                        ? "Estimated operational costs are as follows:"
-                        : "Biaya operasional diperkirakan sebagai berikut:" 
-                    }
-                    <span className="font-semibold">
-                      {data.tco.yearlyCost}
-                    </span>
-                    {language === "en"
-                      ? " per year (~ "
-                      : " per tahun (~ "}
-                    <span className="font-semibold">
-                      {data.tco.costPerKm}
-                    </span>{" "}
-                    {language === "en"
-                      ? " per km)."
-                      : " per km)."
-                    }
-                  </p>
-                </div>
-
-                <div className="border-t border-slate-200 dark:border-slate-700 pt-3 sm:pt-0 sm:border-0">
-                  <Link
-                    href={`/simulation/ownership-cost?model=${encodeURIComponent(
-                      data.slug
-                    )}`}
-                    className="block rounded-lg border border-bahana-primary bg-bahana-primary/5 dark:bg-bahana-primary/10 px-3 py-2 hover:bg-bahana-primary/10 dark:hover:bg-bahana-primary/20 transition
-                    "
-                  >
-
-                    <span className="inline-flex items-center justify-center px-3 py-1.5 text-sm font-semibold rounded-md bg-bahana-primary text-white">
-                      {language === "en"
-                        ? "View Total Cost of Ownership Details"
-                        : "Lihat Detail Biaya Kepemilikan"}
-                    </span>
-                    <span className="block text-xs text-slate-600 dark:text-slate-300 mb-1">
-                      {language === "en"
-                        ? "Numbers are estimates, actual results may vary."
-                        : "Angka hanya estimasi, hasil aktual bisa berbeda."}
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            </section>
-          )}
           <main className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
             {data.sections.map((section, sIdx) => (
               <section
@@ -165,6 +112,73 @@ export default function SpecPage({ data:{data, language="id"} }) {
               </section>
             ))}
           </main>
+                    {data.tco && (
+            <section className="px-6 pb-4">
+              <div className="mt-6 rounded-xl border border-slate-200 dark:border-slate-700 
+                  bg-white dark:bg-slate-900 shadow-md p-6">
+                <h2 className="text-sm font-bold uppercase text-slate-700 dark:text-slate-200 tracking-wide mb-4">
+                  {language === "en"
+                    ? "Total Cost of Ownership (Estimate)"
+                    : "Ringkasan Biaya Kepemilikan (Estimasi)"}
+                </h2>
+
+                {/* Highlight headline */}
+                <div className="text-center mb-6">
+                  <p className="text-lg font-semibold text-slate-700 dark:text-slate-200">
+                    {language === "en" ? "Estimated Total Cost" : "Estimasi Total Biaya"}
+                  </p>
+                  <p className="text-3xl font-extrabold text-red-600 dark:text-red-400">
+                    Rp {data.tco.total_tco.toLocaleString("id-ID")}
+                  </p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    {language === "en"
+                      ? `≈ Rp ${data.tco.cost_per_km.toLocaleString("id-ID")} per km`
+                      : `≈ Rp ${data.tco.cost_per_km.toLocaleString("id-ID")} per km`}
+                  </p>
+                </div>
+
+                {/* Grid breakdown with icons */}
+                <div className="grid grid-cols-2 gap-6 text-center">
+                  <div>
+                    <span className="text-2xl">⏳</span>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      {language === "en" ? "Economic Life" : "Masa Pakai"}
+                    </p>
+                    <p className="font-semibold text-slate-900 dark:text-slate-100">
+                      {data.tco.economic_life_years} {language === "en" ? "years" : "tahun"}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="text-2xl">🚗</span>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      {language === "en" ? "Annual Mileage" : "Jarak Tahunan"}
+                    </p>
+                    <p className="font-semibold text-slate-900 dark:text-slate-100">
+                      {data.tco.annual_mileage_km.toLocaleString("id-ID")} km
+                    </p>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="mt-6 text-center">
+                  <Link
+                    href={`/simulation/ownership-cost?model=${encodeURIComponent(data.slug)}&price=${data.price}`}
+                    className="inline-flex items-center px-4 py-2 text-sm font-semibold rounded-md 
+                   bg-bahana-primary text-white hover:bg-bahana-dark transition  bg-blue-800 dark:bg-blue-800 rounded"
+                  >
+                    {language === "en"
+                      ? "View Ownership Cost Details"
+                      : "Lihat Detail Biaya Kepemilikan"}
+                  </Link>
+                  <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                    {language === "en"
+                      ? "Figures are estimates; actual results may vary."
+                      : "Angka hanya estimasi, hasil aktual bisa berbeda."}
+                  </p>
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </section>

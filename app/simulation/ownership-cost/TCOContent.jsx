@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { DEFAULT_DATA } from "@/src/data/config/TCO_Default";
 import { TCOCalculator } from "@/src/utils/tco-calculator";
@@ -13,35 +13,49 @@ const formatRp = (n) =>
 
 export default function VehicleCostCalculatorPage() {
   const searchParams = useSearchParams();
-  console.log(searchParams);
   
   const modelParam = searchParams.get('model');
   const kmParam = searchParams.get('km');
   const fuelParam = searchParams.get('fuel');
+  const priceParam = searchParams.get("price");
 
-  const [data, setData] = useState(() => {
-    if (modelParam) {
-      const tcoResult = TCOCalculator.calculateVehicleTCO(modelParam, {
-        dailyKm: Number(kmParam) || undefined,
-        fuelPrice: Number(fuelParam) || undefined
-      });
-      
-      if (tcoResult) {
-        return {
-          ...DEFAULT_DATA,
-          hargaTruk: tcoResult.vehiclePrice,
-          rasioBBM: tcoResult.fuelConsumption,
-          jarakTahunan: tcoResult.yearlyKm,
-          hargaSolar: Number(fuelParam) || 12000,
-          asuransi: tcoResult.biayaTetap.asuransi,
-          perawatan: tcoResult.biayaVariabel.service + tcoResult.biayaVariabel.oli,
-          ban: tcoResult.biayaVariabel.ban
-        };
-      }
-    }
-    
-    return DEFAULT_DATA;
-  });
+  const [data, setData] = useState(DEFAULT_DATA);
+
+  // init dari TCOCalculator sekali saat modelParam tersedia
+  useEffect(() => {
+    if (!modelParam) return;
+
+    const tcoResult = TCOCalculator.calculateVehicleTCO(modelParam, {
+      dailyKm: Number(kmParam) || undefined,
+      fuelPrice: Number(fuelParam) || undefined,
+    });
+
+    if (!tcoResult) return;
+
+    setData((prev) => ({
+      ...prev,
+      hargaTruk: tcoResult.vehiclePrice,
+      rasioBBM: tcoResult.fuelConsumption,
+      jarakTahunan: tcoResult.yearlyKm,
+      hargaSolar: Number(fuelParam) || 12000,
+      asuransi: tcoResult.biayaTetap.asuransi,
+      perawatan:
+        tcoResult.biayaVariabel.service + tcoResult.biayaVariabel.oli,
+      ban: tcoResult.biayaVariabel.ban,
+    }));
+  }, [modelParam, kmParam, fuelParam]);
+
+  // override hargaTruk dengan priceParam kalau ada
+  useEffect(() => {
+    if (!priceParam) return;
+    const numericPrice = Number(priceParam);
+    if (!numericPrice) return;
+
+    setData((prev) => ({
+      ...prev,
+      hargaTruk: numericPrice,
+    }));
+  }, [priceParam]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -103,7 +117,7 @@ export default function VehicleCostCalculatorPage() {
           Vehicle Cost Calculator {modelParam ? `- ${modelParam.toUpperCase()}` : ''}
         </h1>
       </div>
-      
+
       {/* Info dari Hero Section */}
       {modelParam && (
         <div className="bg-blue-50 dark:bg-slate-800/50 border border-blue-200 dark:border-blue-800/50 rounded-xl p-6 mb-8 shadow-sm">
@@ -140,54 +154,54 @@ export default function VehicleCostCalculatorPage() {
               info="Harga total kendaraan OTR (On The Road)"
               isCurrency
             />
-            <Input 
+            <Input
               label="Umur Pakai (tahun)"
-              name="umurPakai" 
+              name="umurPakai"
               value={data.umurPakai}
               onChange={handleChange}
-              info="Estimasi umur ekonomis kendaraan sebelum diganti." 
+              info="Estimasi umur ekonomis kendaraan sebelum diganti."
             />
-            <Input 
+            <Input
               label="Nilai Sisa"
               name="nilaiSisa"
               value={data.nilaiSisa}
               onChange={handleChange}
-              info="Nilai jual kembali kendaraan di akhir umur pakai." 
+              info="Nilai jual kembali kendaraan di akhir umur pakai."
               isCurrency
             />
-            <Input 
+            <Input
               label="Uang Muka (Down Payment)"
               name="uangMuka"
               value={data.uangMuka}
               onChange={handleChange}
-              info="Uang muka yang dibayarkan di awal transaksi kredit." 
+              info="Uang muka yang dibayarkan di awal transaksi kredit."
               isCurrency
             />
-            <Input 
+            <Input
               label="Tenor Kredit (Tahun)"
               name="tenor"
               value={data.tenor}
               onChange={handleChange}
-              info="Jangka waktu kredit dalam tahun." 
+              info="Jangka waktu kredit dalam tahun."
             />
             <Input
               label="Bunga Kredit Tahunan (%)"
               name="bungaKredit"
               value={data.bungaKredit}
               onChange={handleChange}
-              info="Persentase bunga tahunan yang diterapkan oleh lembaga pembiayaan (flat rate)." 
+              info="Persentase bunga tahunan yang diterapkan oleh lembaga pembiayaan (flat rate)."
               suffix=" %"
               decimalScale={2}
             />
           </Section>
-          
+
           <Section title="🏛️ Biaya Tetap Lain" className="dark:bg-slate-800/30">
-            <Input 
+            <Input
               label="KIR & Pajak / Tahun"
               name="kirPajak"
               value={data.kirPajak}
               onChange={handleChange}
-              info="Biaya tahunan seperti KIR, pajak, dan administrasi kendaraan." 
+              info="Biaya tahunan seperti KIR, pajak, dan administrasi kendaraan."
               isCurrency
             />
             <Input
@@ -212,7 +226,7 @@ export default function VehicleCostCalculatorPage() {
         {/* Kolom Kanan - Results */}
         <div className="space-y-8">
           <Section title="⚡ Biaya Variabel" className="dark:bg-slate-800/30">
-            <Input 
+            <Input
               label="Harga Solar per Liter"
               name="hargaSolar"
               value={data.hargaSolar}
@@ -222,70 +236,70 @@ export default function VehicleCostCalculatorPage() {
             />
             <Input
               label="Rasio Konsumsi BBM (Km/L)"
-              name="rasioBBM" 
-              value={data.rasioBBM} 
+              name="rasioBBM"
+              value={data.rasioBBM}
               onChange={handleChange}
-              info="Berapa kilometer yang bisa ditempuh tiap 1 liter solar." 
+              info="Berapa kilometer yang bisa ditempuh tiap 1 liter solar."
               suffix=" Km/L"
               decimalScale={2}
             />
-            <Input 
-              label="Jarak Tempuh per Tahun (Km)" 
-              name="jarakTahunan" 
-              value={data.jarakTahunan} 
-              onChange={handleChange} 
-              info="Perkiraan total jarak yang ditempuh kendaraan dalam setahun." 
+            <Input
+              label="Jarak Tempuh per Tahun (Km)"
+              name="jarakTahunan"
+              value={data.jarakTahunan}
+              onChange={handleChange}
+              info="Perkiraan total jarak yang ditempuh kendaraan dalam setahun."
               suffix=" Km"
             />
-            <Input 
-              label="Perawatan / Tahun" 
-              name="perawatan" 
-              value={data.perawatan} 
-              onChange={handleChange} 
-              info="Biaya servis rutin, oli, dan spare part." 
+            <Input
+              label="Perawatan / Tahun"
+              name="perawatan"
+              value={data.perawatan}
+              onChange={handleChange}
+              info="Biaya servis rutin, oli, dan spare part."
               isCurrency
             />
-            <Input 
-              label="Ban / Tahun" 
-              name="ban" 
-              value={data.ban} 
-              onChange={handleChange} 
-              info="Rata-rata biaya penggantian ban tahunan." 
+            <Input
+              label="Ban / Tahun"
+              name="ban"
+              value={data.ban}
+              onChange={handleChange}
+              info="Rata-rata biaya penggantian ban tahunan."
               isCurrency
             />
           </Section>
-          
+
           <Section title="📈 Hasil Perhitungan TCO" className="dark:bg-gradient-to-br dark:from-emerald-900/20 dark:to-blue-900/20 border-2 border-emerald-200/50 dark:border-emerald-500/30 rounded-2xl shadow-2xl">
             <div className="space-y-4">
-              <Result 
-                label="💎 Total Biaya Operasional / Tahun" 
-                value={formatRp(result.totalCost)} 
-                highlight 
+              <Result
+                label="💎 Total Biaya Operasional / Tahun"
+                value={formatRp(result.totalCost)}
+                highlight
                 className="text-2xl font-black bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent drop-shadow-lg"
               />
-              <Result 
-                label="📅 Biaya per Bulan" 
-                value={formatRp(result.totalCost / 12)} 
+              <Result
+                label="📅 Biaya per Bulan"
+                value={formatRp(result.totalCost / 12)}
                 className="text-lg font-semibold text-emerald-700 dark:text-emerald-300"
               />
-              <Result 
-                label="🚗 Biaya per Km" 
-                value={`${formatRp(result.costPerKm)}/km`} 
-                highlight 
+              <Result
+                label="🚗 Biaya per Km"
+                value={`${formatRp(result.costPerKm)}/km`}
+                highlight
                 className="text-xl font-bold text-amber-600 dark:text-amber-400"
               />
               <hr className="border-slate-200 dark:border-slate-700 my-4" />
-              <Result 
-                label="🏗️ Biaya Tetap / Tahun" 
-                value={formatRp(result.fixedCost)} 
+              <Result
+                label="🏗️ Biaya Tetap / Tahun"
+                value={formatRp(result.fixedCost)}
               />
-              <Result 
-                label="🔧 Biaya Variabel / Tahun" 
-                value={formatRp(result.variableCost)} 
+              <Result
+                label="🔧 Biaya Variabel / Tahun"
+                value={formatRp(result.variableCost)}
               />
-              <Result 
-                label="⛽ Konsumsi BBM / Tahun"  
-                value={`${(result.konsumsiBBM / 1000).toFixed(1)} kL`} 
+              <Result
+                label="⛽ Konsumsi BBM / Tahun"
+                value={`${(result.konsumsiBBM / 1000).toFixed(1)} kL`}
                 info="Dalam kiloliter (1 kL = 1,000 Liter)"
               />
             </div>

@@ -41,7 +41,7 @@ export default function ErrorPage({ error, reset }) {
             Atau, coba cari informasi penting di sini:
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href={'/product'} className="text-sm text-blue-600 hover:text-blue-800 font-medium">Model Mobil</Link>
+            <Link href={'/products'} className="text-sm text-blue-600 hover:text-blue-800 font-medium">Model Mobil</Link>
             <span className="text-slate-400">|</span>
             <Link href={'/news/promo'} className="text-sm text-blue-600 hover:text-blue-800 font-medium">Lihat Promo</Link>
             <span className="text-slate-400">|</span>
