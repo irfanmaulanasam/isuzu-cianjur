@@ -63,7 +63,6 @@ export default function Home() {
     <main className="bg-white text-slate-900">
       <HeroCarousel/>
       <Hero />
-      
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ValueProps />
