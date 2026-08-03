@@ -20,6 +20,12 @@ export default function ProductCard({ product }) {
         <p className="text-xs text-slate-500 dark:text-slate-400">
           {product.details.engine}
         </p>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          {/* <span>
+           cabin to End 
+          </span> */}
+          {product.details.cabinEnd}
+        </p>
         <p className="text-sm font-semibold mt-2 text-slate-900 dark:text-slate-100">
           {product.details.price}
         </p>
