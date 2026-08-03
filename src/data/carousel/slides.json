@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "image": "/products/2022_NMR-_EURO4_Box-Besi-300x300.png",
+    "tagline": "ISUZU ELF",
+    "title": "Solusi Tangguh Transportasi Bisnis Anda",
+    "description": "Performa mesin efisien dengan daya angkut maksimal untuk berbagai kebutuhan logistik.",
+    "ctaPrimary": { "text": "Lihat Spesifikasi", "href": "/products/elf" },
+    "ctaSecondary": { "text": "Minta Penawaran", "href": "/contact" }
+  },
+  {
+    "id": 2,
+    "image": "/products/Isuzu-Giga-GVR-low-300x300.png",
+    "tagline": "ISUZU GIGA",
+    "title": "Ketahanan Ekstra untuk Medan Berat",
+    "description": "Didesain untuk efisiensi bahan bakar tinggi dan operasional jarak jauh tanpa henti.",
+    "ctaPrimary": { "text": "Jelajahi Giga", "href": "/products/giga" },
+    "ctaSecondary": { "text": "Brosur PDF", "href": "/brochures" }
+  },
+  {
+    "id": 3,
+    "image": "/products/2022_TRAGA_EURO4_Pick-Up-Sisi-Sopir-300x300.png",
+    "tagline": "ISUZU TRAGA",
+    "title": "Muatan Lebih Luas, Untung Lebih Besar",
+    "description": "Partner terbaik untuk usaha open cargo maupun box di perkotaan.",
+    "ctaPrimary": { "text": "Pelajari Traga", "href": "/products/traga" },
+    "ctaSecondary": { "text": "Hubungi Dealer", "href": "/outlet" }
+  }
+]

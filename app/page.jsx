@@ -5,7 +5,7 @@ import QuickTools from './components/sections/QuickTools';
 import Testimonials from './components/sections/Testimonial';
 import StoryBrand from './components/sections/StoryBrand';
 import CTASection from './components/sections/CTASection';
-
+import HeroCarousel from './components/sections/Carousel';
 export const metadata = {
   title: 'Bahana Isuzu Cianjur — Dealer Resmi Euro 4 Traga, Elf, Giga',
   description: 'Dealer resmi Isuzu Euro 4 di Cianjur. Harga termurah Traga, Elf, Giga. Simulasi kredit DP ringan, download brosur, layanan aftersales terpercaya.',
@@ -61,6 +61,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="bg-white text-slate-900">
+      <HeroCarousel/>
       <Hero />
       
       <section className="py-16">
