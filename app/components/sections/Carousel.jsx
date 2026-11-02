@@ -1,13 +1,12 @@
 'use client';
-
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
 // Sample data slide (Sesuaikan dengan data kamu)
-import SLIDES from '../../../src/data/carousel/slides.json'
-const AUTOPLAY_INTERVAL = 6000; // 6 detik (sesuai rentang 5-7 detik)
+import SLIDES from '../../../src/data/carousel/slides.json';
+
+const AUTOPLAY_INTERVAL = 6000; // 6 detik
 
 export default function HeroCarousel({ slides = SLIDES }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,14 +29,12 @@ export default function HeroCarousel({ slides = SLIDES }) {
     setCurrentIndex(index);
   };
 
-  // Timer Autoplay + Auto Pause saat IsPaused = true
   useEffect(() => {
     if (!isPaused) {
       timerRef.current = setInterval(() => {
         nextSlide();
       }, AUTOPLAY_INTERVAL);
     }
-
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
@@ -45,7 +42,6 @@ export default function HeroCarousel({ slides = SLIDES }) {
 
   const currentSlide = slides[currentIndex];
 
-  // Efek Variasi Animasi Slide
   const slideVariants = {
     enter: (dir) => ({
       x: dir > 0 ? '100%' : '-100%',
@@ -69,7 +65,7 @@ export default function HeroCarousel({ slides = SLIDES }) {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
-      {/* 1. LAYER SLIDE GAMBAR & ANIMAASI */}
+      {/* 1. LAYER SLIDE GAMBAR & ANIMASI */}
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentSlide.id}
@@ -81,18 +77,22 @@ export default function HeroCarousel({ slides = SLIDES }) {
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           className="absolute inset-0 w-full h-full"
         >
-          {/* Gambar Utama (1920x1080 Aspect Ratio) */}
-          <Image
-            src={currentSlide.image}
-            alt={currentSlide.title}
-            fill
-            priority={currentIndex === 0}
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+          {/* --- WRAPPER UNTUK KONTROL UKURAN & POSISI GAMBAR --- */}
+          {/* Mobile: 100% width. Desktop: 35% width, pinned to the right */}
+          <div className="absolute inset-0 w-full md:w-[35%] md:left-auto md:right-0 h-full">
+            <Image
+               src={currentSlide.image}
+              alt={currentSlide.title}
+              fill
+              priority={currentIndex === 0}
+              sizes="(max-width: 768px) 100vw, 35vw"
+              //  CHANGED HERE: object-contain (no cropping) & object-right-bottom 
+              className="object-contain object-right-bottom" 
+            />
+          </div>
 
-          {/* Overlay Gradient Soft untuk Legibilitas Teks */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
+          {/* Overlay Gradient Soft untuk Legibilitas Teks (di sisi kiri) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent pointer-events-none" />
         </motion.div>
       </AnimatePresence>
 
@@ -111,15 +111,13 @@ export default function HeroCarousel({ slides = SLIDES }) {
                 {currentSlide.tagline}
               </span>
             )}
-
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-md">
               {currentSlide.title}
             </h2>
-
             <p className="text-sm sm:text-base md:text-lg text-slate-200 line-clamp-3 leading-relaxed">
               {currentSlide.description}
             </p>
-
+            
             {/* Tombol CTA */}
             <div className="pt-2 flex flex-wrap gap-3">
               {currentSlide.ctaPrimary && (
@@ -151,7 +149,6 @@ export default function HeroCarousel({ slides = SLIDES }) {
       >
         <ChevronLeft size={28} />
       </button>
-
       <button
         onClick={nextSlide}
         aria-label="Slide berikutnya"

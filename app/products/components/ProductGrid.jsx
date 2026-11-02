@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import products_summary from "@/src/data/products/products_summary.json";
+import { getPriceForProduct } from "@/src/data/products/isuzuPrices";
 import ProductCard from "@/app/products/components/ProductCard";
 import { useLanguage } from "@/src/context/languageContext";
 import ID from "@/src/data/products/id.json";
@@ -21,7 +22,7 @@ export default function ProductsGrid() {
     
     return products_summary.filter((p) => p.category === category);
   }, [category]);
-  console.log(products_summary.length, filtered.length, category);
+  // console.log(products_summary.length, filtered.length, category);
   
   return (
       <section className="px-4 py-8 bg-white dark:bg-slate-950">
@@ -60,15 +61,22 @@ export default function ProductsGrid() {
             <div
               className="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
             >
-              {filtered.map((p) => (
-                <Link
-                  key={p.id}
-                  href={`/products/${p.slug}`}
-                  className="block hover:no-underline"
-                >
-                  <ProductCard product={p} />
-                </Link>
-              ))}
+              {filtered.map((p) => {
+                const productWithPrice = {
+                  ...p,
+                  price: getPriceForProduct(p),
+                };
+
+                return (
+                  <Link
+                    key={p.id}
+                    href={`/products/${p.slug}`}
+                    className="block hover:no-underline"
+                  >
+                    <ProductCard product={productWithPrice} />
+                  </Link>
+                );
+              })}
             </div>
           )}
         </main>

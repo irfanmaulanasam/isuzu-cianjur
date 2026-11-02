@@ -80,3 +80,19 @@ export const getUniqueTypes = () => {
 
   return Array.from(types);
 };
+
+export const getPriceForProduct = (product) => {
+  if (!product) return null;
+
+  const allPrices = Object.values(IsuzuPrices).flat();
+
+  const name = product.name.toLowerCase();
+
+  const matched = allPrices.find((item) => {
+    const model = item.model.toLowerCase();
+
+    return name.includes(model);
+  });
+
+  return matched ? Number(matched.price) : null;
+};
