@@ -51,11 +51,16 @@ export default function NewsCard({ article }) {
         </h3>
 
         {/* Date */}
-        {article.date && (
+        {(article.createdAt || article.date) && (
+          <p className="text-gray-500 dark:text-slate-400 text-sm mb-2">
+            📅 {new Date(article.createdAt || article.date).toLocaleDateString("id-ID")}
+          </p>
+        )}
+        {/* {article.date && (
           <p className="text-gray-500 dark:text-slate-400 text-sm mb-2">
             📅 {new Date(article.date).toLocaleDateString("id-ID")}
           </p>
-        )}
+        )} */}
 
         {/* Author */}
         {article.author && (

@@ -7,6 +7,7 @@ import EN_TEXT from '@/src/data/news/en'
 import ID_TEXT from '@/src/data/news/id'
 
 export default function NewsHomeClient({ categoriesData }) {
+  
   const { language } = useLanguage()
 
   const text = useMemo(
@@ -58,7 +59,8 @@ export default function NewsHomeClient({ categoriesData }) {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categoriesData.article.slice(0, 3).map((article) => (
+            {/* {categoriesData.article.slice(0, 3).map((article) => ( */}
+            {categoriesData?.news?.slice(0, 3).map((article) => (
               <NewsCard key={article.slug} article={article} />
             ))}
           </div>
@@ -78,7 +80,7 @@ export default function NewsHomeClient({ categoriesData }) {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categoriesData.promo.slice(0, 3).map((promo) => (
+            {categoriesData?.promo?.slice(0, 3).map((promo) => (
               <NewsCard key={promo.slug} article={promo} />
             ))}
           </div>
@@ -98,7 +100,7 @@ export default function NewsHomeClient({ categoriesData }) {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categoriesData.event.slice(0, 3).map((event) => (
+            {categoriesData?.event?.slice(0, 3).map((event) => (
               <NewsCard key={event.slug} article={event} />
             ))}
           </div>

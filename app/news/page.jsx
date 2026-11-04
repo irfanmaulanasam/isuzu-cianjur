@@ -7,11 +7,11 @@ import { Suspense } from 'react'
 export const metadata = {
   title: 'Berita, Promo & Event Isuzu | Bahana Isuzu Cianjur',
   description:
-    'Kumpulan berita, promo, dan event terbaru dari Isuzu Bahana Cianjur. Update informasi seputar Isuzu Traga, Elf, dan Giga Euro 4 untuk usaha Anda.',
+  'Kumpulan berita, promo, dan event terbaru dari Isuzu Bahana Cianjur. Update informasi seputar Isuzu Traga, Elf, dan Giga Euro 4 untuk usaha Anda.',
   openGraph: {
     title: 'Berita & Promo Isuzu Bahana Cianjur',
     description:
-      'Baca artikel, promo, dan informasi event terbaru dari Isuzu Bahana Cianjur. Resmi dan terpercaya di Cianjur.',
+    'Baca artikel, promo, dan informasi event terbaru dari Isuzu Bahana Cianjur. Resmi dan terpercaya di Cianjur.',
     type: 'website',
     locale: 'id_ID',
     siteName: 'Isuzu Bahana Cianjur',
@@ -28,10 +28,11 @@ export const metadata = {
     card: 'summary_large_image',
     images: ['/og?slug=news-home']
   }
+  
 }
 
-export default function NewsHome() {
-  const categoriesData = getAllCategoriesData()
+export default async function NewsHome() {
+  const categoriesData = await getAllCategoriesData()
   return(
   <Suspense fallback={<Loading/>}>
     <NewsHomeClient categoriesData={categoriesData} />
