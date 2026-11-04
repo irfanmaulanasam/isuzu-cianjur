@@ -6,6 +6,7 @@ const nextConfig = {
     "https://192.168.1.*:3000"
   ],
   images: {
+    domains:['res.cloudinary.com'],
     remotePatterns: [
       {
         protocol: 'https',
