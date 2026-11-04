@@ -42,11 +42,11 @@ export default function AdminLayout({ children }) {
           <Link href="/admin/dashboard" className="px-4 py-2 rounded font-medium text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-slate-700 hover:text-red-600">
             Daftar Artikel
           </Link>
-          <Link href="/admin/dashboard/create" className="px-4 py-2 rounded font-medium text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-slate-700 hover:text-red-600">
+          <Link href="/admin/dashboard/createArticle" className="px-4 py-2 rounded font-medium text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-slate-700 hover:text-red-600">
             Tulis Artikel Baru
           </Link>
-          <Link href="/admin/dashboard/trash" className="px-4 py-2 rounded font-medium text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-slate-700 hover:text-red-600">
-            🗑️ Arsip Sampah
+          <Link href="/admin/dashboard/ArticleTrash" className="px-4 py-2 rounded font-medium text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-slate-700 hover:text-red-600">
+            Arsip Artikel
           </Link>
         </nav>
         <div className="p-4 border-t border-slate-200 dark:border-slate-700">
@@ -57,7 +57,7 @@ export default function AdminLayout({ children }) {
             }}
             className="w-full text-left px-4 py-2 font-medium text-slate-500 hover:text-red-600"
           >
-            🚪 Keluar
+            Keluar
           </button>
         </div>
       </aside>
