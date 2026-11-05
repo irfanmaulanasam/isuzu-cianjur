@@ -58,7 +58,7 @@ export default function TrashPage() {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-slate-800 dark:text-white">
-            Arsip Sampah (Trash)
+            Arsip Artikel
           </h1>
           <p className="text-sm text-slate-500 mt-1">
             Daftar artikel yang telah di-soft-delete beserta rekam jejak penghapusannya.
