@@ -1,112 +1,127 @@
+// app/admin/dashboard/products/create/page.jsx
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import ProductForm from "../components/ProductForm"
+import ProductForm from "../components/ProductForm"; // Sesuaikan path-nya
 
 export default function CreateProductPage() {
   const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Inisialisasi state dengan template kerangka standar Isuzu
   const [formData, setFormData] = useState({
     name: "",
     slug: "",
-    category: "PICKUP-LCV",
-    image: "", // URL dari Media Bucket
     price: "",
-    // Ringkasan cepat
-    details: { seats: "", engine: "", power: "", tonnage: "", cabinEnd: "" },
-    // Spesifikasi dinamis bersarang
+    category: "GIGA", // Default value
+    image: "",
+    details: { 
+      power: "", 
+      seats: "", 
+      engine: "", 
+      tonnage: "", 
+      cabinEnd: "" 
+    },
     sections: [
-      { label: "DIMENSI", items: [{ name: "Panjang", value: "" }] }
+      {
+        label: "DIMENSI",
+        items: [
+          { name: "Panjang", value: "" },
+          { name: "Lebar", value: "" },
+          { name: "Tinggi", value: "" },
+          { name: "Jarak Sumbu", value: "" },
+        ]
+      },
+      {
+        label: "MESIN",
+        items: [
+          { name: "Model", value: "" },
+          { name: "Isi Silinder", value: "" },
+          { name: "Tenaga Maksimum", value: "" },
+          { name: "Torsi Maksimum", value: "" },
+        ]
+      },
+      {
+        label: "RODA",
+        items: [
+          { name: "Ban Depan", value: "" },
+          { name: "Ban Belakang", value: "" },
+        ]
+      },
+      {
+        label: "TRANSMISI",
+        items: [
+          { name: "Model", value: "" },
+          { name: "Perbandingan Gigi Terakhir", value: "" },
+        ]
+      },
+      {
+        label: "BERAT",
+        items: [
+          { name: "Berat Total Kendaraan", value: "" },
+        ]
+      }
     ],
+    tco: null
   });
 
+  // Handler standar untuk field root (name, slug, price, dll)
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleNameChange = (e) => {
-    const nameValue = e.target.value;
-    const generatedSlug = nameValue
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, "")
-      .trim()
-      .replace(/\s+/g, "-");
-
+  // Handler khusus untuk object 'details'
+  const handleDetailChange = (e) => {
     setFormData((prev) => ({
       ...prev,
-      name: nameValue,
-      slug: generatedSlug,
+      details: { ...prev.details, [e.target.name]: e.target.value }
     }));
   };
 
-  // --- LOGIKA DINAMIS UNTUK SECTIONS ---
-  const addSection = () => {
-    setFormData((prev) => ({
-      ...prev,
-      sections: [...prev.sections, { label: "", items: [{ name: "", value: "" }] }]
-    }));
+  // Handler khusus untuk array 'sections' -> 'items'
+  const handleItemChange = (sectionIndex, itemIndex, field, value) => {
+    const newSections = [...formData.sections];
+    newSections[sectionIndex].items[itemIndex][field] = value;
+    setFormData((prev) => ({ ...prev, sections: newSections }));
   };
 
-  const removeSection = (sIdx) => {
-    setFormData((prev) => ({
-      ...prev,
-      sections: prev.sections.filter((_, idx) => idx !== sIdx)
-    }));
-  };
-
-  const handleSectionLabelChange = (sIdx, value) => {
-    const updatedSections = [...formData.sections];
-    updatedSections[sIdx].label = value;
-    setFormData((prev) => ({ ...prev, sections: updatedSections }));
-  };
-
-  const addItem = (sIdx) => {
-    const updatedSections = [...formData.sections];
-    updatedSections[sIdx].items.push({ name: "", value: "" });
-    setFormData((prev) => ({ ...prev, sections: updatedSections }));
-  };
-
-  const removeItem = (sIdx, iIdx) => {
-    const updatedSections = [...formData.sections];
-    updatedSections[sIdx].items = updatedSections[sIdx].items.filter((_, idx) => idx !== iIdx);
-    setFormData((prev) => ({ ...prev, sections: updatedSections }));
-  };
-
-  const handleItemChange = (sIdx, iIdx, field, value) => {
-    const updatedSections = [...formData.sections];
-    updatedSections[sIdx].items[iIdx][field] = value;
-    setFormData((prev) => ({ ...prev, sections: updatedSections }));
-  };
-  // -------------------------------------
-
+  // Fungsi Submit menggunakan method POST
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-
+    
     const apiKey = localStorage.getItem("isuzu_admin_key");
 
     try {
       const res = await fetch("http://localhost:3001/api/products", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": apiKey || "",
+        headers: { 
+          "Content-Type": "application/json", 
+          "x-api-key": apiKey || "" 
         },
-        body: JSON.stringify(formData),
+        // Filter out item yang kosong agar database tidak kotor
+        body: JSON.stringify({
+          ...formData,
+          sections: formData.sections.map(section => ({
+            ...section,
+            items: section.items.filter(item => item.name.trim() !== "" || item.value.trim() !== "")
+          }))
+        }),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        const errData = await res.json();
-        throw new Error(errData.error || "Gagal menyimpan produk ke server.");
+        throw new Error(data.error || "Gagal menyimpan produk baru.");
       }
 
-      router.push("/admin/products");
+      // Redirect kembali ke tabel produk jika berhasil
+      router.push("/admin/dashboard/products");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -115,13 +130,16 @@ export default function CreateProductPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-slate-800 dark:text-white">
-          Tambah Produk Baru
-        </h1>
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800 dark:text-white">
+            Tambah Unit Baru
+          </h1>
+          <p className="text-sm text-slate-500 mt-1">Masukkan spesifikasi kendaraan Isuzu terbaru</p>
+        </div>
         <Link
-          href="/admin/products"
+          href="/admin/dashboard/products"
           className="text-slate-600 dark:text-slate-300 hover:text-red-600 text-sm font-semibold"
         >
           ← Batal & Kembali
@@ -134,20 +152,15 @@ export default function CreateProductPage() {
         </div>
       )}
 
+      {/* Menggunakan kembali ProductForm yang sudah dibuat */}
       <ProductForm 
         formData={formData}
-        setFormData={setFormData}
         handleChange={handleChange}
-        handleNameChange={handleNameChange}
+        handleDetailChange={handleDetailChange}
+        handleItemChange={handleItemChange}
         handleSubmit={handleSubmit}
         loading={loading}
-        // Props khusus sections
-        addSection={addSection}
-        removeSection={removeSection}
-        handleSectionLabelChange={handleSectionLabelChange}
-        addItem={addItem}
-        removeItem={removeItem}
-        handleItemChange={handleItemChange}
+        isEditMode={false} // Beri tahu form bahwa ini bukan mode edit
       />
     </div>
   );
