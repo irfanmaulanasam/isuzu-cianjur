@@ -12,11 +12,7 @@
       },
       { 
         "title": "Product", 
-        "path": "/products",
-        "submenu": [
-          {"title": "View Units", "path": "/products"},
-          {"title": "Unit Order", "path": "/products/unit-order"} 
-        ]
+        "path": "/products"
       },
       { 
         "title": "Services", 

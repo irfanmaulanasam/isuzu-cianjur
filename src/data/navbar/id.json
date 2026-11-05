@@ -29,17 +29,7 @@
       },
       {
         "title": "Produk",
-        "path": "/products",
-        "submenu": [
-          {
-            "title": "Lihat Unit",
-            "path": "/products"
-          },
-          {
-            "title": "Pemesanan Unit",
-            "path": "/products/unit-order"
-          }
-        ]
+        "path": "/products"
       },
       {
         "title": "Layanan",
