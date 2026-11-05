@@ -2,175 +2,62 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import ToastNotification from "./components/ToastNotification";
-import DeleteModal from "./components/DeleteModal";
-import CategoryFilter from "./components/CategoryFilter";
-import DataTable from "./components/DataTable";
 
-export default function AdminDashboard() {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [sortConfig, setSortConfig] = useState({ key: "createdAt", direction: "desc" });
-  
-  const [deleteModal, setDeleteModal] = useState({ isOpen: false, articleId: null, articleTitle: "" });
-  const [adminName, setAdminName] = useState("");
-  const [deleteReason, setDeleteReason] = useState("");
-  
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState({ show: false, message: "", time: "", type: "success" });
-
-  const triggerToast = (message, type = "success") => {
-    const currentTime = new Date().toLocaleTimeString("id-ID", {
-      hour: "2-digit", minute: "2-digit", second: "2-digit",
-    });
-    setToast({ show: true, message, time: currentTime, type });
-    setTimeout(() => {
-      setToast({ show: false, message: "", time: "", type: "success" });
-    }, 5000);
-  };
+export default function AdminOverviewDashboard() {
+  const [stats, setStats] = useState({ articles: 0, products: 0, trashArticles: 0, trashProducts: 0 });
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    // Simulasi pengambilan ringkasan statistik server
+    const fetchStats = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/articles", { cache: "no-store" });
-        if (res.ok) {
-          const data = await res.json();
-          setArticles(data);
-        }
-      } catch (error) {
-        console.error("Gagal mengambil data artikel:", error);
-        triggerToast("Gagal memuat data dari server.", "error");
-      } finally {
-        setLoading(false);
+        const [artRes, prodRes] = await Promise.all([
+          fetch("http://localhost:3001/api/articles", { cache: "no-store" }),
+          fetch("http://localhost:3001/api/products", { cache: "no-store" }),
+        ]);
+        const articles = artRes.ok ? await artRes.json() : [];
+        const products = prodRes.ok ? await prodRes.json() : [];
+
+        setStats({
+          articles: articles.length,
+          products: products.length,
+          trashArticles: 0,
+          trashProducts: 0,
+        });
+      } catch (err) {
+        console.error("Gagal memuat statistik ikhtisar");
       }
     };
-    fetchArticles();
+    fetchStats();
   }, []);
 
-  const handleSort = (key) => {
-    let direction = "asc";
-    if (sortConfig.key === key && sortConfig.direction === "asc") direction = "desc";
-    setSortConfig({ key, direction });
-  };
-
-  const confirmSoftDelete = async (e) => {
-    e.preventDefault();
-    if (!adminName.trim()) {
-      alert("Mohon masukkan nama Anda sebagai bentuk pertanggungjawaban.");
-      return;
-    }
-
-    setIsSubmitting(true);
-    const apiKey = localStorage.getItem("isuzu_admin_key");
-    
-    try {
-      const res = await fetch(`http://localhost:3001/api/articles/${deleteModal.articleId}/soft-delete`, {
-        method: "PUT", 
-        headers: { "Content-Type": "application/json", "x-api-key": apiKey || "" },
-        body: JSON.stringify({ deletedBy: adminName, reason: deleteReason || "Tidak ada keterangan" }),
-      });
-
-      if (res.ok || res.status === 404) {
-        setArticles(articles.map(art => 
-          art.id === deleteModal.articleId ? { ...art, published: false, isDeleted: true, deletedBy: adminName } : art
-        ));
-        setDeleteModal({ isOpen: false, articleId: null, articleTitle: "" });
-        setAdminName("");
-        setDeleteReason("");
-        triggerToast("Artikel berhasil diarsipkan.", "success");
-      } else {
-        const errData = await res.json().catch(() => ({}));
-        triggerToast(errData.message || "Gagal melakukan arsip artikel.", "error");
-      }
-    } catch (err) {
-      triggerToast("Terjadi kesalahan jaringan.", "error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  // Filter & Sorting Logic
-  const processedArticles = articles
-    .filter((article) => {
-      if (article.isDeleted) return false; 
-      if (selectedCategory === "all") return true;
-      return article.category === selectedCategory;
-    })
-    .sort((a, b) => {
-      let aValue = a[sortConfig.key];
-      let bValue = b[sortConfig.key];
-      if (sortConfig.key === "createdAt") {
-        aValue = new Date(a.createdAt);
-        bValue = new Date(b.createdAt);
-      }
-      if (aValue < bValue) return sortConfig.direction === "asc" ? -1 : 1;
-      if (aValue > bValue) return sortConfig.direction === "asc" ? 1 : -1;
-      return 0;
-    });
-
-  const getSortIcon = (key) => {
-    if (sortConfig.key !== key) return " ↕️";
-    return sortConfig.direction === "asc" ? " 🔼" : " 🔽";
-  };
-
-  // Konfigurasi kolom untuk DataTable
-  const articleColumns = [
-    { key: "id", label: "ID", sortable: false, width: "w-16" },
-    { key: "title", label: "Judul Artikel", sortable: true },
-    { key: "category", label: "Kategori", sortable: true },
-    { key: "createdAt", label: "Tanggal Dibuat", sortable: true },
-    { key: "published", label: "Status", sortable: false },
-  ];
-
-  const categoryOptions = [
-    { value: "news", label: "News / Artikel" },
-    { value: "promo", label: "Promo" },
-    { value: "event", label: "Event" },
-  ];
-
   return (
-    <div className="relative">
-      <ToastNotification toast={toast} />
+    <div>
+      <h1 className="text-3xl font-bold text-slate-800 dark:text-white mb-2">Ikhtisar Dashboard</h1>
+      <p className="text-slate-500 mb-8">Selamat datang kembali di Panel Kontrol Bahana Isuzu Cianjur.</p>
 
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-slate-800 dark:text-white">Manajemen Artikel</h1>
-        <Link
-          href="/admin/dashboard/create"
-          className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 font-semibold transition"
-        >
-          + Tulis Artikel Baru
-        </Link>
+      {/* KOTAK STATISTIK */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <p className="text-sm font-semibold text-slate-400 uppercase">Total Artikel Aktif</p>
+          <p className="text-4xl font-ext500 text-slate-800 dark:text-white mt-2">{stats.articles}</p>
+          <Link href="/admin/dashboard" className="text-xs text-red-600 font-bold mt-4 inline-block hover:underline">Kelola Artikel →</Link>
+        </div>
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <p className="text-sm font-semibold text-slate-400 uppercase">Total Produk Aktif</p>
+          <p className="text-4xl font-ext500 text-slate-800 dark:text-white mt-2">{stats.products}</p>
+          <Link href="/admin/dashboard/product" className="text-xs text-red-600 font-bold mt-4 inline-block hover:underline">Kelola Produk →</Link>
+        </div>
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <p className="text-sm font-semibold text-slate-400 uppercase">Arsip Artikel</p>
+          <p className="text-4xl font-ext500 text-amber-600 mt-2">Lihat</p>
+          <Link href="/admin/dashboard/ArticleArchive" className="text-xs text-red-600 font-bold mt-4 inline-block hover:underline">Buka Trash Artikel →</Link>
+        </div>
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <p className="text-sm font-semibold text-slate-400 uppercase">Arsip Produk</p>
+          <p className="text-4xl font-ext500 text-amber-600 mt-2">Lihat</p>
+          <Link href="/admin/dashboard/productArchive" className="text-xs text-red-600 font-bold mt-4 inline-block hover:underline">Buka Trash Produk →</Link>
+        </div>
       </div>
-
-      <CategoryFilter 
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        categories={categoryOptions}
-      />
-
-      <DataTable 
-        loading={loading}
-        columns={articleColumns}
-        data={processedArticles}
-        sortConfig={sortConfig}
-        handleSort={handleSort}
-        getSortIcon={getSortIcon}
-        onDeleteClick={(item) => setDeleteModal({ isOpen: true, articleId: item.id, articleTitle: item.title })}
-        editUrlPrefix="/admin/dashboard/editArticle"
-      />
-
-      <DeleteModal 
-        isOpen={deleteModal.isOpen}
-        deleteModal={deleteModal}
-        setDeleteModal={setDeleteModal}
-        adminName={adminName}
-        setAdminName={setAdminName}
-        deleteReason={deleteReason}
-        setDeleteReason={setDeleteReason}
-        isSubmitting={isSubmitting}
-        confirmSoftDelete={confirmSoftDelete}
-      />
     </div>
   );
 }
