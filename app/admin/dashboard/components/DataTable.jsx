@@ -40,30 +40,21 @@ export default function DataTable({
         <tbody>
           {data.length === 0 ? (
             <tr>
-              <td colSpan={columns.length + 2} className="p-8 text-center text-slate-500">
+              <td colSpan={columns.length + 1} className="p-8 text-center text-slate-500">
                 Tidak ada data yang cocok.
               </td>
             </tr>
           ) : (
             data.map((item) => (
               <tr key={item.id} className="border-b border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                <td className="p-4 text-slate-700 dark:text-slate-300">{item.id}</td>
-                <td className="p-4 font-medium text-slate-900 dark:text-white max-w-xs truncate">
-                  {item.title}
-                </td>
-                <td className="p-4 text-slate-700 dark:text-slate-300 uppercase text-xs font-bold tracking-wider">
-                  {item.category}
-                </td>
-                <td className="p-4 text-sm text-slate-500 dark:text-slate-400">
-                  {new Date(item.createdAt).toLocaleDateString("id-ID", {
-                    day: "numeric", month: "short", year: "numeric",
-                  })}
-                </td>
-                <td className="p-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${item.published ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}`}>
-                    {item.published ? "Publik" : "Draf"}
-                  </span>
-                </td>
+                
+                {/* Loop dinamis untuk setiap kolom agar bisa dipakai untuk data apapun */}
+                {columns.map((col) => (
+                  <td key={`${item.id}-${col.key}`} className="p-4">
+                    {col.render ? col.render(item) : <span className="text-slate-700 dark:text-slate-300">{item[col.key]}</span>}
+                  </td>
+                ))}
+
                 <td className="p-4 text-right space-x-3">
                   <Link
                     href={`${editUrlPrefix}/${item.id}`}
@@ -85,4 +76,4 @@ export default function DataTable({
       </table>
     </div>
   );
-}
+} 
